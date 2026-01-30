@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark flexbox-gap" dir="rtl" lang="fa">
+  <head>
+    
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'sha256-/TSk/5gLx1XcfKLHZ6Xvk+lt0azlFvH6o7xHi7VsU+k='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'self'; upgrade-insecure-requests"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="canonical" href="https://go2pal.com/" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://go2pal.com/" />
+    <meta
+      property="og:title"
+      content="گوتوپل: پلتفرم پرداخت بین‌المللی و خدمات جهانی"
+    />
+    <meta
+      property="og:description"
+      content="سفارش اکانت‌های پرمیوم، گیفت کارت و خدمات پرداخت جهانی با بهترین قیمت و پشتیبانی ۲۴ ساعته."
+    />
+    <meta
+      property="og:image"
+      content="https://go2pal.com/images/hero-graphic.webp"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://go2pal.com/" />
+    <meta
+      property="twitter:title"
+      content="گوتوپل: پلتفرم پرداخت بین‌المللی و خدمات جهانی"
+    />
+    <meta
+      property="twitter:description"
+      content="سفارش اکانت‌های پرمیوم، گیفت کارت و خدمات پرداخت جهانی با بهترین قیمت و پشتیبانی ۲۴ ساعته."
+    />
+    <meta
+      property="twitter:image"
+      content="https://go2pal.com/images/hero-graphic.webp"
+    />
+    <meta
+      name="description"
+      content="گوتوپل: پلتفرم پرداخت بین‌المللی و خدمات جهانی. سفارش اکانت‌های پرمیوم، گیفت کارت و خدمات پرداخت جهانی با بهترین قیمت و پشتیبانی ۲۴ ساعته."
+    />
+    <title>Go2pal | Home</title>
+    <style id="preloader-critical">
+      .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #274185;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s, visibility 0.5s;
+      }
+      .preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .loader {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        border: 3px solid;
+        border-color: #fff #fff transparent transparent;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+      }
+      .loader::after,
+      .loader::before {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border: 3px solid;
+        border-color: transparent transparent #050000 #050000;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        animation: rotationBack 0.5s linear infinite;
+        transform-origin: center;
+      }
+      .loader::before {
+        width: 32px;
+        height: 32px;
+        border-color: #fff #fff transparent transparent;
+        animation: rotation 1.5s linear infinite;
+      }
+      @keyframes rotation {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes rotationBack {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(-360deg);
+        }
+      }
+      body.loading .hero-badge,
+      body.loading .hero-heading,
+      body.loading .hero-description,
+      body.loading .hero-buttons,
+      body.loading .hero-subject-img,
+      body.loading .hero-subject-bg {
+        animation: none !important;
+        opacity: 0 !important;
+        transform: translateX(100vw) !important;
+      }
+    </style>
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero/hero-image.webp"
+      fetchpriority="high"
+    />
+    <script>
+      (function () {
+        if (
+          localStorage.getItem("theme") === "dark" ||
+          !("theme" in localStorage)
+        ) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+    </script>
+    <script
+      type="module"
+      crossorigin=""
+      src="/assets/main.js"
+      integrity="sha384-Er5v5QeHcXFWWcAy//FjmRQCIjiNIs+GWPxmsUBGd/mdluH3PmzI0uOaoAS1Gcqj"
+    ></script>
+    <link
+      rel="stylesheet"
+      crossorigin=""
+      href="/assets/main.css"
+      integrity="sha384-xu3zDtfTeHg5PxGI6Ie5Zjj52yp/+u+dkwws3dymcXGui8lF7mo9RGy5KdyePgpP"
+    />
+  </head>
+  <body
+    class="loading"
+    data-aos-easing="ease"
+    data-aos-duration="800"
+    data-aos-delay="0"
+  >
+    <div class="preloader" id="preloader"><span class="loader"></span></div>
+    <noscript>
+      <div
+        style="
+          padding: 20px;
+          background-color: #f8d7da;
+          color: #721c24;
+          text-align: center;
+          direction: rtl;
+        "
+      >
+        برای استفاده کامل از این وب‌سایت، لطفاً جاوااسکریپت را در مرورگر خود
+        فعال کنید.
+      </div>
+    </noscript>
+    <div class="bg-(--primary-color)"></div>
+    <div id="navbar-container"></div>
+    <main
+      id="main-content"
+      class="grow w-full space-y-8 md:space-y-16 pb-8 md:pb-16"
+    >
+      <section class="hero-scroll-section">
+        <div class="hero-sticky-wrapper">
+          <div class="hero-clean-bg"></div>
+
+          <div class="hero-mesh-bg" aria-hidden="true">
+            <div class="hero-mesh-noise"></div>
+            <div class="hero-mesh-vignette"></div>
+          </div>
+
+          <div class="hero-particles" aria-hidden="true">
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+          </div>
+
+          <div class="hero-content">
+            <div class="hero-text">
+              <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                <span>روز مـــــــــرد مـــــبـــــارکــــــــ ✨</span>
+              </div>
+
+              <h1 class="hero-heading">
+                <span class="hero-heading-brand">با گوتوپل</span>
+                <span class="hero-heading-slogan">ساده استفاده کن</span>
+                <span class="hero-heading-main">هوشمند مدیریت کن</span>
+              </h1>
+
+              <p class="hero-description">
+                با گوتوپل می‌توانید به راحتی اکانت‌های سرگرمی, موسیقی و
+                بین‌المللی رو شارژ کنید. تجربه‌ای سریع، امن و با طراحی مدرن.
+              </p>
+
+              <div class="hero-buttons">
+                <a href="/application" class="hero-btn-primary">
+                  <span>ایجاد کیف پول گوتوپل</span>
+                  <svg
+                    class="hero-btn-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-subject">
+              <picture>
+                <img
+                  src="/images/hero/hero-background.webp"
+                  alt=""
+                  class="hero-subject-bg"
+                  aria-hidden="true"
+                />
+              </picture>
+
+              <picture>
+                <img
+                  src="/images/hero/hero-image.webp"
+                  alt="اپلیکیشن گوتوپل - کیف پول دیجیتال"
+                  class="hero-subject-img"
+                  width="500"
+                  height="700"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+
+            <div class="hero-mobile-cta">
+              <p class="hero-description">
+                با گوتوپل می‌توانید به راحتی اکانت‌های سرگرمی و موسیقی
+                بین‌المللی رو شارژ کنید. تجربه‌ای سریع، امن و با طراحی مدرن.
+              </p>
+
+              <div class="hero-buttons">
+                <a href="/application" class="hero-btn-primary">
+                  <span>ایجاد کیف پول گوتوپل</span>
+                  <svg
+                    class="hero-btn-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 aos-init aos-animate"
+        data-aos="fade-up"
+      >
+        <div
+          class="relative w-full rounded-3xl overflow-hidden shadow-diffuse-lg bg-surface-light dark:bg-surface-dark border border-white/50 dark:border-white/5 group"
+        >
+          <div
+            class="swiper hero-swiper h-96 md:h-110 swiper-fade swiper-initialized swiper-horizontal swiper-rtl swiper-watch-progress swiper-backface-hidden"
+          >
+            <div
+              class="swiper-wrapper"
+              style="transition-duration: 0ms; transition-delay: 0ms"
+            >
+              <div
+                class="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active"
+                data-swiper-slide-index="3"
+                style="
+                  width: 1230px;
+                  opacity: 1;
+                  transform: translate3d(0px, 0px, 0px);
+                  transition-duration: 0ms;
+                "
+              >
+                <a href="#" class="block w-full h-full">
+                  <picture>
+                    <img
+                      draggable="false"
+                      oncontextmenu="return false;"
+                      loading="lazy"
+                      src="/images/images/Holiday Offer PE.png"
+                      data-src="/images/slider/Holiday%20Offer%20PE%20(2).png"
+                      class="w-full h-full object-cover lazy-image"
+                      alt="Holiday Offer"
+                      data-srcset="/images/slider/Holiday%20Offer%20PE%20(2).png 1200w"
+                      sizes="(max-width: 768px) 100vw, 100vw"
+                      srcset="
+                        /images/slider/Holiday%20Offer%20PE%20(2).png 1200w
+                      "
+                    />
+                  </picture>
+                </a>
+              </div>
+
+              <div
+                class="swiper-slide swiper-slide-next"
+                data-swiper-slide-index="0"
+                style="
+                  width: 1230px;
+                  opacity: 0;
+                  transform: translate3d(1230px, 0px, 0px);
+                  transition-duration: 0ms;
+                "
+              >
+                <a href="#" class="block w-full h-full">
+                  <picture>
+                    <img
+                      draggable="false"
+                      oncontextmenu="return false;"
+                      loading="lazy"
+                      src="/images/slider/Yalda%20PE.png"
+                      data-src="/images/slider/Yalda%20PE.png"
+                      class="w-full h-full object-cover lazy-image"
+                      alt="Yalda Offer"
+                      data-srcset="/images/slider/Yalda%20PE.png 1200w"
+                      sizes="(max-width: 768px) 100vw, 100vw"
+                      srcset="/images/slider/Yalda%20PE.png 1200w"
+                    />
+                  </picture>
+                </a>
+              </div>
+
+              <div
+                class="swiper-slide"
+                data-swiper-slide-index="1"
+                style="
+                  width: 1230px;
+                  opacity: 0;
+                  transform: translate3d(2460px, 0px, 0px);
+                  transition-duration: 0ms;
+                "
+              >
+                <a href="#" class="block w-full h-full">
+                  <picture>
+                    <img
+                      draggable="false"
+                      oncontextmenu="return false;"
+                      loading="lazy"
+                      src="/images/slider/Christmas%20PE.png"
+                      data-src="/images/slider/Christmas%20PE.png"
+                      class="w-full h-full object-cover lazy-image"
+                      alt="Christmas Offer"
+                      data-srcset="/images/slider/Christmas%20PE.png 1200w"
+                      sizes="(max-width: 768px) 100vw, 100vw"
+                      srcset="/images/slider/Christmas%20PE.png 1200w"
+                    />
+                  </picture>
+                </a>
+              </div>
+
+              <div
+                class="swiper-slide"
+                data-swiper-slide-index="2"
+                style="
+                  width: 1230px;
+                  opacity: 0;
+                  transform: translate3d(3690px, 0px, 0px);
+                  transition-duration: 0ms;
+                "
+              >
+                <a href="#" class="block w-full h-full">
+                  <picture>
+                    <img
+                      draggable="false"
+                      oncontextmenu="return false;"
+                      loading="lazy"
+                      src="/images/images/Holiday Offer PE.png"
+                      data-src="/images/slider/Christmas%20Travel%20PE.png"
+                      class="w-full h-full object-cover lazy-image"
+                      alt="Christmas Travel Offer"
+                      data-srcset="/images/slider/Christmas%20Travel%20PE.png 1200w"
+                      sizes="(max-width: 768px) 100vw, 100vw"
+                      srcset="/images/slider/Christmas%20Travel%20PE.png 1200w"
+                    />
+                  </picture>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <button
+            id="slider-prev"
+            class="absolute top-1/2 right-4 md:right-6 -translate-y-1/2 w-12 h-12 rounded-full bg-white/40 dark:bg-black/40 hover:bg-white/60 dark:hover:bg-black/60 backdrop-blur-md text-gray-800 dark:text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-glass border border-white/20 z-20 hover:scale-110"
+            aria-label="اسلاید بعدی"
+          >
+            <svg class="icon">
+              <use href="/images/images/icons.svg#chevron_right"></use>
+            </svg>
+          </button>
+
+          <button
+            id="slider-next"
+            class="absolute top-1/2 left-4 md:left-6 -translate-y-1/2 w-12 h-12 rounded-full bg-white/40 dark:bg-black/40 hover:bg-white/60 dark:hover:bg-black/60 backdrop-blur-md text-gray-800 dark:text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-glass border border-white/20 z-20 hover:scale-110"
+            aria-label="اسلاید قبلی"
+          >
+            <svg class="icon">
+              <use href="/images/images/icons.svg#chevron_left"></use>
+            </svg>
+          </button>
+
+          <div
+            class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20 p-2 bg-black/5 dark:bg-white/10 rounded-full backdrop-blur-md border border-black/5 dark:border-white/10 swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+            id="slider-pagination"
+          >
+            <span class="swiper-pagination-bullet"></span>
+            <span class="swiper-pagination-bullet"></span>
+            <span class="swiper-pagination-bullet"></span>
+            <span
+              class="swiper-pagination-bullet swiper-pagination-bullet-active"
+            ></span>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="w-full py-2 md:py-4 bg-surface-light/90 dark:bg-surface-dark/90 border-y border-gray-200 dark:border-gray-700 backdrop-blur-md shadow-sm aos-init aos-animate"
+        data-aos="fade-in"
+      >
+        <div
+          class="max-w-7xl mx-auto overflow-hidden mask-gradient flex relative"
+          dir="ltr"
+        >
+          <div
+            class="flex items-center gap-16 py-4 animate-infinite-scroll whitespace-nowrap shrink-0"
+          >
+            <a
+              href="/services"
+              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
+            >
+              <picture>
+                <source type="image/webp" data-srcset="" />
+                <img
+                  loading="lazy"
+                  src="/images/logos/spotify.webp"
+                  data-src="/images/logos/spotify.webp"
+                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
+                  alt="Spotify"
+                  data-srcset="/images/logos/spotify.webp 1x"
+                  srcset="/images/logos/spotify.webp 1x"
+                />
+              </picture>
+              <span
+                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
+                >Spotify</span
+              >
+            </a>
+
+            <a
+              href="/services"
+              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
+            >
+              <picture>
+                <source type="image/webp" data-srcset="" />
+                <img
+                  loading="lazy"
+                  src="/images/logos/itunes.webp"
+                  data-src="/images/logos/itunes.webp"
+                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
+                  alt="Apple Music"
+                  data-srcset="/images/logos/itunes.webp 1x"
+                  srcset="/images/logos/itunes.webp 1x"
+                />
+              </picture>
+              <span
+                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
+                >Apple Music</span
+              >
+            </a>
+
+            <a
+              href="/services"
+              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
+            >
+              <picture>
+                <source type="image/webp" data-srcset="" />
+                <img
+                  loading="lazy"
+                  src="/images/logos/netflix.webp"
+                  data-src="/images/logos/netflix.webp"
+                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
+                  alt="Netflix"
+                  data-srcset="/images/logos/netflix.webp 1x"
+                  srcset="/images/logos/netflix.webp 1x"
+                />
+              </picture>
+              <span
+                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
+                >Netflix</span
+              >
+            </a>
+
+            <a
+              href="/services"
+              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
+            >
+              <picture>
+                <source type="image/webp" data-srcset="" />
+                <img
+                  loading="lazy"
+                  src="/images/logos/microsoft.webp"
+                  data-src="/images/logos/microsoft.webp"
+                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
+                  alt="Xbox"
+                  data-srcset="/images/logos/microsoft.webp 1x"
+                  srcset="/images/logos/microsoft.webp 1x"
+                />
+              </picture>
+              <span
+                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
+                >Xbox</span
+              >
+            </a>
+
+            <a
+              href="/services"
+              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
+            >
+              <picture>
+                <source type="image/webp" data-srcset="" />
+                <img
+                  loading="lazy"
+                  src="/images/logos/sony.webp"
+                  data-src="/images/logos/sony.webp"
+                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
+                  alt="PlayStation"
+                  data-srcset="/images/logos/sony.webp 1x"
+                  srcset="/images/logos/sony.webp 1x"
+                />
+              </picture>
+              <span
+                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
+                >PlayStation</span
+              >
+            </a>
+
+            <a
+              href="/services"
+              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
+            >
+              <picture>
+                <source type="image/webp" data-srcset="" />
+                <img
+                  loading="lazy"
+                  src="/images/logos/steam.webp"
+                  data-src="/images/logos/steam.webp"
+                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
+                  alt="Steam"
+                  data-srcset="/images/logos/steam.webp 1x"
+                  srcset="/images/logos/steam.webp 1x"
+                />
+              </picture>
+              <span
+                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
+                >Steam</span
+              >
+            </a>
+
+            <a
+              href="/services"
+              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
+            >
+              <picture>
+                <source type="image/webp" data-srcset="" />
+                <img
+                  loading="lazy"
+                  src="/images/logos/spotify.webp"
+                  data-src="/images/logos/spotify.webp"
+                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
+                  alt="Spotify"
+                  data-srcset="/images/logos/spotify.webp 1x"
+                  srcset="/images/logos/spotify.webp 1x"
+                />
+              </picture>
+              <span
+                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
+                >Spotify</span
+              >
+            </a>
+
+            <a
+              href="/services"
+              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
+            >
+              <picture>
+                <source type="image/webp" data-srcset="" />
+                <img
+                  loading="lazy"
+                  src="/images/logos/itunes.webp"
+                  data-src="/images/logos/itunes.webp"
+                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
+                  alt="Apple Music"
+                  data-srcset="/images/logos/itunes.webp 1x"
+                  srcset="/images/logos/itunes.webp 1x"
+                />
+              </picture>
+              <span
+                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
+                >Apple Music</span
+              >
+            </a>
+
+            <a
+              href="/services"
+              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
+            >
+              <picture>
+                <source type="image/webp" data-srcset="" />
+                <img
+                  loading="lazy"
+                  src="/images/logos/netflix.webp"
+                  data-src="/images/logos/netflix.webp"
+                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
+                  alt="Netflix"
+                  data-srcset="/images/logos/netflix.webp 1x"
+                  srcset="/images/logos/netflix.webp 1x"
+                />
+              </picture>
+              <span
+                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
+                >Netflix</span
+              >
+            </a>
+
+            <a
+              href="/services"
+              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
+            >
+              <picture>
+                <source type="image/webp" data-srcset="" />
+                <img
+                  loading="lazy"
+                  src="/images/logos/microsoft.webp"
+                  data-src="/images/logos/microsoft.webp"
+                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
+                  alt="Xbox"
+                  data-srcset="/images/logos/microsoft.webp 1x"
+                  srcset="/images/logos/microsoft.webp 1x"
+                />
+              </picture>
+              <span
+                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
+                >Xbox</span
+              >
+            </a>
+
+            <a
+              href="/services"
+              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
+            >
+              <picture>
+                <source type="image/webp" data-srcset="" />
+                <img
+                  loading="lazy"
+                  src="/images/logos/sony.webp"
+                  data-src="/images/logos/sony.webp"
+                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
+                  alt="PlayStation"
+                  data-srcset="/images/logos/sony.webp 1x"
+                  srcset="/images/logos/sony.webp 1x"
+                />
+              </picture>
+              <span
+                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
+                >PlayStation</span
+              >
+            </a>
+
+            <a
+              href="/services"
+              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
+            >
+              <picture>
+                <source type="image/webp" data-srcset="" />
+                <img
+                  loading="lazy"
+                  src="/images/logos/steam.webp"
+                  data-src="/images/logos/steam.webp"
+                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
+                  alt="Steam"
+                  data-srcset="/images/logos/steam.webp 1x"
+                  srcset="/images/logos/steam.webp 1x"
+                />
+              </picture>
+              <span
+                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
+                >Steam</span
+              >
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Popular Products Section -->
+      <section class="popular-products-section max-w-7xl mx-auto px-6">
+        <div class="section-header">
+          <h2 class="section-title">
+            محبوب ترین سرویس های Go2Pal
+            <span class="sticker"></span>
+          </h2>
+          <p class="section-description">
+            با گوتوپل دنیای مالی خود را متحول کنید. خدمات مالی سریع، امن و
+            بین‌المللی در دستان شماست.
+          </p>
+        </div>
+
+        <div class="products-grid">
+          <!-- Product 1: انتقال اعتبار -->
+          <div class="product-container">
+            <div class="price-tag hidden">
+              <span class="euro-icon">€</span>۱
+            </div>
+            <div class="product-box" data-product="انتقال اعتبار">
+              <div class="product-label">انتقال و تبدیل اعتبار جهانی</div>
+              <div class="product-image">
+                <img
+                  src="/images/products/product1.webp"
+                  alt="انتقال اعتبار"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-details">
+                <div class="product-description">
+                انتقال سریع و امن پول به سراسر جهان با کمترین کارمزد.<br>
+                تبدیل ارزهای مختلف با نرخ به‌روز و رقابتی.
+              </div>
+                <button class="info-button">اطلاعات بیشتر</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2: گیفت کارت Apple -->
+          <div class="product-container">
+            <div class="price-tag">
+              <span>شروع قیمت از ۱</span><span class="euro-icon">€</span>
+            </div>
+            <div class="product-box" data-product="گیفت کارت Apple">
+              <div class="product-label">گیفت کارت Apple</div>
+              <div class="product-image">
+                <img
+                  src="/images/products/product2.webp"
+                  alt="گیفت کارت Apple"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-details">
+                <div class="product-description">
+                  خرید گیفت کارت Apple با تخفیف ویژه. قابل استفاده در اپ استور،
+                  Apple Music و iCloud.<br> تحویل آنی
+                </div>
+                <button class="info-button">اطلاعات بیشتر</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3: گیفت کارت Steam -->
+          <div class="product-container">
+            <div class="price-tag">
+              <span>شروع قیمت از ۱</span><span class="euro-icon">€</span>
+            </div>
+            <div class="product-box" data-product="گیفت کارت Steam">
+              <div class="product-label">گیفت کارت Steam</div>
+              <div class="product-image">
+                <img
+                  src="/images/products/product3.webp"
+                  alt="گیفت کارت Steam"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-details">
+                <div class="product-description">
+                  گیفت کارت Steam برای خرید بازی و آیتم‌های درون بازی. پشتیبانی
+                  از تمام مناطق.<br>تحویل فوری.
+                </div>
+                <button class="info-button">اطلاعات بیشتر</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4: eSIM -->
+          <div class="product-container">
+            <div class="price-tag">
+              <span>شروع قیمت از ۱</span><span class="euro-icon">€</span>
+            </div>
+            <div class="product-box" data-product="eSIM">
+              <div class="product-label">eSIM</div>
+              <div class="product-image">
+                <img
+                  src="/images/products/product4.webp"
+                  alt="eSIM"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-details">
+                <div class="product-description">
+                  سیم‌کارت الکترونیکی برای مسافران بین‌المللی. اینترنت پرسرعت در
+                  بیش از ۱۰۰ کشور بدون نیاز به سیم‌کارت فیزیکی.
+                </div>
+                <button class="info-button">اطلاعات بیشتر</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="max-w-7xl mx-auto px-6 pt-8 pb-2 md:pt-12 md:pb-4 aos-init aos-animate"
+        data-aos="fade-up"
+      >
+        <div class="flex items-center justify-between mb-8">
+          <h2
+            class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white"
+          >
+            وبلاگ گوتوپل
+          </h2>
+          <div class="flex gap-2">
+            <button
+              id="blog-prev"
+              class="btn-nav swiper-button-disabled"
+              aria-label="قبلی"
+              disabled=""
+            >
+              <svg class="icon">
+                <use href="/images/images/icons.svg#chevron_right"></use>
+              </svg>
+            </button>
+            <button id="blog-next" class="btn-nav" aria-label="بعدی">
+              <svg class="icon">
+                <use href="/images/images/icons.svg#chevron_left"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="relative group">
+          <div
+            class="swiper blog-swiper swiper-initialized swiper-horizontal swiper-rtl swiper-backface-hidden"
+          >
+            <div class="swiper-wrapper">
+              <div
+                class="swiper-slide blog-card relative rounded-3xl overflow-hidden aspect-[4/3] md:aspect-[4/5] group/card cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 swiper-slide-active"
+                style="width: 296px; margin-left: 16px"
+              >
+                <a href="#" class="absolute inset-0 z-10"></a>
+                <picture>
+                  <source
+                    type="image/webp"
+                    data-srcset=""
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <img
+                    draggable="false"
+                    oncontextmenu="return false;"
+                    loading="lazy"
+                    src="/images/blog1.webp"
+                    data-src="/images/blog1.webp"
+                    alt="Blog Item"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110 lazy-image skeleton"
+                    data-srcset="/images/blog1.webp 1200w"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    srcset="/images/blog1.webp 1200w"
+                  />
+                </picture>
+                <div
+                  class="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent"
+                ></div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 p-4 pointer-events-none"
+                >
+                  <h3 class="text-white font-bold text-lg mb-3 leading-tight">
+                    گیفت کارت جهانی
+                  </h3>
+                  <div class="flex items-center justify-between">
+                    <span
+                      class="bg-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-xl backdrop-blur-md border border-white/10"
+                      >ادامه مطلب</span
+                    >
+                    <div
+                      class="flex items-center gap-3 text-gray-300 text-xs font-medium"
+                    >
+                      <span class="flex items-center gap-1">
+                        <svg class="icon text-[14px]">
+                          <use href="/images/images/icons.svg#schedule"></use>
+                        </svg>
+                        ۱ دقیقه
+                      </span>
+                      <span class="flex items-center gap-1">
+                        <svg class="icon text-[14px]">
+                          <use
+                            href="/images/images/icons.svg#calendar_today"
+                          ></use>
+                        </svg>
+                        ۸ آذر ۱۴۰۴
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="swiper-slide blog-card relative rounded-3xl overflow-hidden aspect-[4/3] md:aspect-[4/5] group/card cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 swiper-slide-next"
+                style="width: 296px; margin-left: 16px"
+              >
+                <a href="#" class="absolute inset-0 z-10"></a>
+                <picture>
+                  <source
+                    type="image/webp"
+                    data-srcset=""
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <img
+                    draggable="false"
+                    oncontextmenu="return false;"
+                    loading="lazy"
+                    src="/images/blog2.webp"
+                    data-src="/images/blog2.webp"
+                    alt="Blog Item"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110 lazy-image skeleton"
+                    data-srcset="/images/blog2.webp 1200w"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    srcset="/images/blog2.webp 1200w"
+                  />
+                </picture>
+                <div
+                  class="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent"
+                ></div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 p-4 pointer-events-none"
+                >
+                  <h3 class="text-white font-bold text-lg mb-3 leading-tight">
+                    با ۱ میلیون چیکار کنم؟
+                  </h3>
+                  <div class="flex items-center justify-between">
+                    <span
+                      class="bg-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-xl backdrop-blur-md border border-white/10"
+                      >ادامه مطلب</span
+                    >
+                    <div
+                      class="flex items-center gap-3 text-gray-300 text-xs font-medium"
+                    >
+                      <span class="flex items-center gap-1">
+                        <svg class="icon text-[14px]">
+                          <use href="/images/images/icons.svg#schedule"></use>
+                        </svg>
+                        ۱ دقیقه
+                      </span>
+                      <span class="flex items-center gap-1">
+                        <svg class="icon text-[14px]">
+                          <use
+                            href="/images/images/icons.svg#calendar_today"
+                          ></use>
+                        </svg>
+                        ۸ آذر ۱۴۰۴
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="swiper-slide blog-card relative rounded-3xl overflow-hidden aspect-[4/3] md:aspect-[4/5] group/card cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300"
+                style="width: 296px; margin-left: 16px"
+              >
+                <a href="#" class="absolute inset-0 z-10"></a>
+                <picture>
+                  <source
+                    type="image/webp"
+                    data-srcset=""
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <img
+                    draggable="false"
+                    oncontextmenu="return false;"
+                    loading="lazy"
+                    src="/images/blog3.webp"
+                    data-src="/images/blog3.webp"
+                    alt="Blog Item"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110 lazy-image skeleton"
+                    data-srcset="/images/blog3.webp 1200w"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    srcset="/images/blog3.webp 1200w"
+                  />
+                </picture>
+                <div
+                  class="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent"
+                ></div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 p-4 pointer-events-none"
+                >
+                  <h3 class="text-white font-bold text-lg mb-3 leading-tight">
+                    منطقی پس انداز کن
+                  </h3>
+                  <div class="flex items-center justify-between">
+                    <span
+                      class="bg-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-xl backdrop-blur-md border border-white/10"
+                      >ادامه مطلب</span
+                    >
+                    <div
+                      class="flex items-center gap-3 text-gray-300 text-xs font-medium"
+                    >
+                      <span class="flex items-center gap-1">
+                        <svg class="icon text-[14px]">
+                          <use href="/images/images/icons.svg#schedule"></use>
+                        </svg>
+                        ۱ دقیقه
+                      </span>
+                      <span class="flex items-center gap-1">
+                        <svg class="icon text-[14px]">
+                          <use
+                            href="/images/images/icons.svg#calendar_today"
+                          ></use>
+                        </svg>
+                        ۸ آذر ۱۴۰۴
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="swiper-slide blog-card relative rounded-3xl overflow-hidden aspect-[4/3] md:aspect-[4/5] group/card cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300"
+                style="width: 296px; margin-left: 16px"
+              >
+                <a href="#" class="absolute inset-0 z-10"></a>
+                <picture>
+                  <source
+                    type="image/webp"
+                    data-srcset=""
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <img
+                    draggable="false"
+                    oncontextmenu="return false;"
+                    loading="lazy"
+                    src="/images/blog4.webp"
+                    data-src="/images/blog4.webp"
+                    alt="Blog Item"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110 lazy-image skeleton"
+                    data-srcset="/images/blog4.webp 1200w"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    srcset="/images/blog4.webp 1200w"
+                  />
+                </picture>
+                <div
+                  class="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent"
+                ></div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 p-4 pointer-events-none"
+                >
+                  <h3 class="text-white font-bold text-lg mb-3 leading-tight">
+                    آینده اعتبار جهانی
+                  </h3>
+                  <div class="flex items-center justify-between">
+                    <span
+                      class="bg-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-xl backdrop-blur-md border border-white/10"
+                      >ادامه مطلب</span
+                    >
+                    <div
+                      class="flex items-center gap-3 text-gray-300 text-xs font-medium"
+                    >
+                      <span class="flex items-center gap-1">
+                        <svg class="icon text-[14px]">
+                          <use href="/images/images/icons.svg#schedule"></use>
+                        </svg>
+                        ۱ دقیقه
+                      </span>
+                      <span class="flex items-center gap-1">
+                        <svg class="icon text-[14px]">
+                          <use
+                            href="/images/images/icons.svg#calendar_today"
+                          ></use>
+                        </svg>
+                        ۸ آذر ۱۴۰۴
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="swiper-slide blog-card relative rounded-3xl overflow-hidden aspect-[4/3] md:aspect-[4/5] group/card cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300"
+                style="width: 296px; margin-left: 16px"
+              >
+                <a href="#" class="absolute inset-0 z-10"></a>
+                <picture>
+                  <source
+                    type="image/webp"
+                    data-srcset=""
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <img
+                    draggable="false"
+                    oncontextmenu="return false;"
+                    loading="lazy"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    data-src="/images/blog1.webp"
+                    alt="Blog Item"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110 lazy-image skeleton"
+                    data-srcset="/images/blog1.webp 1200w"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </picture>
+                <div
+                  class="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent"
+                ></div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 p-4 pointer-events-none"
+                >
+                  <h3 class="text-white font-bold text-lg mb-3 leading-tight">
+                    سرمایه گذاری هوشمند
+                  </h3>
+                  <div class="flex items-center justify-between">
+                    <span
+                      class="bg-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-xl backdrop-blur-md border border-white/10"
+                      >ادامه مطلب</span
+                    >
+                    <div
+                      class="flex items-center gap-3 text-gray-300 text-xs font-medium"
+                    >
+                      <span class="flex items-center gap-1">
+                        <svg class="icon text-[14px]">
+                          <use href="/images/images/icons.svg#schedule"></use>
+                        </svg>
+                        ۱ دقیقه
+                      </span>
+                      <span class="flex items-center gap-1">
+                        <svg class="icon text-[14px]">
+                          <use
+                            href="/images/images/icons.svg#calendar_today"
+                          ></use>
+                        </svg>
+                        ۸ آذر ۱۴۰۴
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="flex justify-center gap-2 mt-6 swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+            id="blog-pagination"
+          >
+            <span
+              class="swiper-pagination-bullet swiper-pagination-bullet-active"
+            ></span>
+            <span class="swiper-pagination-bullet"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-5xl mx-auto px-6 pt-2 pb-8 md:pt-2 md:pb-12">
+        <div
+          class="trustpilot-box-inner bg-surface-light dark:bg-surface-dark rounded-3xl p-5 md:p-8 shadow-xl border border-gray-200/50 dark:border-gray-700/50 shadow-[0_0_30px_rgba(0,182,122,0.15)]"
+        >
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 items-center"
+          >
+            <div
+              class="flex flex-col items-center gap-2 order-3 md:order-3 text-center"
+            >
+              <p
+                class="text-gray-600 dark:text-gray-300 text-base md:text-lg max-w-[240px]"
+              >
+                نظرات واقعی کاربران گوتوپل را در Trustpilot مشاهده کنید
+              </p>
+              <a
+                href="https://at.trustpilot.com/review/go2pal.ir"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="trustpilot-btn"
+              >
+                <span>مشاهده نظرات</span>
+                <svg
+                  class="w-4 h-4 flip-rtl"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 6l6 6-6 6"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <div class="flex flex-col items-center gap-2 order-2">
+              <div class="flex items-center gap-2">
+                <svg
+                  class="w-7 h-7 md:w-9 md:h-9"
+                  viewBox="0 0 126 31"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M36.089 9.6h4.258v17.1h-4.258V9.6zm2.13-2.4c-1.4 0-2.54-1.14-2.54-2.54s1.14-2.54 2.54-2.54 2.54 1.14 2.54 2.54-1.14 2.54-2.54 2.54zm22.12 2.4v17.1h-4.16v-2.34c-1.18 1.8-3.1 2.74-5.34 2.74-4.06 0-7.24-3.22-7.24-8.06s3.18-8.06 7.24-8.06c2.24 0 4.16.94 5.34 2.74V9.6h4.16zm-4.16 8.48c0-2.56-1.72-4.26-4.06-4.26s-4.06 1.7-4.06 4.26 1.72 4.26 4.06 4.26 4.06-1.7 4.06-4.26z"
+                    fill="#191919"
+                    class="dark:fill-white"
+                  />
+                  <path
+                    d="M21.472 17.778l1.167-3.587L16.62.5H8.81l4.02 12.378-2.917 8.976L21.472 17.778z"
+                    fill="#FF7C00"
+                  />
+                  <path d="M0 .5h7.812l4.019 12.378L0 .5z" fill="#00B67A" />
+                  <path
+                    d="M17.452 21.854l-5.62-4.076 4.019-3.088 4.02 3.088-2.42 4.076z"
+                    fill="#005128"
+                  />
+                </svg>
+                <span
+                  class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white"
+                  >Trustpilot</span
+                >
+              </div>
+
+              <div class="flex gap-0.5">
+                <svg
+                  class="w-7 h-7 md:w-9 md:h-9 text-[#00b67a]"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg
+                  class="w-7 h-7 md:w-9 md:h-9 text-[#00b67a]"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg
+                  class="w-7 h-7 md:w-9 md:h-9 text-[#00b67a]"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg
+                  class="w-7 h-7 md:w-9 md:h-9 text-[#00b67a]"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg
+                  class="w-7 h-7 md:w-9 md:h-9 text-[#00b67a]"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+              </div>
+
+              <p
+                class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white"
+              >
+                4.8
+                <span class="text-lg md:text-xl font-normal text-gray-500"
+                  >از 5</span
+                >
+              </p>
+
+              <p class="text-gray-500 dark:text-gray-400 text-sm">
+                بر اساس
+                <span class="font-bold text-gray-700 dark:text-gray-300"
+                  >+100</span
+                >
+                نظر
+              </p>
+            </div>
+
+            <div
+              class="flex flex-col items-center md:items-start gap-2 order-1 md:order-1 text-center md:text-right"
+            >
+              <h2
+                class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white"
+              >
+                تجربه شما
+              </h2>
+              <p class="text-gray-600 dark:text-gray-400 text-base md:text-lg">
+                نظرات واقعی کاربران در Trustpilot
+              </p>
+              <div class="w-16 h-1 bg-[#00b67a] rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="footer-container"></div>
+  </body>
+</html>

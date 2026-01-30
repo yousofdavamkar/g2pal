@@ -1,0 +1,964 @@
+@import "tailwindcss";
+@source "../partials/*.html";
+@variant dark (&:where(.dark, .dark *));
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: middle;
+  transition: opacity 0.3s ease;
+}
+
+@theme {
+  --color-primary: #2563eb;
+  --color-secondary: #1e3a8a;
+  --color-background-light: #f8fafc;
+  --color-background-dark: #0f172a;
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #1e293b;
+  --color-text-main: #0f172a;
+  --color-text-inverse: #ffffff;
+
+  --color-telegram: #0088cc;
+  --color-whatsapp: #25d366;
+  --color-instagram: #e4405f;
+
+  --font-display: "IRANSansX", sans-serif;
+
+  --radius: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
+
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.04);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --shadow-diffuse-sm: 0 2px 8px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-diffuse-md: 0 8px 24px rgba(0, 0, 0, 0.06),
+    0 4px 8px rgba(0, 0, 0, 0.03);
+  --shadow-diffuse-lg: 0 16px 48px rgba(0, 0, 0, 0.08),
+    0 8px 16px rgba(0, 0, 0, 0.04);
+  --shadow-inner-light: inset 0 2px 4px 0 rgba(255, 255, 255, 0.3);
+
+  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
+  --animate-infinite-scroll-reverse: infinite-scroll-reverse 25s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes infinite-scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-color: #e5e7eb;
+    }
+    50% {
+      background-color: #d1d5db;
+    }
+    100% {
+      background-color: #e5e7eb;
+    }
+  }
+}
+
+.skeleton {
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+}
+
+.dark .skeleton {
+  animation-name: skeleton-loading-dark;
+}
+
+@keyframes skeleton-loading-dark {
+  0% {
+    background-color: #374151;
+  }
+  50% {
+    background-color: #4b5563;
+  }
+  100% {
+    background-color: #374151;
+  }
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply bg-background-light dark:bg-background-dark text-text-main dark:text-gray-100 font-display antialiased transition-colors duration-300 min-h-screen flex flex-col selection:bg-primary selection:text-white overflow-x-hidden;
+  }
+
+  a,
+  button {
+    cursor: pointer;
+  }
+
+  /* Custom CSS from code.html */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center transition-all duration-300 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center transition-all duration-300 cursor-pointer bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/25;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center transition-all duration-300 cursor-pointer bg-secondary text-white hover:bg-secondary/90 shadow-lg shadow-secondary/20 hover:shadow-[0_0_5px_var(--color-secondary),0_0_25px_var(--color-secondary),0_0_50px_var(--color-secondary),0_0_100px_var(--color-secondary)];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center transition-all duration-300 cursor-pointer bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600;
+  }
+
+  .btn-icon {
+    @apply w-10 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300 flex items-center justify-center;
+  }
+
+  .btn-glass {
+    @apply bg-white/20 backdrop-blur-md hover:bg-white/30 text-white px-4 py-2 rounded-xl transition-colors font-bold;
+  }
+
+  .btn-card-action {
+    @apply w-full py-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 text-blue-700 dark:text-blue-400 font-bold text-sm hover:bg-primary hover:text-white transition-colors;
+  }
+
+  .btn-store {
+    @apply bg-white text-secondary px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition flex items-center gap-3;
+  }
+
+  .btn-store-outline {
+    @apply bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white/20 transition flex items-center gap-3;
+  }
+
+  .rating-stars {
+    @apply flex text-yellow-400 text-xs;
+  }
+
+  .social-icon {
+    @apply w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white transition-colors;
+  }
+
+  .input-field {
+    @apply w-full bg-gray-100 dark:bg-gray-800 border-none rounded-xl py-3 pr-4 pl-12 text-sm focus:ring-2 focus:ring-primary/20;
+  }
+
+  .btn-submit-sm {
+    @apply absolute left-1.5 top-1.5 w-9 h-9 bg-secondary text-white rounded-lg flex items-center justify-center hover:bg-secondary/90 transition;
+  }
+
+  .app-install-card {
+    @apply bg-secondary rounded-[3rem] p-8 md:p-16 relative overflow-hidden text-white flex flex-col md:flex-row items-center justify-between gap-12 shadow-2xl shadow-secondary/30;
+  }
+
+  .logo-container {
+    @apply w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center text-white shadow-lg shadow-primary/30;
+  }
+
+  .logo-text {
+    @apply text-lg font-bold tracking-tight text-gray-900 dark:text-white hidden sm:block font-display;
+  }
+
+  .nav-link-active {
+    @apply text-primary font-bold;
+  }
+
+  .mobile-nav-link-active {
+    @apply text-primary font-bold p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors;
+  }
+
+  .hero-title {
+    @apply text-5xl md:text-7xl font-black tracking-tight text-gray-900 dark:text-white leading-[1.15];
+  }
+
+  .hero-subtitle {
+    @apply text-xl text-gray-500 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0;
+  }
+
+  .card {
+    @apply bg-surface-light dark:bg-surface-dark rounded-3xl border border-white/50 dark:border-white/5;
+  }
+
+  .card-service {
+    @apply bg-surface-light dark:bg-surface-dark rounded-3xl border border-white/50 dark:border-white/5 p-4 md:p-8 shadow-soft hover:shadow-diffuse-lg transition-all duration-300 overflow-hidden relative;
+  }
+
+  .card-testimonial {
+    @apply bg-gray-50 dark:bg-gray-900/50 p-6 rounded-3xl border border-gray-100 dark:border-gray-800 relative;
+  }
+
+  .bento-card {
+    @apply transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] hover:shadow-2xl hover:shadow-primary/10 cursor-pointer;
+  }
+
+  .nav-link {
+    @apply hover:text-primary transition-colors;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/20 text-primary text-sm font-medium border border-blue-100 dark:border-blue-900/50;
+  }
+
+  .section-title {
+    @apply text-4xl font-black text-gray-900 dark:text-white;
+  }
+
+  .section-subtitle {
+    @apply text-gray-500 dark:text-gray-300;
+  }
+
+  .section-divider {
+    @apply w-24 h-1 bg-primary mx-auto rounded-full;
+  }
+
+  .mobile-nav-link {
+    @apply text-gray-600 dark:text-gray-300 font-medium p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary transition-colors;
+  }
+
+  .brand-item {
+    @apply flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-pointer;
+  }
+
+  .btn-nav {
+    @apply w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center justify-center transition-colors text-gray-600 dark:text-gray-300;
+  }
+  .hero-heading {
+    @apply text-5xl md:text-7xl font-bold tracking-tight text-gray-900 dark:text-white;
+    line-height: 1.6 !important; /* فاصله خطوط - می‌توانید به 1.5 یا 1.6 تغییر دهید */
+  }
+
+  .hero-description {
+    @apply text-xl text-gray-500 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0;
+    line-height: 1.8 !important; /* فاصله خطوط توضیحات */
+  }
+
+  .glass-panel {
+    @apply rounded-2xl md:rounded-full transition-all duration-300;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px) saturate(200%);
+    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+  .dark .glass-panel {
+    background: rgba(15, 23, 42, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-link {
+    @apply hover:text-primary transition-colors flex items-center gap-2;
+  }
+}
+
+@layer utilities {
+  .squircle {
+    border-radius: 20px;
+  }
+
+  .glass {
+    background: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  }
+
+  .dark .glass {
+    background: #1f2937;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .mask-gradient {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+
+  .flip-rtl {
+    transform: scaleX(-1);
+  }
+
+  .faq-item > summary {
+    list-style: none;
+  }
+
+  .faq-item > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .bg-grid-pattern {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .aurora-text {
+    background: linear-gradient(
+      90deg,
+      #3777bc 0%,
+      #274185 25%,
+      #3777bc 50%,
+      #274185 75%,
+      #3777bc 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: aurora 4s linear infinite;
+  }
+
+  .dark .aurora-text {
+    background: linear-gradient(
+      90deg,
+      #60a5fa 0%,
+      #93c5fd 25%,
+      #60a5fa 50%,
+      #93c5fd 75%,
+      #60a5fa 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  @keyframes aurora {
+    to {
+      background-position: 200% center;
+    }
+  }
+}
+
+/* Fallback for devices that do not support hover */
+@media (hover: none) {
+  #slider-next,
+  #slider-prev {
+    opacity: 1 !important;
+  }
+}
+
+/* 
+  Performance Optimizations 
+  Prioritize GPU acceleration for animations.
+*/
+
+/* Force GPU layer for specific animated elements */
+.slide-item,
+.animate-float,
+.animate-infinite-scroll,
+.animate-bounce,
+.animate-pulse {
+  will-change: transform, opacity;
+  transform: translateZ(0); /* Hardware acceleration hack */
+  backface-visibility: hidden; /* Prevent flickering */
+  perspective: 1000px;
+}
+
+.aurora-text {
+  will-change: background-position;
+}
+
+#blog-carousel {
+  will-change: scroll-position;
+}
+
+.skeleton {
+  will-change: background-color;
+}
+
+#mobile-menu {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 200ms ease, visibility 200ms ease;
+  height: 100vh; /* Fallback */
+  height: 100dvh;
+}
+
+#mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#mobile-menu.is-closing {
+  opacity: 0;
+  visibility: visible;
+  pointer-events: none;
+}
+
+/* 
+  Respect user's motion preferences.
+  This acts as a fallback for users who prefer less motion 
+  (often correlates with performance concerns or accessibility).
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Service card component for services page */
+.service-card {
+  border-radius: 20px;
+  @apply bg-surface-light dark:bg-surface-dark border border-white/50 dark:border-white/5 shadow-soft hover:shadow-diffuse-lg transition-all duration-300 cursor-pointer;
+}
+
+/* Service category link component for sidebar navigation */
+.service-category-link {
+  @apply flex items-center gap-3 px-4 py-3 rounded-xl transition-all cursor-pointer whitespace-nowrap shrink-0 snap-start;
+}
+
+.service-category-link.active {
+  @apply bg-primary text-white shadow-md shadow-primary/20;
+}
+
+.service-category-link:not(.active) {
+  @apply hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800;
+}
+
+/* AOS Mobile Visibility Fix 
+   Ensures elements are visible even if AOS is disabled on mobile.
+*/
+@media (max-width: 768px) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    transition: none !important;
+  }
+}
+
+.bg-telegram-gradient {
+  background: linear-gradient(135deg, #0088cc 0%, #00a2ff 100%);
+}
+.bg-whatsapp-gradient {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+.bg-instagram-gradient {
+  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+}
+
+.text-primary-accessible {
+  color: #1d4ed8;
+}
+:is(.dark .text-primary-accessible) {
+  color: #60a5fa;
+}
+
+/* Orbit Animation System */
+.orbit-scene {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.orbit-plane {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transform: rotateX(65deg) rotateZ(-15deg);
+}
+
+.orbit-ring {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+}
+
+@media (min-width: 768px) {
+  .orbit-ring {
+    width: 440px;
+    height: 440px;
+  }
+}
+
+.orbit-center {
+  position: absolute;
+  transform-style: preserve-3d;
+  /* Counter-rotate the plane tilt to keep center object upright */
+  transform: rotateZ(15deg) rotateX(-65deg);
+}
+
+.orbit-item-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  animation: orbit-spin 20s linear infinite;
+}
+
+.orbit-content {
+  position: absolute;
+  left: 160px; /* Adjusted for circular items */
+  top: 0;
+  width: 112px;
+  height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  animation: orbit-counter-spin 20s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .orbit-content {
+    left: 220px; /* Adjusted for desktop */
+  }
+}
+
+@keyframes orbit-spin {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes orbit-counter-spin {
+  0% {
+    transform: rotateZ(360deg) rotateZ(15deg) rotateX(-65deg);
+  }
+  100% {
+    transform: rotateZ(0deg) rotateZ(15deg) rotateX(-65deg);
+  }
+}
+
+/* ============================================
+   ORBIT CENTER - GLOWING LOGO
+   ============================================ */
+.orbit-logo-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+}
+
+.orbit-logo-img {
+  position: relative;
+  z-index: 10;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 35px rgba(37, 99, 235, 0.4));
+  animation: logo-float 4s ease-in-out infinite;
+}
+
+/* Glowing Aura Layers */
+.orbit-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Layer 1 - Inner Core (Bright & Intense) */
+.orbit-glow-1 {
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.4);
+  filter: blur(30px); /* بلور زیاد برای حذف لبه‌ها */
+  animation: glow-breathe 3s ease-in-out infinite;
+}
+
+/* Layer 2 - Main Glow (Blue Body) */
+.orbit-glow-2 {
+  width: 160px;
+  height: 160px;
+  background: rgba(37, 99, 235, 0.6);
+  filter: blur(50px); /* ترکیب کامل با لایه زیری */
+  animation: glow-breathe 3s ease-in-out infinite 0.5s;
+}
+
+/* Layer 3 - Outer Aura (Deep Dark Blue) */
+.orbit-glow-3 {
+  width: 140px; /* سایز کوچک‌تر از لوگو */
+  height: 140px;
+  background: transparent;
+  /* سایه بسیار نرم و پخش شده */
+  box-shadow: 0 0 90px 40px rgba(30, 58, 138, 0.85);
+  filter: blur(20px);
+  opacity: 0.9;
+  animation: glow-breathe 3s ease-in-out infinite 1s;
+}
+
+/* Breathing Animation */
+@keyframes glow-breathe {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Float Animation for Logo */
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Dark mode adjustments */
+.dark .orbit-glow-1 {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+
+.dark .orbit-glow-2 {
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.6) 0%,
+    rgba(59, 130, 246, 0) 60%
+  );
+}
+
+.dark .orbit-glow-3 {
+  background: radial-gradient(
+    circle,
+    rgba(37, 99, 235, 0.4) 0%,
+    rgba(15, 23, 42, 0) 55%
+  );
+  box-shadow: 0 0 50px 15px rgba(59, 130, 246, 0.2),
+    0 0 100px 30px rgba(37, 99, 235, 0.15);
+}
+
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  bottom: var(--swiper-pagination-bottom, 8px);
+  top: var(--swiper-pagination-top, auto);
+  left: 50% !important;
+  width: auto !important;
+}
+
+#slider-pagination .swiper-pagination-bullet,
+#blog-pagination .swiper-pagination-bullet {
+  @apply w-2 h-2 rounded-full bg-gray-400 dark:bg-white/50 hover:bg-primary dark:hover:bg-white transition-all duration-300 cursor-pointer opacity-100 m-0 block;
+}
+
+#slider-pagination .swiper-pagination-bullet-active,
+#blog-pagination .swiper-pagination-bullet-active {
+  @apply w-8 bg-primary dark:bg-white;
+}
+
+.text-primary-accessible {
+  color: #1d4ed8; /* blue-700 */
+}
+:is(.dark .text-primary-accessible) {
+  color: #60a5fa; /* blue-400 */
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Content Visibility for off-screen content */
+main > section:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+.swiper-pagination-bullet {
+  @apply w-2 h-2 rounded-full bg-gray-400 dark:bg-white/50 hover:bg-primary dark:hover:bg-white transition-all cursor-pointer opacity-100;
+}
+.swiper-pagination-bullet-active {
+  @apply w-8 bg-primary dark:bg-white;
+}
+
+@keyframes infinite-scroll-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Trustpilot Box - Advanced Glow */
+.trustpilot-box-inner {
+  position: relative; /* برای تنظیم لایه‌ها */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 1.5rem !important; /* گرد کردن قطعی */
+  z-index: 1; /* اولویت نمایش محتوا */
+  background-clip: padding-box; /* جلوگیری از رنگ گرفتن حاشیه */
+}
+
+/* لایه نور مخفی در پشت باکس */
+.trustpilot-box-inner::before {
+  content: "";
+  position: absolute;
+  inset: -15px; /* بیرون زدگی نور از کادر */
+  background: radial-gradient(
+    circle,
+    rgba(0, 182, 122, 0.5) 0%,
+    transparent 70%
+  );
+  border-radius: inherit; /* ارث‌بری گردی */
+  z-index: -1; /* فرستادن به پشت */
+  opacity: 0; /* مخفی در حالت عادی */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  filter: blur(10px); /* نرم کردن نور */
+}
+
+.trustpilot-box-inner:hover {
+  transform: translateY(-5px);
+  border-color: #00b67a !important;
+}
+
+.trustpilot-box-inner:hover::before {
+  opacity: 1; /* نمایش نور هنگام هاور */
+  transform: scale(1.05); /* کمی بزرگتر شدن نور */
+}
+
+/* Trustpilot Button with glow */
+.trustpilot-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #00b67a;
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 182, 122, 0.3);
+}
+.trustpilot-btn:hover {
+  background: #00a06a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 182, 122, 0.5), 0 0 20px rgba(0, 182, 122, 0.3);
+}
+/*دکمه باتن دانلود تو Navbar*/
+.btn-activation-magic {
+  /* Base Styles */
+  position: relative;
+  overflow: hidden;
+  border: none;
+  border-radius: 9999px !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: white !important;
+  z-index: 10;
+
+  /* گرادینت آبی برند (تیره به فیروزه‌ای) */
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+  background-size: 200% 200%;
+  animation: gradientMove 3s ease infinite;
+
+  /* سایه‌های آبی و فیروزه‌ای */
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.4),
+    0 8px 16px rgba(6, 182, 212, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -3px 10px rgba(0, 0, 0, 0.2);
+
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes gradientMove {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.btn-activation-magic::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  animation: pulseRing 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes pulseRing {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 0.3;
+  }
+}
+
+/* حالت کلیک */
+.btn-activation-magic:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* حالت هاور */
+.btn-activation-magic:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.6), 0 0 20px rgba(6, 182, 212, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.1),
+    inset 0 0 30px rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================
+   ISO LICENSE MODAL - Security Protection
+   ============================================ */
+#iso9001-modal {
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#iso9001-modal img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+
+/* ============================================
+   DECORATIVE STICKERS
+   ============================================ */
+.sticker {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background: url("/images/stickers/sticker1.webp") no-repeat center center;
+  background-size: contain;
+  border: none;
+  box-shadow: none;
+  pointer-events: none;
+  vertical-align: middle;
+  margin: 0 0.5rem;
+}
+
+.sticker img {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .sticker {
+    width: 80px;
+    height: 80px;
+  }
+}
