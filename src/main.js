@@ -90,6 +90,7 @@ async function initPartials() {
     initThemeToggle();
     initMobileMenu();
     setActiveNavLink();
+    initDesktopDropdowns();
   }
 }
 
@@ -203,6 +204,100 @@ function initMobileMenu() {
   if (mobileMenuClose) {
     mobileMenuClose.addEventListener("click", toggleMenu);
   }
+}
+
+// ========================================
+// DESKTOP DROPDOWN / MEGA MENU LOGIC
+// ========================================
+function initDesktopDropdowns() {
+  const dropdownItems = Array.from(
+    document.querySelectorAll("[data-dropdown]")
+  );
+
+  if (!dropdownItems.length) return;
+
+  let closeTimeout;
+
+  const closeAll = (exceptItem = null) => {
+    dropdownItems.forEach((item) => {
+      if (item === exceptItem) return;
+      item.classList.remove("is-open");
+      const trigger = item.querySelector("[data-dropdown-trigger]");
+      if (trigger) {
+        trigger.setAttribute("aria-expanded", "false");
+      }
+    });
+  };
+
+  const openItem = (item) => {
+    closeAll(item);
+    item.classList.add("is-open");
+    const trigger = item.querySelector("[data-dropdown-trigger]");
+    if (trigger) {
+      trigger.setAttribute("aria-expanded", "true");
+    }
+  };
+
+  const closeItem = (item) => {
+    item.classList.remove("is-open");
+    const trigger = item.querySelector("[data-dropdown-trigger]");
+    if (trigger) {
+      trigger.setAttribute("aria-expanded", "false");
+    }
+  };
+
+  dropdownItems.forEach((item) => {
+    const trigger = item.querySelector("[data-dropdown-trigger]");
+
+    item.addEventListener("mouseenter", () => {
+      if (window.innerWidth < 1024) return;
+      clearTimeout(closeTimeout);
+      openItem(item);
+    });
+
+    item.addEventListener("mouseleave", () => {
+      if (window.innerWidth < 1024) return;
+      closeTimeout = setTimeout(() => closeItem(item), 160);
+    });
+
+    item.addEventListener("focusin", () => {
+      if (window.innerWidth < 1024) return;
+      openItem(item);
+    });
+
+    item.addEventListener("focusout", (event) => {
+      if (window.innerWidth < 1024) return;
+      if (!item.contains(event.relatedTarget)) {
+        closeItem(item);
+      }
+    });
+
+    if (trigger) {
+      trigger.addEventListener("click", (event) => {
+        if (window.innerWidth < 1024) return;
+        event.preventDefault();
+        if (item.classList.contains("is-open")) {
+          closeItem(item);
+        } else {
+          openItem(item);
+        }
+      });
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (window.innerWidth < 1024) return;
+    if (!event.target.closest("[data-dropdown]")) {
+      closeAll();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    closeAll();
+  });
+
+  window.addEventListener("resize", () => closeAll());
 }
 
 // FAQ Search Logic

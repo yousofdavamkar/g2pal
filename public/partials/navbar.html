@@ -1,257 +1,134 @@
-<style>
-  /* Enhanced Glassmorphism - Inline to prevent Vite purging */
-  .navbar-glass {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.75) 0%,
-      rgba(255, 255, 255, 0.65) 100%
-    ) !important;
-    backdrop-filter: blur(30px) saturate(180%) brightness(1.1);
-    -webkit-backdrop-filter: blur(30px) saturate(180%) brightness(1.1);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-top: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.08),
-      0 2px 8px rgba(0, 0, 0, 0.04),
-      inset 0 1px 1px rgba(255, 255, 255, 0.9),
-      inset 0 -1px 1px rgba(0, 0, 0, 0.02);
-    transition: all 0.3s ease;
-  }
-  
-  .dark .navbar-glass {
-    background: linear-gradient(
-      135deg,
-      rgba(15, 23, 42, 0.7) 0%,
-      rgba(15, 23, 42, 0.6) 100%
-    ) !important;
-    backdrop-filter: blur(30px) saturate(180%) brightness(1.2);
-    -webkit-backdrop-filter: blur(30px) saturate(180%) brightness(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.3),
-      0 4px 12px rgba(0, 0, 0, 0.2),
-      inset 0 1px 1px rgba(255, 255, 255, 0.1),
-      inset 0 -1px 1px rgba(0, 0, 0, 0.2);
-  }
-  
-  .mobile-menu-glass {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(255, 255, 255, 0.92) 100%
-    ) !important;
-    backdrop-filter: blur(35px) saturate(200%) brightness(1.05);
-    -webkit-backdrop-filter: blur(35px) saturate(200%) brightness(1.05);
-    box-shadow: 
-      0 0 80px rgba(0, 0, 0, 0.1),
-      inset 0 1px 1px rgba(255, 255, 255, 1);
-  }
-  
-  .dark .mobile-menu-glass {
-    background: linear-gradient(
-      180deg,
-      rgba(15, 23, 42, 0.95) 0%,
-      rgba(15, 23, 42, 0.92) 100%
-    ) !important;
-    backdrop-filter: blur(35px) saturate(200%) brightness(1.1);
-    -webkit-backdrop-filter: blur(35px) saturate(200%) brightness(1.1);
-    box-shadow: 
-      0 0 80px rgba(0, 0, 0, 0.4),
-      inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Light mode: Force black text for navbar links */
-  .navbar-link-light {
-    color: #000000 !important;
-    transition: color 0.3s ease;
-  }
-  .dark .navbar-link-light {
-    color: #d1d5db !important;
-  }
-  .navbar-link-light:hover {
-    color: #2563eb !important;
-  }
-
-  /* Desktop Navigation Hover Effects - فقط برای دسکتاپ */
-  @media (min-width: 1024px) {
-    /* آیکون‌های بزرگتر در حالت عادی */
-    .desktop-nav .icon {
-      width: 32px !important;
-      height: 32px !important;
-      transition: all 0.4s ease;
-    }
-    
-    /* آیکون‌ها در hover کوچیک‌تر می‌شوند */
-    .navbar-container:hover .desktop-nav .icon {
-      width: 20px !important;
-      height: 20px !important;
-    }
-    
-    /* متن‌های لینک در حالت عادی مخفی */
-    .nav-link-text {
-      max-width: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-width 0.4s ease, opacity 0.4s ease, margin-right 0.4s ease;
-      white-space: nowrap;
-      display: inline-block;
-      font-size: 13px;
-    }
-    
-    @media (min-width: 1280px) {
-      .nav-link-text {
-        font-size: 14px;
-      }
-    }
-    
-    /* همه متن‌ها با hover روی navbar نمایان می‌شوند */
-    .navbar-container:hover .nav-link-text {
-      max-width: 200px;
-      opacity: 1;
-      margin-right: 0.5rem;
-    }
-    
-    /* Navbar Container - جمع شدن navbar */
-    .navbar-container {
-      transition: padding 0.4s ease;
-    }
-    
-    /* حالت جمع شده navbar - زمانی که hover نیست */
-    .navbar-container:not(:hover) {
-      padding-left: 2rem !important;
-      padding-right: 2rem !important;
-    }
-    
-    /* Navigation با فاصله بیشتر */
-    .desktop-nav {
-      gap: 2rem !important;
-      transition: gap 0.4s ease;
-    }
-    
-    /* Navigation در hover gap کمتری داره */
-    .navbar-container:hover .desktop-nav {
-      gap: 1rem !important;
-    }
-  }
-</style>
-
-<header class="top-4 z-[100] w-full">
-  <div
-    class="navbar-container max-w-7xl mx-auto navbar-glass h-16 md:h-20 flex items-center justify-between px-4 md:px-8 relative rounded-2xl md:rounded-full"
-  >
-    <!-- Mobile Menu Button (Right on Mobile) -->
-    <div class="flex lg:hidden">
-      <button
-        id="mobile-menu-btn"
-        class="btn-icon"
-        aria-label="منوی موبایل"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <svg
-          class="icon"
-          style="width: 40px !important; height: 40px !important"
-        >
-          <use href="/images/images/icons.svg#menu"></use>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Logo & Brand (Desktop: Right, Mobile: Hidden) -->
-    <a
-      href="/"
-      class="hidden lg:flex items-center gap-2 xl:gap-3 group shrink-0"
-    >
-      <div
-        class="w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 transition-transform group-hover:scale-105"
-      >
-        <picture
-          ><img
+<header class="stripe-header">
+  <div class="stripe-nav-shell max-w-7xl mx-auto">
+    <div class="stripe-nav-left">
+      <a href="/" class="stripe-logo">
+        <span class="stripe-logo-mark">
+          <img
             alt="گوتوپل Logo"
-            class="w-full h-full object-contain"
+            class="stripe-logo-image"
             src="/images/G2P APP Xmas.svg"
-            srcset="/images/G2P APP Xmas.svg"
-            width="48"
-            height="48"
+            width="40"
+            height="40"
             loading="eager"
-        /></picture>
-      </div>
-      <span
-        class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white font-display"
-        >گوتوپل</span
-      >
-    </a>
-
-    <!-- Mobile Center Text -->
-    <div class="lg:hidden absolute left-1/2 -translate-x-1/2">
-      <span
-        class="text-xl font-bold text-gray-900 dark:text-white font-display"
-      >
-        گوتوپل
-      </span>
+          />
+        </span>
+        <span class="stripe-logo-text">گوتوپل</span>
+      </a>
     </div>
 
-    <!-- Desktop Navigation -->
-    <nav
-      class="desktop-nav hidden lg:flex items-center lg:gap-4 xl:gap-8 text-[13px] xl:text-sm font-medium text-gray-600 dark:text-gray-300"
-    >
-      <a class="navbar-link-light nav-link flex items-center gap-2" href="/">
-        <svg class="icon">
-          <use href="/images/images/icons.svg#rocket_launch"></use>
-        </svg>
-        <span class="nav-link-text">صفحه اصلی</span>
+    <nav class="stripe-nav-links" aria-label="ناوبری اصلی">
+      <a class="stripe-nav-link" href="/">
+        <svg class="icon stripe-nav-icon"><use href="/images/images/icons.svg#rocket_launch"></use></svg>
+        خانه
       </a>
-      <a
-        class="navbar-link-light nav-link flex items-center gap-2"
-        href="/services"
-      >
-        <svg class="icon">
-          <use href="/images/images/icons.svg#category"></use>
-        </svg>
-        <span class="nav-link-text">خدمات</span>
-      </a>
-      <a class="navbar-link-light nav-link flex items-center gap-2" href="">
-        <svg class="icon">
-          <use href="/images/images/icons.svg#history_edu"></use>
-        </svg>
-        <span class="nav-link-text">وبلاگ</span>
-      </a>
-      <a
-        class="navbar-link-light nav-link flex items-center gap-2"
-        href="/about"
-      >
-        <svg class="icon">
-          <use href="/images/images/icons.svg#verified_user"></use>
-        </svg>
-        <span class="nav-link-text">درباره ما</span>
-      </a>
-      <a
-        class="navbar-link-light nav-link flex items-center gap-2"
-        href="/colleagues"
-      >
-        <svg class="icon">
-          <use href="/images/images/icons.svg#verified"></use>
-        </svg>
-        <span class="nav-link-text">همراهان ما</span>
-      </a>
-      <a
-        class="navbar-link-light nav-link flex items-center gap-2"
-        href="/contact"
-      >
-        <svg class="icon">
-          <use href="/images/images/icons.svg#alternate_email"></use>
-        </svg>
-        <span class="nav-link-text">تماس با ما</span>
-      </a>
-      <a class="navbar-link-light nav-link flex items-center gap-2" href="/faq">
-        <svg class="icon"><use href="/images/images/icons.svg#chat"></use></svg>
-        <span class="nav-link-text">سوالات متداول</span>
+
+      <div class="stripe-nav-item" data-dropdown>
+        <button
+          class="stripe-nav-trigger"
+          data-dropdown-trigger
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-controls="dropdown-services"
+        >
+          <svg class="icon stripe-nav-icon"><use href="/images/images/icons.svg#category"></use></svg>
+          خدمات
+          <svg class="icon stripe-chevron"><use href="/images/images/icons.svg#expand_more"></use></svg>
+        </button>
+        <div id="dropdown-services" class="stripe-dropdown" role="menu">
+          <div class="stripe-dropdown-panel">
+            <div class="stripe-mega">
+              <div class="stripe-mega-col">
+                <p class="stripe-mega-title">راهکارها</p>
+                <a class="stripe-mega-link" href="/services">خدمات و امکانات</a>
+                <span class="stripe-mega-desc">مرور کامل خدمات گوتوپل</span>
+                <a class="stripe-mega-link" href="/application">فعال‌سازی حساب</a>
+                <span class="stripe-mega-desc">شروع سریع و بدون دردسر</span>
+                <a class="stripe-mega-link" href="/colleagues">همراهان ما</a>
+                <span class="stripe-mega-desc">همکاری با برندهای معتبر</span>
+              </div>
+              <div class="stripe-mega-col">
+                <p class="stripe-mega-title">پشتیبانی</p>
+                <a class="stripe-mega-link" href="/faq">سوالات متداول</a>
+                <span class="stripe-mega-desc">پاسخ سریع به نیازها</span>
+                <a class="stripe-mega-link" href="/contact">تماس با ما</a>
+                <span class="stripe-mega-desc">مشاوره و پشتیبانی مستقیم</span>
+              </div>
+              <div class="stripe-mega-col">
+                <p class="stripe-mega-title">حقوقی</p>
+                <a class="stripe-mega-link" href="/rules">قوانین و مقررات</a>
+                <span class="stripe-mega-desc">شفافیت در همکاری</span>
+                <a class="stripe-mega-link" href="/policy">سیاست‌های حریم خصوصی</a>
+                <span class="stripe-mega-desc">حفاظت از داده‌ها</span>
+              </div>
+            </div>
+            <div class="stripe-mega-highlight">
+              <div>
+                <p class="stripe-highlight-title">آغاز سریع</p>
+                <p class="stripe-highlight-text">حساب خود را در چند دقیقه فعال کنید.</p>
+              </div>
+              <a href="/application" class="stripe-cta">فعال‌سازی حساب</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stripe-nav-item" data-dropdown>
+        <button
+          class="stripe-nav-trigger"
+          data-dropdown-trigger
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-controls="dropdown-company"
+        >
+          <svg class="icon stripe-nav-icon"><use href="/images/images/icons.svg#verified_user"></use></svg>
+          شرکت
+          <svg class="icon stripe-chevron"><use href="/images/images/icons.svg#expand_more"></use></svg>
+        </button>
+        <div id="dropdown-company" class="stripe-dropdown" role="menu">
+          <div class="stripe-dropdown-panel stripe-dropdown-compact">
+            <a class="stripe-mega-link" href="/about">درباره ما</a>
+            <span class="stripe-mega-desc">داستان و تیم گوتوپل</span>
+            <a class="stripe-mega-link" href="/colleagues">همراهان ما</a>
+            <span class="stripe-mega-desc">شبکه شرکای تجاری</span>
+            <a class="stripe-mega-link" href="/contact">تماس با ما</a>
+            <span class="stripe-mega-desc">راه‌های ارتباطی سریع</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stripe-nav-item" data-dropdown>
+        <button
+          class="stripe-nav-trigger"
+          data-dropdown-trigger
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-controls="dropdown-resources"
+        >
+          <svg class="icon stripe-nav-icon"><use href="/images/images/icons.svg#history_edu"></use></svg>
+          منابع
+          <svg class="icon stripe-chevron"><use href="/images/images/icons.svg#expand_more"></use></svg>
+        </button>
+        <div id="dropdown-resources" class="stripe-dropdown" role="menu">
+          <div class="stripe-dropdown-panel stripe-dropdown-compact">
+            <a class="stripe-mega-link" href="/faq">مرکز راهنما</a>
+            <span class="stripe-mega-desc">سوالات پرتکرار کاربران</span>
+            <a class="stripe-mega-link" href="/rules">قوانین</a>
+            <span class="stripe-mega-desc">راهنمای استفاده از خدمات</span>
+            <a class="stripe-mega-link" href="/policy">حریم خصوصی</a>
+            <span class="stripe-mega-desc">سیاست‌های حفظ اطلاعات</span>
+            <a class="stripe-mega-link" href="">وبلاگ</a>
+            <span class="stripe-mega-desc">به‌زودی مطالب جدید</span>
+          </div>
+        </div>
+      </div>
+
+      <a class="stripe-nav-link" href="/faq">
+        <svg class="icon stripe-nav-icon"><use href="/images/images/icons.svg#chat"></use></svg>
+        پشتیبانی
       </a>
     </nav>
 
-    <!-- Right Side Actions -->
-    <div class="flex items-center gap-3">
+    <div class="stripe-nav-actions">
       <button id="theme-toggle" class="btn-icon" aria-label="تغییر تم">
         <svg class="icon block! dark:hidden!">
           <use href="/images/images/icons.svg#dark_mode"></use>
@@ -260,29 +137,23 @@
           <use href="/images/images/icons.svg#light_mode"></use>
         </svg>
       </button>
-      <a
-        href="/application"
-        class="btn-activation-magic px-6 py-2.5 text-sm font-medium hidden sm:flex items-center gap-2"
+      <a href="/application" class="stripe-cta stripe-cta-primary stripe-cta-inline">
+        دانلود اپ
+      </a>
+      <a href="/application" class="stripe-cta stripe-cta-primary">
+        فعال‌سازی حساب
+      </a>
+      <button
+        id="mobile-menu-btn"
+        class="btn-icon lg:hidden"
+        aria-label="منوی موبایل"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
       >
-        <svg class="icon text-lg">
-          <use href="/images/images/icons.svg#download"></use>
+        <svg class="icon" style="width: 28px; height: 28px">
+          <use href="/images/images/icons.svg#menu"></use>
         </svg>
-        فعال سازی حساب
-      </a>
-      <!-- Mobile Logo (Left on Mobile) -->
-      <a href="/" class="lg:hidden flex items-center group">
-        <div
-          class="w-10 h-10 rounded-lg flex items-center justify-center text-white shadow-lg shadow-primary/30 transition-transform group-hover:scale-105"
-        >
-          <img
-            alt="گوتوپل Logo"
-            class="w-full h-full object-contain"
-            src="/images/G2P APP Xmas.svg"
-            width="40"
-            height="40"
-          />
-        </div>
-      </a>
+      </button>
     </div>
   </div>
 
@@ -291,101 +162,88 @@
     id="mobile-menu"
     class="hidden lg:hidden fixed inset-0 z-[200] mobile-menu-glass flex-col animate-in fade-in duration-200"
   >
-    <div class="flex justify-start p-4 sm:p-6">
-      <button
-        id="mobile-menu-close"
-        class="p-2 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
-        aria-label="بستن منو"
-      >
-        <svg class="w-8 h-8">
-          <use href="/images/images/icons.svg#close"></use>
-        </svg>
-      </button>
-    </div>
-    <nav class="flex-grow overflow-y-auto px-4">
-      <div
-        class="flex flex-col items-center justify-center min-h-full gap-4 sm:gap-6 text-lg sm:text-xl font-medium pb-20"
-      >
-        <a
-          class="mobile-nav-link text-gray-800 dark:text-gray-300 hover:text-primary transition-colors flex items-center gap-3 w-full max-w-xs justify-center"
-          href="/"
-          data-page="/"
-        >
-          <svg class="icon w-5 h-5 sm:w-6 sm:h-6">
-            <use href="/images/images/icons.svg#rocket_launch"></use>
-          </svg>
-          صفحه اصلی
+    <div class="mobile-menu-panel">
+      <div class="mobile-menu-header">
+        <a href="/" class="stripe-logo stripe-logo-mobile">
+          <span class="stripe-logo-mark">
+            <img
+              alt="گوتوپل Logo"
+              class="stripe-logo-image"
+              src="/images/G2P APP Xmas.svg"
+              width="36"
+              height="36"
+            />
+          </span>
+          <span class="stripe-logo-text">گوتوپل</span>
         </a>
-        <a
-          class="mobile-nav-link text-gray-800 dark:text-gray-300 hover:text-primary transition-colors flex items-center gap-3 w-full max-w-xs justify-center"
-          href="/services"
-          data-page="/services"
+        <button
+          id="mobile-menu-close"
+          class="mobile-menu-close"
+          aria-label="بستن منو"
         >
-          <svg class="icon w-5 h-5 sm:w-6 sm:h-6">
-            <use href="/images/images/icons.svg#category"></use>
+          <svg class="w-7 h-7">
+            <use href="/images/images/icons.svg#close"></use>
           </svg>
-          خدمات
-        </a>
-        <a
-          class="mobile-nav-link text-gray-800 dark:text-gray-300 hover:text-primary transition-colors flex items-center gap-3 w-full max-w-xs justify-center"
-          href=""
-          data-page="/blog"
-        >
-          <svg class="icon w-5 h-5 sm:w-6 sm:h-6">
-            <use href="/images/images/icons.svg#history_edu"></use>
-          </svg>
-          وبلاگ
-        </a>
-        <a
-          class="mobile-nav-link text-gray-800 dark:text-gray-300 hover:text-primary transition-colors flex items-center gap-3 w-full max-w-xs justify-center"
-          href="/about"
-          data-page="/about"
-        >
-          <svg class="icon w-5 h-5 sm:w-6 sm:h-6">
-            <use href="/images/images/icons.svg#verified_user"></use>
-          </svg>
-          درباره ما
-        </a>
-        <a
-          class="mobile-nav-link text-gray-800 dark:text-gray-300 hover:text-primary transition-colors flex items-center gap-3 w-full max-w-xs justify-center"
-          href="/colleagues"
-          data-page="/colleagues"
-        >
-          <svg class="icon w-5 h-5 sm:w-6 sm:h-6">
-            <use href="/images/images/icons.svg#verified"></use>
-          </svg>
-          همراهان ما
-        </a>
-        <a
-          class="mobile-nav-link text-gray-800 dark:text-gray-300 hover:text-primary transition-colors flex items-center gap-3 w-full max-w-xs justify-center"
-          href="/contact"
-          data-page="/contact"
-        >
-          <svg class="icon w-5 h-5 sm:w-6 sm:h-6">
-            <use href="/images/images/icons.svg#alternate_email"></use>
-          </svg>
-          تماس با ما
-        </a>
-        <a
-          class="mobile-nav-link text-gray-800 dark:text-gray-300 hover:text-primary transition-colors flex items-center gap-3 w-full max-w-xs justify-center"
-          href="/faq"
-          data-page="/faq"
-        >
-          <svg class="icon w-5 h-5 sm:w-6 sm:h-6">
-            <use href="/images/images/icons.svg#chat"></use>
-          </svg>
-          سوالات متداول
-        </a>
-        <a
-          href="/application"
-          class="btn-activation-magic text-white px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-medium mt-4 flex items-center justify-center gap-2 w-full max-w-xs"
-        >
-          <svg class="icon text-lg sm:text-xl">
-            <use href="/images/images/icons.svg#download"></use>
-          </svg>
-          فعال سازی حساب
-        </a>
+        </button>
       </div>
-    </nav>
+      <nav class="mobile-menu-body">
+        <a class="mobile-nav-link" href="/" data-page="/">
+          <svg class="icon mobile-nav-icon"><use href="/images/images/icons.svg#rocket_launch"></use></svg>
+          خانه
+        </a>
+
+        <details class="mobile-accordion">
+          <summary>
+            <span class="mobile-accordion-title">
+              <svg class="icon mobile-nav-icon"><use href="/images/images/icons.svg#category"></use></svg>
+              خدمات
+            </span>
+          </summary>
+          <div class="mobile-accordion-links">
+            <a class="mobile-nav-link" href="/services" data-page="/services">خدمات و امکانات</a>
+            <a class="mobile-nav-link" href="/application" data-page="/application">فعال‌سازی حساب</a>
+            <a class="mobile-nav-link" href="/colleagues" data-page="/colleagues">همراهان ما</a>
+          </div>
+        </details>
+
+        <details class="mobile-accordion">
+          <summary>
+            <span class="mobile-accordion-title">
+              <svg class="icon mobile-nav-icon"><use href="/images/images/icons.svg#verified_user"></use></svg>
+              شرکت
+            </span>
+          </summary>
+          <div class="mobile-accordion-links">
+            <a class="mobile-nav-link" href="/about" data-page="/about">درباره ما</a>
+            <a class="mobile-nav-link" href="/colleagues" data-page="/colleagues">همراهان ما</a>
+            <a class="mobile-nav-link" href="/contact" data-page="/contact">تماس با ما</a>
+          </div>
+        </details>
+
+        <details class="mobile-accordion">
+          <summary>
+            <span class="mobile-accordion-title">
+              <svg class="icon mobile-nav-icon"><use href="/images/images/icons.svg#history_edu"></use></svg>
+              منابع
+            </span>
+          </summary>
+          <div class="mobile-accordion-links">
+            <a class="mobile-nav-link" href="/faq" data-page="/faq">مرکز راهنما</a>
+            <a class="mobile-nav-link" href="/rules" data-page="/rules">قوانین</a>
+            <a class="mobile-nav-link" href="/policy" data-page="/policy">حریم خصوصی</a>
+            <a class="mobile-nav-link" href="" data-page="/blog">وبلاگ</a>
+          </div>
+        </details>
+
+        <a class="mobile-nav-link" href="/contact" data-page="/contact">
+          <svg class="icon mobile-nav-icon"><use href="/images/images/icons.svg#alternate_email"></use></svg>
+          ارتباط با ما
+        </a>
+
+        <a href="/application" class="stripe-cta stripe-cta-primary stripe-cta-mobile">
+          فعال‌سازی حساب
+        </a>
+      </nav>
+    </div>
   </div>
 </header>
