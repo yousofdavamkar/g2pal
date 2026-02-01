@@ -10,6 +10,7 @@ import "./fonts.css";
 import "./style.css";
 import "./hero-scroll.css";
 import "./popular-products/popular-products.css";
+import "./services-slider.css";
 import "./flexboxgapsupport.js";
 import "./js/hero-scroll.js";
 import "./popular-products/popular-products.js";
@@ -408,6 +409,131 @@ const initBlogCarousel = () => {
   });
 };
 
+// Services Slider Logic (Stacked Cards)
+const initServicesSlider = () => {
+  const servicesContainer = document.querySelector(".services-swiper");
+  if (!servicesContainer) return;
+
+  const servicesSwiper = new Swiper(servicesContainer, {
+    modules: [Navigation],
+    slidesPerView: 'auto',
+    spaceBetween: 24,
+    centeredSlides: false,
+    loop: false,
+    grabCursor: true,
+    speed: 500,
+    freeMode: false,
+    watchSlidesProgress: true,
+    
+    // Navigation - swapped for RTL
+    navigation: {
+      nextEl: '#services-slider-prev',
+      prevEl: '#services-slider-next',
+    },
+    
+    breakpoints: {
+      320: {
+        slidesPerView: 1.15,
+        spaceBetween: 16,
+        centeredSlides: false,
+      },
+      480: {
+        slidesPerView: 1.3,
+        spaceBetween: 20,
+        centeredSlides: false,
+      },
+      640: {
+        slidesPerView: 1.6,
+        spaceBetween: 24,
+        centeredSlides: false,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+        centeredSlides: false,
+      },
+      1024: {
+        slidesPerView: 2.3,
+        spaceBetween: 28,
+        centeredSlides: false,
+      },
+      1280: {
+        slidesPerView: 2.8,
+        spaceBetween: 32,
+        centeredSlides: false,
+      },
+    },
+    
+    on: {
+      init: function() {
+        updateServicesNavState(this);
+        applyStackedEffect(this);
+      },
+      slideChange: function() {
+        updateServicesNavState(this);
+        applyStackedEffect(this);
+      },
+      transitionEnd: function() {
+        applyStackedEffect(this);
+      },
+    },
+  });
+
+  function updateServicesNavState(swiper) {
+    const prevBtn = document.getElementById('services-slider-prev');
+    const nextBtn = document.getElementById('services-slider-next');
+    
+    // In RTL, logic is reversed: prev goes forward, next goes backward
+    if (prevBtn) {
+      const isActive = !swiper.isEnd;
+      prevBtn.classList.toggle('services-nav-btn--active', isActive);
+      prevBtn.disabled = swiper.isEnd;
+    }
+    
+    if (nextBtn) {
+      const isActive = !swiper.isBeginning;
+      nextBtn.classList.toggle('services-nav-btn--active', isActive);
+      nextBtn.disabled = swiper.isBeginning;
+    }
+  }
+
+  function applyStackedEffect(swiper) {
+    const slides = swiper.slides;
+    const activeIndex = swiper.activeIndex;
+    const slidesPerView = Math.ceil(swiper.params.slidesPerView) || 3;
+    
+    slides.forEach((slide, index) => {
+      const diff = index - activeIndex;
+      
+      // Reset styles
+      slide.style.zIndex = '';
+      slide.style.transform = '';
+      slide.style.opacity = '';
+      slide.style.visibility = '';
+      
+      // In RTL: cards with lower index than active are "passed"
+      // Cards with higher index are visible/upcoming
+      if (diff >= 0 && diff < slidesPerView + 2) {
+        // Visible cards (current and upcoming within view)
+        slide.style.zIndex = 10 - Math.min(diff, 4);
+        slide.style.opacity = '1';
+        slide.style.visibility = 'visible';
+      } else if (diff < 0) {
+        // Cards that have passed (scrolled out to the right in RTL)
+        slide.style.zIndex = 1;
+        slide.style.opacity = '0';
+        slide.style.visibility = 'hidden';
+      } else {
+        // Cards far ahead - still visible but lower priority
+        slide.style.opacity = '1';
+        slide.style.visibility = 'visible';
+      }
+    });
+  }
+
+  return servicesSwiper;
+};
+
 // Video Player Logic
 const initVideoPlayer = () => {
   const video = document.getElementById("main-video");
@@ -570,6 +696,7 @@ const initScrollSpy = () => {
 const initAll = () => {
   initSlider();
   initBlogCarousel();
+  initServicesSlider();
   initVideoPlayer();
   initScrollSpy();
 };
