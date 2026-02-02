@@ -1,5 +1,5 @@
 /* Services Slider Section - Go2Pal */
-/* Inspired by Wise.com social trust section */
+/* Modern Swiper Implementation */
 /* ========================================= */
 
 .services-slider-section {
@@ -7,11 +7,14 @@
   --ss-card-border: #2563eb;
   --ss-card-text: #ffffff;
   --ss-card-shadow: rgba(37, 99, 235, 0.25);
-  --ss-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --ss-transition-duration: 500ms;
+  --ss-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Navigation Buttons */
 .services-nav-btn {
+  position: relative;
+  z-index: 50;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -25,7 +28,7 @@
   color: #6b7280;
 }
 
-.services-nav-btn:hover {
+.services-nav-btn:hover:not(:disabled) {
   background: #d1d5db;
 }
 
@@ -34,14 +37,16 @@
   color: #1a1a1a;
 }
 
-.services-nav-btn--active:hover {
+.services-nav-btn--active:hover:not(:disabled) {
   background: #8cd960;
   transform: scale(1.05);
 }
 
-.services-nav-btn:disabled {
+.services-nav-btn:disabled,
+.services-nav-btn.swiper-button-disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 .dark .services-nav-btn {
@@ -49,7 +54,7 @@
   color: #9ca3af;
 }
 
-.dark .services-nav-btn:hover {
+.dark .services-nav-btn:hover:not(:disabled) {
   background: #4b5563;
 }
 
@@ -74,45 +79,72 @@
 
 .services-swiper .swiper-wrapper {
   align-items: stretch;
+  transition-timing-function: var(--ss-transition-timing) !important;
 }
 
 .services-swiper .swiper-slide {
   width: 340px !important;
   height: auto;
-  transition: all var(--ss-transition);
+  transition:
+    transform var(--ss-transition-duration) var(--ss-transition-timing),
+    opacity var(--ss-transition-duration) var(--ss-transition-timing),
+    visibility var(--ss-transition-duration) var(--ss-transition-timing);
+  will-change: transform, opacity;
+}
+
+/* Stacked card effect - JS controlled via data-slide-state attribute */
+.services-swiper .swiper-slide {
+  /* Default state */
   opacity: 1;
+  visibility: visible;
 }
 
-/* Stacked card effect - slides behind become invisible */
-.services-swiper .swiper-slide-prev {
-  visibility: hidden;
+/* Passed slides (scrolled out in RTL) */
+.services-swiper .swiper-slide[data-slide-state="passed"] {
   opacity: 0;
+  visibility: hidden;
   z-index: 1;
+  pointer-events: none;
 }
 
-.services-swiper .swiper-slide-active {
-  transform: scale(1);
+/* Active slide */
+.services-swiper .swiper-slide[data-slide-state="active"] {
   z-index: 10;
   opacity: 1;
   visibility: visible;
 }
 
-.services-swiper .swiper-slide-next {
-  z-index: 5;
+/* Visible upcoming slides with decreasing z-index */
+.services-swiper .swiper-slide[data-slide-state="visible-1"] {
+  z-index: 8;
   opacity: 1;
   visibility: visible;
 }
 
-.services-swiper .swiper-slide-next + .swiper-slide {
-  z-index: 3;
+.services-swiper .swiper-slide[data-slide-state="visible-2"] {
+  z-index: 6;
   opacity: 1;
   visibility: visible;
 }
 
-.services-swiper .swiper-slide-next + .swiper-slide + .swiper-slide {
+.services-swiper .swiper-slide[data-slide-state="visible-3"] {
+  z-index: 4;
+  opacity: 1;
+  visibility: visible;
+}
+
+.services-swiper .swiper-slide[data-slide-state="visible-4"] {
   z-index: 2;
   opacity: 1;
   visibility: visible;
+}
+
+/* Fallback for CSS-only (swiper-slide-prev class) */
+.services-swiper .swiper-slide-prev:not([data-slide-state]) {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* Service Card */
@@ -132,13 +164,17 @@
 }
 
 .service-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   right: -50%;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -247,7 +283,7 @@
   .services-swiper .swiper-slide {
     width: 300px !important;
   }
-  
+
   .service-card {
     min-height: 360px;
     padding: 24px;
@@ -258,28 +294,25 @@
   .services-slider-section {
     padding: 40px 0;
   }
-  
+
   .services-swiper {
     overflow: visible !important;
   }
-  
+
   .services-swiper .swiper-slide {
     width: 300px !important;
   }
-  
-  .services-swiper .swiper-slide-prev,
-  .services-swiper .swiper-slide-next,
-  .services-swiper .swiper-slide-next + .swiper-slide,
-  .services-swiper .swiper-slide-next + .swiper-slide + .swiper-slide {
-    transform: scale(1);
-    opacity: 1;
+
+  /* On mobile, show all visible cards without stacking hide effect */
+  .services-swiper .swiper-slide-prev {
+    opacity: 0.3;
     visibility: visible;
   }
-  
+
   .service-card {
     min-height: 340px;
   }
-  
+
   .service-card__title {
     font-size: 1.35rem;
   }
@@ -289,38 +322,44 @@
   .services-swiper .swiper-slide {
     width: 280px !important;
   }
-  
+
   .service-card {
     padding: 20px;
     min-height: 300px;
   }
-  
+
   .service-card__flag {
     width: 48px;
     height: 48px;
     margin-bottom: 16px;
   }
-  
+
   .service-card__flag img {
     width: 30px;
     height: 30px;
   }
-  
+
   .service-card__title {
     font-size: 1.25rem;
   }
-  
+
   .service-card__description {
     font-size: 0.9rem;
   }
 }
 
-/* Smooth scroll animation enhancement */
-.services-swiper .swiper-slide {
-  will-change: transform, opacity;
-}
-
 /* RTL adjustments */
 [dir="rtl"] .service-card__btn:hover {
   transform: translateX(4px);
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .service-card:hover {
+    transform: none;
+  }
+
+  .services-nav-btn:hover {
+    transform: none;
+  }
 }

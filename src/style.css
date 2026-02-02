@@ -34,12 +34,12 @@
 
   --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.04);
   --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-  --shadow-diffuse-sm: 0 2px 8px rgba(0, 0, 0, 0.04),
-    0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-diffuse-md: 0 8px 24px rgba(0, 0, 0, 0.06),
-    0 4px 8px rgba(0, 0, 0, 0.03);
-  --shadow-diffuse-lg: 0 16px 48px rgba(0, 0, 0, 0.08),
-    0 8px 16px rgba(0, 0, 0, 0.04);
+  --shadow-diffuse-sm:
+    0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-diffuse-md:
+    0 8px 24px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.03);
+  --shadow-diffuse-lg:
+    0 16px 48px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.04);
   --shadow-inner-light: inset 0 2px 4px 0 rgba(255, 255, 255, 0.3);
 
   --animate-infinite-scroll: infinite-scroll 25s linear infinite;
@@ -334,11 +334,8 @@
   }
 
   .bg-grid-pattern {
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.03) 1px,
-        transparent 1px
-      ),
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
     background-size: 40px 40px;
   }
@@ -396,10 +393,6 @@
 
 /* Fallback for devices that do not support hover */
 @media (hover: none) {
-  #slider-next,
-  #slider-prev {
-    opacity: 1 !important;
-  }
 }
 
 /* 
@@ -435,7 +428,9 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 200ms ease, visibility 200ms ease;
+  transition:
+    opacity 200ms ease,
+    visibility 200ms ease;
   height: 100vh; /* Fallback */
   height: 100dvh;
   background: rgba(15, 23, 42, 0.18);
@@ -719,7 +714,8 @@
     rgba(37, 99, 235, 0.4) 0%,
     rgba(15, 23, 42, 0) 55%
   );
-  box-shadow: 0 0 50px 15px rgba(59, 130, 246, 0.2),
+  box-shadow:
+    0 0 50px 15px rgba(59, 130, 246, 0.2),
     0 0 100px 30px rgba(37, 99, 235, 0.15);
 }
 
@@ -803,7 +799,9 @@ main > section:not(:first-child) {
   border-radius: inherit; /* ارث‌بری گردی */
   z-index: -1; /* فرستادن به پشت */
   opacity: 0; /* مخفی در حالت عادی */
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
   filter: blur(10px); /* نرم کردن نور */
 }
 
@@ -835,7 +833,9 @@ main > section:not(:first-child) {
 .trustpilot-btn:hover {
   background: #00a06a;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 182, 122, 0.5), 0 0 20px rgba(0, 182, 122, 0.3);
+  box-shadow:
+    0 8px 25px rgba(0, 182, 122, 0.5),
+    0 0 20px rgba(0, 182, 122, 0.3);
 }
 /*دکمه باتن دانلود تو Navbar*/
 .btn-activation-magic {
@@ -855,8 +855,10 @@ main > section:not(:first-child) {
   animation: gradientMove 3s ease infinite;
 
   /* سایه‌های آبی و فیروزه‌ای */
-  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.4),
-    0 8px 16px rgba(6, 182, 212, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2),
+  box-shadow:
+    0 12px 24px rgba(37, 99, 235, 0.4),
+    0 8px 16px rgba(6, 182, 212, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
     inset 0 -3px 10px rgba(0, 0, 0, 0.2);
 
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -913,8 +915,11 @@ main > section:not(:first-child) {
 /* حالت هاور */
 .btn-activation-magic:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(37, 99, 235, 0.6), 0 0 20px rgba(6, 182, 212, 0.5),
-    0 0 10px rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.1),
+  box-shadow:
+    0 0 30px rgba(37, 99, 235, 0.6),
+    0 0 20px rgba(6, 182, 212, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.1),
     inset 0 0 30px rgba(0, 0, 0, 0.05);
 }
 
@@ -1220,7 +1225,9 @@ main > section:not(:first-child) {
   padding-bottom: 1.25rem;
   transform: translateY(-16px);
   opacity: 0;
-  transition: transform 240ms ease, opacity 240ms ease;
+  transition:
+    transform 240ms ease,
+    opacity 240ms ease;
   border: 1px solid rgba(148, 163, 184, 0.25);
   box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
 }
@@ -1252,7 +1259,9 @@ main > section:not(:first-child) {
   align-items: center;
   justify-content: center;
   color: #475569;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .mobile-menu-close:hover {

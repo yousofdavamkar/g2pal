@@ -67,7 +67,7 @@ const initServices = () => {
 
   const categoryLinks = document.querySelectorAll(".service-category-link");
   const serviceItems = document.querySelectorAll(
-    ".service-card, .service-content"
+    ".service-card, .service-content",
   );
 
   // Classes for the active menu item
@@ -160,7 +160,7 @@ const initServices = () => {
 
   // Trigger filter for the initially active category
   const activeLink = document.querySelector(
-    ".service-category-link.bg-primary"
+    ".service-category-link.bg-primary",
   );
   if (activeLink) {
     const category = activeLink.getAttribute("data-category");
@@ -228,7 +228,7 @@ const initServices = () => {
 
       // 2. Filter Gift Cards
       const gcContainer = document.querySelector(
-        '.service-content[data-category="gift-cards"]'
+        '.service-content[data-category="gift-cards"]',
       );
       const gcNav = document.getElementById("gc-nav");
       const gcContent = document.getElementById("gc-content");
@@ -289,7 +289,7 @@ const initServices = () => {
 
         // Re-run category filter to restore sidebar selection
         const activeLink = document.querySelector(
-          ".service-category-link.bg-primary"
+          ".service-category-link.bg-primary",
         );
         if (activeLink) {
           const category = activeLink.getAttribute("data-category");

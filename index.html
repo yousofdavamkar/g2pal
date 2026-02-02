@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="scroll-smooth dark flexbox-gap" dir="rtl" lang="fa">
   <head>
-    
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'sha256-/TSk/5gLx1XcfKLHZ6Xvk+lt0azlFvH6o7xHi7VsU+k='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'self'; upgrade-insecure-requests"
@@ -73,7 +72,9 @@
         align-items: center;
         justify-content: center;
         z-index: 9999;
-        transition: opacity 0.5s, visibility 0.5s;
+        transition:
+          opacity 0.5s,
+          visibility 0.5s;
       }
       .preloader.hidden {
         opacity: 0;
@@ -333,7 +334,105 @@
                 <p class="mt-3 text-gray-600 dark:text-gray-300 text-base">
                   ارسال، دریافت و تبدیل ارز با نرخ رقابتی و تجربه‌ای سریع و امن
                   در یک کیف‌پول واحد.
-                 
+                </p>
+                <div class="mt-5 flex flex-wrap gap-3">
+                  <a href="/application" class="hero-btn-primary">
+                    <span>شروع کن</span>
+                    <svg
+                      class="hero-btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </a>
+                  <a
+                    href="/services"
+                    class="inline-flex items-center justify-center px-5 py-3 rounded-2xl border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5 transition"
+                  >
+                    خدمات بیشتر
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article>
+            <div class="grid grid-cols-1 lg:grid-cols-2 items-center">
+              <div class="p-6 md:p-10 lg:order-2">
+                <div class="rounded-3xl overflow-hidden shadow-lg">
+                  <img
+                    src="/images/hero/hero-background.webp"
+                    alt="تجربه پرداخت بین‌المللی"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div class="p-6 md:p-10 flex flex-col justify-center lg:order-1">
+                <h2
+                  class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white leading-snug"
+                >
+                  دریافت سریع
+                  <span class="block">در ارزهای مختلف</span>
+                </h2>
+                <p class="mt-3 text-gray-600 dark:text-gray-300 text-base">
+                  با حساب بین‌المللی گوتوپل، پرداخت‌ها را بدون مرز دریافت کنید و
+                  نقدشوندگی بالاتری داشته باشید.
+                </p>
+                <div class="mt-5 flex flex-wrap gap-3">
+                  <a href="/application" class="hero-btn-primary">
+                    <span>ایجاد حساب</span>
+                    <svg
+                      class="hero-btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </a>
+                  <a
+                    href="/colleagues"
+                    class="inline-flex items-center justify-center px-5 py-3 rounded-2xl border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5 transition"
+                  >
+                    همکاری با ما
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article>
+            <div class="grid grid-cols-1 lg:grid-cols-2 items-center">
+              <div class="p-6 md:p-10">
+                <div class="rounded-3xl overflow-hidden shadow-lg">
+                  <img
+                    src="/images/hero/hero-image.webp"
+                    alt="اپلیکیشن گوتوپل"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div class="p-6 md:p-10 flex flex-col justify-center">
+                <h2
+                  class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white leading-snug"
+                >
+                  پولت رو جهانی
+                  <span class="block">مدیریت کن</span>
+                </h2>
+                <p class="mt-3 text-gray-600 dark:text-gray-300 text-base">
+                  ارسال، دریافت و تبدیل ارز با نرخ رقابتی و تجربه‌ای سریع و امن
+                  در یک کیف‌پول واحد.
                 </p>
                 <div class="mt-5 flex flex-wrap gap-3">
                   <a href="/application" class="hero-btn-primary">
@@ -414,554 +513,222 @@
         </div>
       </section>
 
-      <section
-        class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 aos-init aos-animate"
-        data-aos="fade-up"
-      >
-        <div
-          class="relative w-full rounded-3xl overflow-hidden shadow-diffuse-lg bg-surface-light dark:bg-surface-dark border border-white/50 dark:border-white/5 group"
-        >
-          <div
-            class="swiper hero-swiper h-96 md:h-110 swiper-fade swiper-initialized swiper-horizontal swiper-rtl swiper-watch-progress swiper-backface-hidden"
-          >
+      <!-- Services Slider Section -->
+      <section class="services-slider-section overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            <!-- Left Side: Title & Navigation -->
             <div
-              class="swiper-wrapper"
-              style="transition-duration: 0ms; transition-delay: 0ms"
+              class="lg:w-2/5 text-center lg:text-right flex flex-col items-center lg:items-start gap-6"
             >
-              <div
-                class="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active"
-                data-swiper-slide-index="3"
-                style="
-                  width: 1230px;
-                  opacity: 1;
-                  transform: translate3d(0px, 0px, 0px);
-                  transition-duration: 0ms;
-                "
+              <h2
+                class="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white leading-tight"
               >
-                <a href="#" class="block w-full h-full">
-                  <picture>
-                    <img
-                      draggable="false"
-                      oncontextmenu="return false;"
-                      loading="lazy"
-                      src="/images/images/Holiday Offer PE.png"
-                      data-src="/images/slider/Holiday%20Offer%20PE%20(2).png"
-                      class="w-full h-full object-cover lazy-image"
-                      alt="Holiday Offer"
-                      data-srcset="/images/slider/Holiday%20Offer%20PE%20(2).png 1200w"
-                      sizes="(max-width: 768px) 100vw, 100vw"
-                      srcset="
-                        /images/slider/Holiday%20Offer%20PE%20(2).png 1200w
-                      "
+                برخی از خدمات
+                <span class="text-primary">گوتوپل</span>
+              </h2>
+              <p class="text-gray-600 dark:text-gray-400 text-lg max-w-md">
+                با گوتوپل به دنیای بی‌مرز خدمات دیجیتال دسترسی پیدا کنید. سریع،
+                امن و مطمئن.
+              </p>
+              <div class="flex items-center gap-3 mt-4">
+                <button
+                  id="services-slider-prev"
+                  class="services-nav-btn"
+                  aria-label="قبلی"
+                >
+                  <svg
+                    class="icon w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 5l7 7-7 7"
                     />
-                  </picture>
-                </a>
-              </div>
-
-              <div
-                class="swiper-slide swiper-slide-next"
-                data-swiper-slide-index="0"
-                style="
-                  width: 1230px;
-                  opacity: 0;
-                  transform: translate3d(1230px, 0px, 0px);
-                  transition-duration: 0ms;
-                "
-              >
-                <a href="#" class="block w-full h-full">
-                  <picture>
-                    <img
-                      draggable="false"
-                      oncontextmenu="return false;"
-                      loading="lazy"
-                      src="/images/slider/Yalda%20PE.png"
-                      data-src="/images/slider/Yalda%20PE.png"
-                      class="w-full h-full object-cover lazy-image"
-                      alt="Yalda Offer"
-                      data-srcset="/images/slider/Yalda%20PE.png 1200w"
-                      sizes="(max-width: 768px) 100vw, 100vw"
-                      srcset="/images/slider/Yalda%20PE.png 1200w"
+                  </svg>
+                </button>
+                <button
+                  id="services-slider-next"
+                  class="services-nav-btn services-nav-btn--active"
+                  aria-label="بعدی"
+                >
+                  <svg
+                    class="icon w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 19l-7-7 7-7"
                     />
-                  </picture>
-                </a>
-              </div>
-
-              <div
-                class="swiper-slide"
-                data-swiper-slide-index="1"
-                style="
-                  width: 1230px;
-                  opacity: 0;
-                  transform: translate3d(2460px, 0px, 0px);
-                  transition-duration: 0ms;
-                "
-              >
-                <a href="#" class="block w-full h-full">
-                  <picture>
-                    <img
-                      draggable="false"
-                      oncontextmenu="return false;"
-                      loading="lazy"
-                      src="/images/slider/Christmas%20PE.png"
-                      data-src="/images/slider/Christmas%20PE.png"
-                      class="w-full h-full object-cover lazy-image"
-                      alt="Christmas Offer"
-                      data-srcset="/images/slider/Christmas%20PE.png 1200w"
-                      sizes="(max-width: 768px) 100vw, 100vw"
-                      srcset="/images/slider/Christmas%20PE.png 1200w"
-                    />
-                  </picture>
-                </a>
-              </div>
-
-              <div
-                class="swiper-slide"
-                data-swiper-slide-index="2"
-                style="
-                  width: 1230px;
-                  opacity: 0;
-                  transform: translate3d(3690px, 0px, 0px);
-                  transition-duration: 0ms;
-                "
-              >
-                <a href="#" class="block w-full h-full">
-                  <picture>
-                    <img
-                      draggable="false"
-                      oncontextmenu="return false;"
-                      loading="lazy"
-                      src="/images/images/Holiday Offer PE.png"
-                      data-src="/images/slider/Christmas%20Travel%20PE.png"
-                      class="w-full h-full object-cover lazy-image"
-                      alt="Christmas Travel Offer"
-                      data-srcset="/images/slider/Christmas%20Travel%20PE.png 1200w"
-                      sizes="(max-width: 768px) 100vw, 100vw"
-                      srcset="/images/slider/Christmas%20Travel%20PE.png 1200w"
-                    />
-                  </picture>
-                </a>
+                  </svg>
+                </button>
               </div>
             </div>
-          </div>
 
-          <button
-            id="slider-prev"
-            class="absolute top-1/2 right-4 md:right-6 -translate-y-1/2 w-12 h-12 rounded-full bg-white/40 dark:bg-black/40 hover:bg-white/60 dark:hover:bg-black/60 backdrop-blur-md text-gray-800 dark:text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-glass border border-white/20 z-20 hover:scale-110"
-            aria-label="اسلاید بعدی"
-          >
-            <svg class="icon">
-              <use href="/images/images/icons.svg#chevron_right"></use>
-            </svg>
-          </button>
+            <!-- Right Side: Cards Slider -->
+            <div class="lg:w-3/5 w-full">
+              <div class="services-cards-container">
+                <div class="swiper services-swiper">
+                  <div class="swiper-wrapper">
+                    <!-- Card 1: Steam -->
+                    <div class="swiper-slide">
+                      <div class="service-card service-card--green">
+                        <div class="service-card__flag">
+                          <img
+                            src="/images/logos/steam.webp"
+                            alt="Steam"
+                            class="w-12 h-12 object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                        <h3 class="service-card__title">Steam</h3>
+                        <p class="service-card__description">
+                          گیفت کارت Steam برای خرید بازی، DLC و آیتم‌های درون
+                          بازی. پشتیبانی از تمام مناطق با تحویل فوری.
+                        </p>
+                        <a href="/services" class="service-card__btn">
+                          اطلاعات بیشتر
+                        </a>
+                        <div class="service-card__author">
+                          <span class="opacity-70">موجود در</span> Go2Pal
+                        </div>
+                      </div>
+                    </div>
 
-          <button
-            id="slider-next"
-            class="absolute top-1/2 left-4 md:left-6 -translate-y-1/2 w-12 h-12 rounded-full bg-white/40 dark:bg-black/40 hover:bg-white/60 dark:hover:bg-black/60 backdrop-blur-md text-gray-800 dark:text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-glass border border-white/20 z-20 hover:scale-110"
-            aria-label="اسلاید قبلی"
-          >
-            <svg class="icon">
-              <use href="/images/images/icons.svg#chevron_left"></use>
-            </svg>
-          </button>
+                    <!-- Card 2: PlayStation -->
+                    <div class="swiper-slide">
+                      <div class="service-card service-card--green">
+                        <div class="service-card__flag">
+                          <img
+                            src="/images/logos/sony.webp"
+                            alt="PlayStation"
+                            class="w-12 h-12 object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                        <h3 class="service-card__title">PlayStation</h3>
+                        <p class="service-card__description">
+                          گیفت کارت PlayStation برای خرید بازی‌های PS4 و PS5،
+                          اشتراک PS Plus و محتوای انحصاری.
+                        </p>
+                        <a href="/services" class="service-card__btn">
+                          اطلاعات بیشتر
+                        </a>
+                        <div class="service-card__author">
+                          <span class="opacity-70">موجود در</span> Go2Pal
+                        </div>
+                      </div>
+                    </div>
 
-          <div
-            class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20 p-2 bg-black/5 dark:bg-white/10 rounded-full backdrop-blur-md border border-black/5 dark:border-white/10 swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
-            id="slider-pagination"
-          >
-            <span class="swiper-pagination-bullet"></span>
-            <span class="swiper-pagination-bullet"></span>
-            <span class="swiper-pagination-bullet"></span>
-            <span
-              class="swiper-pagination-bullet swiper-pagination-bullet-active"
-            ></span>
-          </div>
-        </div>
-      </section>
+                    <!-- Card 3: Xbox -->
+                    <div class="swiper-slide">
+                      <div class="service-card service-card--green">
+                        <div class="service-card__flag">
+                          <img
+                            src="/images/logos/microsoft.webp"
+                            alt="Xbox"
+                            class="w-12 h-12 object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                        <h3 class="service-card__title">Xbox</h3>
+                        <p class="service-card__description">
+                          گیفت کارت Xbox و اشتراک Game Pass Ultimate برای دسترسی
+                          به صدها بازی محبوب.
+                        </p>
+                        <a href="/services" class="service-card__btn">
+                          اطلاعات بیشتر
+                        </a>
+                        <div class="service-card__author">
+                          <span class="opacity-70">موجود در</span> Go2Pal
+                        </div>
+                      </div>
+                    </div>
 
-      <section
-        class="w-full py-2 md:py-4 bg-surface-light/90 dark:bg-surface-dark/90 border-y border-gray-200 dark:border-gray-700 backdrop-blur-md shadow-sm aos-init aos-animate"
-        data-aos="fade-in"
-      >
-        <div
-          class="max-w-7xl mx-auto overflow-hidden mask-gradient flex relative"
-          dir="ltr"
-        >
-          <div
-            class="flex items-center gap-16 py-4 animate-infinite-scroll whitespace-nowrap shrink-0"
-          >
-            <a
-              href="/services"
-              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
-            >
-              <picture>
-                <source type="image/webp" data-srcset="" />
-                <img
-                  loading="lazy"
-                  src="/images/logos/spotify.webp"
-                  data-src="/images/logos/spotify.webp"
-                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
-                  alt="Spotify"
-                  data-srcset="/images/logos/spotify.webp 1x"
-                  srcset="/images/logos/spotify.webp 1x"
-                />
-              </picture>
-              <span
-                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
-                >Spotify</span
-              >
-            </a>
+                    <!-- Card 4: Spotify -->
+                    <div class="swiper-slide">
+                      <div class="service-card service-card--green">
+                        <div class="service-card__flag">
+                          <img
+                            src="/images/logos/spotify.webp"
+                            alt="Spotify"
+                            class="w-12 h-12 object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                        <h3 class="service-card__title">Spotify</h3>
+                        <p class="service-card__description">
+                          اشتراک Spotify Premium برای گوش دادن به میلیون‌ها آهنگ
+                          بدون تبلیغ و آفلاین.
+                        </p>
+                        <a href="/services" class="service-card__btn">
+                          اطلاعات بیشتر
+                        </a>
+                        <div class="service-card__author">
+                          <span class="opacity-70">موجود در</span> Go2Pal
+                        </div>
+                      </div>
+                    </div>
 
-            <a
-              href="/services"
-              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
-            >
-              <picture>
-                <source type="image/webp" data-srcset="" />
-                <img
-                  loading="lazy"
-                  src="/images/logos/itunes.webp"
-                  data-src="/images/logos/itunes.webp"
-                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
-                  alt="Apple Music"
-                  data-srcset="/images/logos/itunes.webp 1x"
-                  srcset="/images/logos/itunes.webp 1x"
-                />
-              </picture>
-              <span
-                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
-                >Apple Music</span
-              >
-            </a>
+                    <!-- Card 5: Netflix -->
+                    <div class="swiper-slide">
+                      <div class="service-card service-card--green">
+                        <div class="service-card__flag">
+                          <img
+                            src="/images/logos/netflix.webp"
+                            alt="Netflix"
+                            class="w-12 h-12 object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                        <h3 class="service-card__title">Netflix</h3>
+                        <p class="service-card__description">
+                          اشتراک Netflix برای تماشای فیلم، سریال و مستند با
+                          کیفیت بالا روی همه دستگاه‌ها.
+                        </p>
+                        <a href="/services" class="service-card__btn">
+                          اطلاعات بیشتر
+                        </a>
+                        <div class="service-card__author">
+                          <span class="opacity-70">موجود در</span> Go2Pal
+                        </div>
+                      </div>
+                    </div>
 
-            <a
-              href="/services"
-              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
-            >
-              <picture>
-                <source type="image/webp" data-srcset="" />
-                <img
-                  loading="lazy"
-                  src="/images/logos/netflix.webp"
-                  data-src="/images/logos/netflix.webp"
-                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
-                  alt="Netflix"
-                  data-srcset="/images/logos/netflix.webp 1x"
-                  srcset="/images/logos/netflix.webp 1x"
-                />
-              </picture>
-              <span
-                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
-                >Netflix</span
-              >
-            </a>
-
-            <a
-              href="/services"
-              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
-            >
-              <picture>
-                <source type="image/webp" data-srcset="" />
-                <img
-                  loading="lazy"
-                  src="/images/logos/microsoft.webp"
-                  data-src="/images/logos/microsoft.webp"
-                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
-                  alt="Xbox"
-                  data-srcset="/images/logos/microsoft.webp 1x"
-                  srcset="/images/logos/microsoft.webp 1x"
-                />
-              </picture>
-              <span
-                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
-                >Xbox</span
-              >
-            </a>
-
-            <a
-              href="/services"
-              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
-            >
-              <picture>
-                <source type="image/webp" data-srcset="" />
-                <img
-                  loading="lazy"
-                  src="/images/logos/sony.webp"
-                  data-src="/images/logos/sony.webp"
-                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
-                  alt="PlayStation"
-                  data-srcset="/images/logos/sony.webp 1x"
-                  srcset="/images/logos/sony.webp 1x"
-                />
-              </picture>
-              <span
-                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
-                >PlayStation</span
-              >
-            </a>
-
-            <a
-              href="/services"
-              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
-            >
-              <picture>
-                <source type="image/webp" data-srcset="" />
-                <img
-                  loading="lazy"
-                  src="/images/logos/steam.webp"
-                  data-src="/images/logos/steam.webp"
-                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
-                  alt="Steam"
-                  data-srcset="/images/logos/steam.webp 1x"
-                  srcset="/images/logos/steam.webp 1x"
-                />
-              </picture>
-              <span
-                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
-                >Steam</span
-              >
-            </a>
-
-            <a
-              href="/services"
-              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
-            >
-              <picture>
-                <source type="image/webp" data-srcset="" />
-                <img
-                  loading="lazy"
-                  src="/images/logos/spotify.webp"
-                  data-src="/images/logos/spotify.webp"
-                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
-                  alt="Spotify"
-                  data-srcset="/images/logos/spotify.webp 1x"
-                  srcset="/images/logos/spotify.webp 1x"
-                />
-              </picture>
-              <span
-                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
-                >Spotify</span
-              >
-            </a>
-
-            <a
-              href="/services"
-              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
-            >
-              <picture>
-                <source type="image/webp" data-srcset="" />
-                <img
-                  loading="lazy"
-                  src="/images/logos/itunes.webp"
-                  data-src="/images/logos/itunes.webp"
-                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
-                  alt="Apple Music"
-                  data-srcset="/images/logos/itunes.webp 1x"
-                  srcset="/images/logos/itunes.webp 1x"
-                />
-              </picture>
-              <span
-                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
-                >Apple Music</span
-              >
-            </a>
-
-            <a
-              href="/services"
-              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
-            >
-              <picture>
-                <source type="image/webp" data-srcset="" />
-                <img
-                  loading="lazy"
-                  src="/images/logos/netflix.webp"
-                  data-src="/images/logos/netflix.webp"
-                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
-                  alt="Netflix"
-                  data-srcset="/images/logos/netflix.webp 1x"
-                  srcset="/images/logos/netflix.webp 1x"
-                />
-              </picture>
-              <span
-                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
-                >Netflix</span
-              >
-            </a>
-
-            <a
-              href="/services"
-              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
-            >
-              <picture>
-                <source type="image/webp" data-srcset="" />
-                <img
-                  loading="lazy"
-                  src="/images/logos/microsoft.webp"
-                  data-src="/images/logos/microsoft.webp"
-                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
-                  alt="Xbox"
-                  data-srcset="/images/logos/microsoft.webp 1x"
-                  srcset="/images/logos/microsoft.webp 1x"
-                />
-              </picture>
-              <span
-                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
-                >Xbox</span
-              >
-            </a>
-
-            <a
-              href="/services"
-              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
-            >
-              <picture>
-                <source type="image/webp" data-srcset="" />
-                <img
-                  loading="lazy"
-                  src="/images/logos/sony.webp"
-                  data-src="/images/logos/sony.webp"
-                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
-                  alt="PlayStation"
-                  data-srcset="/images/logos/sony.webp 1x"
-                  srcset="/images/logos/sony.webp 1x"
-                />
-              </picture>
-              <span
-                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
-                >PlayStation</span
-              >
-            </a>
-
-            <a
-              href="/services"
-              class="flex items-center gap-2 transition-all hover:scale-110 cursor-pointer shrink-0"
-            >
-              <picture>
-                <source type="image/webp" data-srcset="" />
-                <img
-                  loading="lazy"
-                  src="/images/logos/steam.webp"
-                  data-src="/images/logos/steam.webp"
-                  class="w-8 h-8 md:w-10 md:h-10 object-contain lazy-image"
-                  alt="Steam"
-                  data-srcset="/images/logos/steam.webp 1x"
-                  srcset="/images/logos/steam.webp 1x"
-                />
-              </picture>
-              <span
-                class="font-bold text-xl text-gray-800 dark:text-gray-200 font-display"
-                >Steam</span
-              >
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Popular Products Section -->
-      <section class="popular-products-section max-w-7xl mx-auto px-6">
-        <div class="section-header">
-          <h2 class="section-title">
-            محبوب ترین سرویس های Go2Pal
-            <span class="sticker"></span>
-          </h2>
-          <p class="section-description">
-            با گوتوپل دنیای مالی خود را متحول کنید. خدمات مالی سریع، امن و
-            بین‌المللی در دستان شماست.
-          </p>
-        </div>
-
-        <div class="products-grid">
-          <!-- Product 1: انتقال اعتبار -->
-          <div class="product-container">
-            <div class="price-tag hidden">
-              <span class="euro-icon">€</span>۱
-            </div>
-            <div class="product-box" data-product="انتقال اعتبار">
-              <div class="product-label">انتقال و تبدیل اعتبار جهانی</div>
-              <div class="product-image">
-                <img
-                  src="/images/products/product1.webp"
-                  alt="انتقال اعتبار"
-                  loading="lazy"
-                />
-              </div>
-              <div class="product-details">
-                <div class="product-description">
-                انتقال سریع و امن پول به سراسر جهان با کمترین کارمزد.<br>
-                تبدیل ارزهای مختلف با نرخ به‌روز و رقابتی.
-              </div>
-                <button class="info-button">اطلاعات بیشتر</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Product 2: گیفت کارت Apple -->
-          <div class="product-container">
-            <div class="price-tag">
-              <span>شروع قیمت از ۱</span><span class="euro-icon">€</span>
-            </div>
-            <div class="product-box" data-product="گیفت کارت Apple">
-              <div class="product-label">گیفت کارت Apple</div>
-              <div class="product-image">
-                <img
-                  src="/images/products/product2.webp"
-                  alt="گیفت کارت Apple"
-                  loading="lazy"
-                />
-              </div>
-              <div class="product-details">
-                <div class="product-description">
-                  خرید گیفت کارت Apple با تخفیف ویژه. قابل استفاده در اپ استور،
-                  Apple Music و iCloud.<br> تحویل آنی
+                    <!-- Card 6: Apple -->
+                    <div class="swiper-slide">
+                      <div class="service-card service-card--green">
+                        <div class="service-card__flag">
+                          <img
+                            src="/images/logos/itunes.webp"
+                            alt="Apple"
+                            class="w-12 h-12 object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                        <h3 class="service-card__title">Apple</h3>
+                        <p class="service-card__description">
+                          گیفت کارت Apple برای App Store، Apple Music، iCloud و
+                          خریدهای اپل.
+                        </p>
+                        <a href="/services" class="service-card__btn">
+                          اطلاعات بیشتر
+                        </a>
+                        <div class="service-card__author">
+                          <span class="opacity-70">موجود در</span> Go2Pal
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <button class="info-button">اطلاعات بیشتر</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Product 3: گیفت کارت Steam -->
-          <div class="product-container">
-            <div class="price-tag">
-              <span>شروع قیمت از ۱</span><span class="euro-icon">€</span>
-            </div>
-            <div class="product-box" data-product="گیفت کارت Steam">
-              <div class="product-label">گیفت کارت Steam</div>
-              <div class="product-image">
-                <img
-                  src="/images/products/product3.webp"
-                  alt="گیفت کارت Steam"
-                  loading="lazy"
-                />
-              </div>
-              <div class="product-details">
-                <div class="product-description">
-                  گیفت کارت Steam برای خرید بازی و آیتم‌های درون بازی. پشتیبانی
-                  از تمام مناطق.<br>تحویل فوری.
-                </div>
-                <button class="info-button">اطلاعات بیشتر</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Product 4: eSIM -->
-          <div class="product-container">
-            <div class="price-tag">
-              <span>شروع قیمت از ۱</span><span class="euro-icon">€</span>
-            </div>
-            <div class="product-box" data-product="eSIM">
-              <div class="product-label">eSIM</div>
-              <div class="product-image">
-                <img
-                  src="/images/products/product4.webp"
-                  alt="eSIM"
-                  loading="lazy"
-                />
-              </div>
-              <div class="product-details">
-                <div class="product-description">
-                  سیم‌کارت الکترونیکی برای مسافران بین‌المللی. اینترنت پرسرعت در
-                  بیش از ۱۰۰ کشور بدون نیاز به سیم‌کارت فیزیکی.
-                </div>
-                <button class="info-button">اطلاعات بیشتر</button>
               </div>
             </div>
           </div>
@@ -1460,164 +1227,6 @@
               </p>
               <div class="w-16 h-1 bg-[#00b67a] rounded-full"></div>
             </div>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- Services Slider Section -->
-      <section class="services-slider-section py-12 md:py-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-          <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            
-            <!-- Left Side: Title & Navigation -->
-            <div class="lg:w-2/5 text-center lg:text-right flex flex-col items-center lg:items-start gap-6">
-              <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white leading-tight">
-                برخی از خدمات
-                <span class="text-primary">گوتوپل</span>
-              </h2>
-              <p class="text-gray-600 dark:text-gray-400 text-lg max-w-md">
-                با گوتوپل به دنیای بی‌مرز خدمات دیجیتال دسترسی پیدا کنید. سریع، امن و مطمئن.
-              </p>
-              <div class="flex items-center gap-3 mt-4">
-                <button id="services-slider-prev" class="services-nav-btn" aria-label="قبلی">
-                  <svg class="icon w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-                  </svg>
-                </button>
-                <button id="services-slider-next" class="services-nav-btn services-nav-btn--active" aria-label="بعدی">
-                  <svg class="icon w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <!-- Right Side: Cards Slider -->
-            <div class="lg:w-3/5 w-full">
-              <div class="services-cards-container">
-                <div class="swiper services-swiper">
-                  <div class="swiper-wrapper">
-                    
-                    <!-- Card 1: Steam -->
-                    <div class="swiper-slide">
-                      <div class="service-card service-card--green">
-                        <div class="service-card__flag">
-                          <img src="/images/logos/steam.webp" alt="Steam" class="w-12 h-12 object-contain" loading="lazy">
-                        </div>
-                        <h3 class="service-card__title">Steam</h3>
-                        <p class="service-card__description">
-                          گیفت کارت Steam برای خرید بازی، DLC و آیتم‌های درون بازی. پشتیبانی از تمام مناطق با تحویل فوری.
-                        </p>
-                        <a href="/services" class="service-card__btn">
-                          اطلاعات بیشتر
-                        </a>
-                        <div class="service-card__author">
-                          <span class="opacity-70">موجود در</span> Go2Pal
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Card 2: PlayStation -->
-                    <div class="swiper-slide">
-                      <div class="service-card service-card--green">
-                        <div class="service-card__flag">
-                          <img src="/images/logos/sony.webp" alt="PlayStation" class="w-12 h-12 object-contain" loading="lazy">
-                        </div>
-                        <h3 class="service-card__title">PlayStation</h3>
-                        <p class="service-card__description">
-                          گیفت کارت PlayStation برای خرید بازی‌های PS4 و PS5، اشتراک PS Plus و محتوای انحصاری.
-                        </p>
-                        <a href="/services" class="service-card__btn">
-                          اطلاعات بیشتر
-                        </a>
-                        <div class="service-card__author">
-                          <span class="opacity-70">موجود در</span> Go2Pal
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Card 3: Xbox -->
-                    <div class="swiper-slide">
-                      <div class="service-card service-card--green">
-                        <div class="service-card__flag">
-                          <img src="/images/logos/microsoft.webp" alt="Xbox" class="w-12 h-12 object-contain" loading="lazy">
-                        </div>
-                        <h3 class="service-card__title">Xbox</h3>
-                        <p class="service-card__description">
-                          گیفت کارت Xbox و اشتراک Game Pass Ultimate برای دسترسی به صدها بازی محبوب.
-                        </p>
-                        <a href="/services" class="service-card__btn">
-                          اطلاعات بیشتر
-                        </a>
-                        <div class="service-card__author">
-                          <span class="opacity-70">موجود در</span> Go2Pal
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Card 4: Spotify -->
-                    <div class="swiper-slide">
-                      <div class="service-card service-card--green">
-                        <div class="service-card__flag">
-                          <img src="/images/logos/spotify.webp" alt="Spotify" class="w-12 h-12 object-contain" loading="lazy">
-                        </div>
-                        <h3 class="service-card__title">Spotify</h3>
-                        <p class="service-card__description">
-                          اشتراک Spotify Premium برای گوش دادن به میلیون‌ها آهنگ بدون تبلیغ و آفلاین.
-                        </p>
-                        <a href="/services" class="service-card__btn">
-                          اطلاعات بیشتر
-                        </a>
-                        <div class="service-card__author">
-                          <span class="opacity-70">موجود در</span> Go2Pal
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Card 5: Netflix -->
-                    <div class="swiper-slide">
-                      <div class="service-card service-card--green">
-                        <div class="service-card__flag">
-                          <img src="/images/logos/netflix.webp" alt="Netflix" class="w-12 h-12 object-contain" loading="lazy">
-                        </div>
-                        <h3 class="service-card__title">Netflix</h3>
-                        <p class="service-card__description">
-                          اشتراک Netflix برای تماشای فیلم، سریال و مستند با کیفیت بالا روی همه دستگاه‌ها.
-                        </p>
-                        <a href="/services" class="service-card__btn">
-                          اطلاعات بیشتر
-                        </a>
-                        <div class="service-card__author">
-                          <span class="opacity-70">موجود در</span> Go2Pal
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Card 6: Apple -->
-                    <div class="swiper-slide">
-                      <div class="service-card service-card--green">
-                        <div class="service-card__flag">
-                          <img src="/images/logos/itunes.webp" alt="Apple" class="w-12 h-12 object-contain" loading="lazy">
-                        </div>
-                        <h3 class="service-card__title">Apple</h3>
-                        <p class="service-card__description">
-                          گیفت کارت Apple برای App Store، Apple Music، iCloud و خریدهای اپل.
-                        </p>
-                        <a href="/services" class="service-card__btn">
-                          اطلاعات بیشتر
-                        </a>
-                        <div class="service-card__author">
-                          <span class="opacity-70">موجود در</span> Go2Pal
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </section>

@@ -1,19 +1,16 @@
 import Swiper from "swiper";
-import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/effect-fade";
 
 import "./security/trusted-types.js";
 import "./fonts.css";
 import "./style.css";
 import "./hero-scroll.css";
-import "./popular-products/popular-products.css";
 import "./services-slider.css";
 import "./flexboxgapsupport.js";
 import "./js/hero-scroll.js";
-import "./popular-products/popular-products.js";
 import "./lazyload.js";
 import "./js/services.js";
 import "./js/3d-card.js";
@@ -27,14 +24,14 @@ window.AOS = AOS;
 // SMART PRELOADER LOGIC
 // ========================================
 (function initPreloader() {
-  const preloader = document.getElementById('preloader');
+  const preloader = document.getElementById("preloader");
   if (!preloader) return;
 
   const isMobile = window.innerWidth < 768;
-  
+
   const hidePreloader = () => {
-    preloader.classList.add('hidden');
-    document.body.classList.remove('loading');
+    preloader.classList.add("hidden");
+    document.body.classList.remove("loading");
   };
 
   // Mobile: Disable preloader completely, show content immediately
@@ -57,7 +54,7 @@ window.AOS = AOS;
   const timeoutId = setTimeout(safeHidePreloader, HARD_TIMEOUT);
 
   // Also hide on window load (if it fires before timeout)
-  window.addEventListener('load', () => {
+  window.addEventListener("load", () => {
     clearTimeout(timeoutId);
     safeHidePreloader();
   });
@@ -69,7 +66,7 @@ window.AOS = AOS;
 async function loadPartial(elementId, filePath) {
   const element = document.getElementById(elementId);
   if (!element) return false;
-  
+
   try {
     const response = await fetch(filePath);
     if (!response.ok) throw new Error(`Failed to load ${filePath}`);
@@ -83,9 +80,15 @@ async function loadPartial(elementId, filePath) {
 }
 
 async function initPartials() {
-  const navbarLoaded = await loadPartial('navbar-container', '/partials/navbar.html');
-  const footerLoaded = await loadPartial('footer-container', '/partials/footer.html');
-  
+  const navbarLoaded = await loadPartial(
+    "navbar-container",
+    "/partials/navbar.html",
+  );
+  const footerLoaded = await loadPartial(
+    "footer-container",
+    "/partials/footer.html",
+  );
+
   // Re-initialize navbar components after load
   if (navbarLoaded) {
     initThemeToggle();
@@ -98,35 +101,40 @@ async function initPartials() {
 // Set active nav link based on current page
 function setActiveNavLink() {
   const currentPath = window.location.pathname;
-  
+
   // Desktop nav links
-  const navLinks = document.querySelectorAll('header nav a');
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    const isActive = href === currentPath || 
-        (href === '/' && (currentPath === '/index.html' || currentPath === '/')) ||
-        (href !== '/' && currentPath.includes(href));
-    
+  const navLinks = document.querySelectorAll("header nav a");
+  navLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    const isActive =
+      href === currentPath ||
+      (href === "/" &&
+        (currentPath === "/index.html" || currentPath === "/")) ||
+      (href !== "/" && currentPath.includes(href));
+
     if (isActive) {
-      link.classList.add('text-primary', 'font-bold');
-      link.classList.remove('nav-link');
+      link.classList.add("text-primary", "font-bold");
+      link.classList.remove("nav-link");
     }
   });
-  
+
   // Mobile nav links
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-  mobileNavLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    const dataPage = link.getAttribute('data-page');
-    const isActive = href === currentPath || 
-        dataPage === currentPath ||
-        (href === '/' && (currentPath === '/index.html' || currentPath === '/')) ||
-        (dataPage === '/' && (currentPath === '/index.html' || currentPath === '/')) ||
-        (href !== '/' && href !== '' && currentPath.includes(href));
-    
+  const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+  mobileNavLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    const dataPage = link.getAttribute("data-page");
+    const isActive =
+      href === currentPath ||
+      dataPage === currentPath ||
+      (href === "/" &&
+        (currentPath === "/index.html" || currentPath === "/")) ||
+      (dataPage === "/" &&
+        (currentPath === "/index.html" || currentPath === "/")) ||
+      (href !== "/" && href !== "" && currentPath.includes(href));
+
     if (isActive) {
-      link.classList.add('text-primary', 'font-bold');
-      link.classList.remove('text-gray-600', 'dark:text-gray-300');
+      link.classList.add("text-primary", "font-bold");
+      link.classList.remove("text-gray-600", "dark:text-gray-300");
     }
   });
 }
@@ -169,7 +177,7 @@ function initMobileMenu() {
 
   function toggleMenu() {
     if (!mobileMenuBtn || !mobileMenu) return;
-    
+
     const isExpanded = mobileMenuBtn.getAttribute("aria-expanded") === "true";
     mobileMenuBtn.setAttribute("aria-expanded", !isExpanded);
 
@@ -212,7 +220,7 @@ function initMobileMenu() {
 // ========================================
 function initDesktopDropdowns() {
   const dropdownItems = Array.from(
-    document.querySelectorAll("[data-dropdown]")
+    document.querySelectorAll("[data-dropdown]"),
   );
 
   if (!dropdownItems.length) return;
@@ -327,7 +335,7 @@ if (faqSearchInput) {
 
     faqCards.forEach((card) => {
       const hasVisibleItem = Array.from(
-        card.querySelectorAll(".faq-item")
+        card.querySelectorAll(".faq-item"),
       ).some((item) => item.style.display !== "none");
       card.style.display = hasVisibleItem ? "" : "none";
     });
@@ -350,33 +358,6 @@ if ("requestIdleCallback" in window) {
 } else {
   setTimeout(initAOS, 100);
 }
-
-// Slider Logic
-const initSlider = () => {
-  const sliderContainer = document.querySelector(".hero-swiper");
-  if (!sliderContainer) return;
-
-  new Swiper(sliderContainer, {
-    modules: [Navigation, Pagination, Autoplay, EffectFade],
-    effect: "fade",
-    fadeEffect: {
-      crossFade: true,
-    },
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    loop: true,
-    pagination: {
-      el: "#slider-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: "#slider-next",
-      prevEl: "#slider-prev",
-    },
-  });
-};
 
 // Blog Carousel Logic
 const initBlogCarousel = () => {
@@ -409,126 +390,99 @@ const initBlogCarousel = () => {
   });
 };
 
-// Services Slider Logic (Stacked Cards)
+// Services Slider Logic (Stacked Cards with RTL Support)
 const initServicesSlider = () => {
   const servicesContainer = document.querySelector(".services-swiper");
-  if (!servicesContainer) return;
+  if (!servicesContainer) return null;
+
+  const prevBtn = document.getElementById("services-slider-prev");
+  const nextBtn = document.getElementById("services-slider-next");
 
   const servicesSwiper = new Swiper(servicesContainer, {
     modules: [Navigation],
-    slidesPerView: 'auto',
+
+    // Core settings
+    slidesPerView: "auto",
     spaceBetween: 24,
-    centeredSlides: false,
-    loop: false,
-    grabCursor: true,
     speed: 500,
-    freeMode: false,
+    grabCursor: true,
     watchSlidesProgress: true,
-    
-    // Navigation - swapped for RTL
+
+    // Allow navigating to last slides by adding small offset at the end
+    slidesOffsetAfter: 0,
+
+    // Disable features we don't need
+    loop: false,
+    centeredSlides: false,
+    freeMode: false,
+
+    // Navigation - swapped for RTL (prev/next are visually reversed)
     navigation: {
-      nextEl: '#services-slider-prev',
-      prevEl: '#services-slider-next',
+      nextEl: prevBtn,
+      prevEl: nextBtn,
     },
-    
-    breakpoints: {
-      320: {
-        slidesPerView: 1.15,
-        spaceBetween: 16,
-        centeredSlides: false,
-      },
-      480: {
-        slidesPerView: 1.3,
-        spaceBetween: 20,
-        centeredSlides: false,
-      },
-      640: {
-        slidesPerView: 1.6,
-        spaceBetween: 24,
-        centeredSlides: false,
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 24,
-        centeredSlides: false,
-      },
-      1024: {
-        slidesPerView: 2.3,
-        spaceBetween: 28,
-        centeredSlides: false,
-      },
-      1280: {
-        slidesPerView: 2.8,
-        spaceBetween: 32,
-        centeredSlides: false,
-      },
-    },
-    
+
+    // Responsive breakpoints
+
+    // Event handlers
     on: {
-      init: function() {
-        updateServicesNavState(this);
-        applyStackedEffect(this);
+      init: function (swiper) {
+        updateNavButtonStyles(swiper);
+        applyStackedEffect(swiper);
       },
-      slideChange: function() {
-        updateServicesNavState(this);
-        applyStackedEffect(this);
+      slideChange: function (swiper) {
+        updateNavButtonStyles(swiper);
+        applyStackedEffect(swiper);
       },
-      transitionEnd: function() {
-        applyStackedEffect(this);
+      reachBeginning: updateNavButtonStyles,
+      reachEnd: updateNavButtonStyles,
+      progress: function (swiper) {
+        applyStackedEffect(swiper);
       },
     },
   });
 
-  function updateServicesNavState(swiper) {
-    const prevBtn = document.getElementById('services-slider-prev');
-    const nextBtn = document.getElementById('services-slider-next');
-    
-    // In RTL, logic is reversed: prev goes forward, next goes backward
-    if (prevBtn) {
-      const isActive = !swiper.isEnd;
-      prevBtn.classList.toggle('services-nav-btn--active', isActive);
-      prevBtn.disabled = swiper.isEnd;
-    }
-    
-    if (nextBtn) {
-      const isActive = !swiper.isBeginning;
-      nextBtn.classList.toggle('services-nav-btn--active', isActive);
-      nextBtn.disabled = swiper.isBeginning;
-    }
-  }
-
+  // Apply stacked card effect with data attributes
   function applyStackedEffect(swiper) {
     const slides = swiper.slides;
     const activeIndex = swiper.activeIndex;
-    const slidesPerView = Math.ceil(swiper.params.slidesPerView) || 3;
-    
+    const visibleCount = Math.ceil(swiper.params.slidesPerView) + 1;
+
     slides.forEach((slide, index) => {
       const diff = index - activeIndex;
-      
-      // Reset styles
-      slide.style.zIndex = '';
-      slide.style.transform = '';
-      slide.style.opacity = '';
-      slide.style.visibility = '';
-      
-      // In RTL: cards with lower index than active are "passed"
-      // Cards with higher index are visible/upcoming
-      if (diff >= 0 && diff < slidesPerView + 2) {
-        // Visible cards (current and upcoming within view)
-        slide.style.zIndex = 10 - Math.min(diff, 4);
-        slide.style.opacity = '1';
-        slide.style.visibility = 'visible';
-      } else if (diff < 0) {
-        // Cards that have passed (scrolled out to the right in RTL)
-        slide.style.zIndex = 1;
-        slide.style.opacity = '0';
-        slide.style.visibility = 'hidden';
+
+      if (diff < 0) {
+        // Passed slides (scrolled out to the right in RTL)
+        slide.setAttribute("data-slide-state", "passed");
+      } else if (diff === 0) {
+        // Active slide
+        slide.setAttribute("data-slide-state", "active");
+      } else if (diff <= visibleCount) {
+        // Visible upcoming slides
+        slide.setAttribute("data-slide-state", `visible-${Math.min(diff, 4)}`);
       } else {
-        // Cards far ahead - still visible but lower priority
-        slide.style.opacity = '1';
-        slide.style.visibility = 'visible';
+        // Far ahead slides - still visible but lower priority
+        slide.setAttribute("data-slide-state", "visible-4");
       }
     });
+  }
+
+  // Update navigation button active states
+  function updateNavButtonStyles(swiper) {
+    // For RTL: "prev" button navigates forward (to end), "next" navigates backward (to start)
+    if (prevBtn) {
+      const canGoForward = !swiper.isEnd;
+      prevBtn.classList.toggle("services-nav-btn--active", canGoForward);
+      prevBtn.disabled = !canGoForward;
+      prevBtn.setAttribute("aria-disabled", String(!canGoForward));
+    }
+
+    if (nextBtn) {
+      const canGoBack = !swiper.isBeginning;
+      nextBtn.classList.toggle("services-nav-btn--active", canGoBack);
+      nextBtn.disabled = !canGoBack;
+      nextBtn.setAttribute("aria-disabled", String(!canGoBack));
+    }
   }
 
   return servicesSwiper;
@@ -629,7 +583,7 @@ const initScrollSpy = () => {
             "text-white",
             "border-primary",
             "shadow-lg",
-            "shadow-primary/30"
+            "shadow-primary/30",
           );
           link.classList.remove(
             "bg-white",
@@ -637,7 +591,7 @@ const initScrollSpy = () => {
             "text-gray-600",
             "dark:text-gray-300",
             "border-gray-200",
-            "dark:border-gray-700"
+            "dark:border-gray-700",
           );
           // Scroll mobile nav to center active item
           link.scrollIntoView({
@@ -654,7 +608,7 @@ const initScrollSpy = () => {
             "dark:text-gray-400",
             "dark:hover:text-white",
             "hover:bg-gray-50",
-            "dark:hover:bg-gray-800"
+            "dark:hover:bg-gray-800",
           );
         }
       } else {
@@ -665,7 +619,7 @@ const initScrollSpy = () => {
             "text-white",
             "border-primary",
             "shadow-lg",
-            "shadow-primary/30"
+            "shadow-primary/30",
           );
           link.classList.add(
             "bg-white",
@@ -673,7 +627,7 @@ const initScrollSpy = () => {
             "text-gray-600",
             "dark:text-gray-300",
             "border-gray-200",
-            "dark:border-gray-700"
+            "dark:border-gray-700",
           );
         } else {
           // Desktop Inactive
@@ -684,7 +638,7 @@ const initScrollSpy = () => {
             "dark:text-gray-400",
             "dark:hover:text-white",
             "hover:bg-gray-50",
-            "dark:hover:bg-gray-800"
+            "dark:hover:bg-gray-800",
           );
         }
       }
@@ -694,7 +648,6 @@ const initScrollSpy = () => {
 
 // Initialize all non-critical components
 const initAll = () => {
-  initSlider();
   initBlogCarousel();
   initServicesSlider();
   initVideoPlayer();
@@ -706,7 +659,7 @@ if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", async () => {
     // Load partials first
     await initPartials();
-    
+
     // Then initialize other components
     if ("requestIdleCallback" in window) {
       requestIdleCallback(initAll);
