@@ -14,6 +14,8 @@ import "./js/hero-scroll.js";
 import "./lazyload.js";
 import "./js/services.js";
 import "./js/3d-card.js";
+import "./why-go2pal.css";
+import { initWhyGo2Pal } from "./js/why-go2pal.js";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -651,6 +653,7 @@ const initAll = () => {
   initBlogCarousel();
   initServicesSlider();
   initVideoPlayer();
+  initWhyGo2Pal();
   initScrollSpy();
 };
 
