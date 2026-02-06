@@ -79,6 +79,8 @@ class FullPageSnapController {
   updateCurrentSection() {
     // Find which section is currently in view
     const scrollPos = window.scrollY + window.innerHeight / 2;
+    const lastSection = this.sections[this.sections.length - 1];
+    const lastSectionBottom = lastSection.offsetTop + lastSection.offsetHeight;
 
     this.sections.forEach((section, index) => {
       const top = section.offsetTop;
@@ -91,6 +93,18 @@ class FullPageSnapController {
         section.classList.remove('snap-section-current');
       }
     });
+
+    // Check if we've scrolled past all snap sections
+    const scrolledPastSnapSections = window.scrollY > lastSectionBottom - window.innerHeight / 2;
+
+    // Enable/disable snap based on scroll position
+    if (scrolledPastSnapSections) {
+      // We're past all snap sections - disable snap
+      document.documentElement.style.scrollSnapType = 'none';
+    } else {
+      // We're in the snap area - enable snap
+      document.documentElement.style.scrollSnapType = 'y proximity';
+    }
 
     // Show/hide navbar based on section
     const navContainer = document.getElementById('navbar-container');
