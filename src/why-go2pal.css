@@ -1,12 +1,14 @@
-/* Scoped styles for Why Go2pal section */
+/* Scoped styles for Why Go2pal section - Optimized */
 .why-section {
-  /* Light Mode Defaults */
+  /* Light Mode Defaults - Using Project Colors */
   --bg: #f8fafc;
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --card-border: rgba(37, 99, 235, 0.1);
-  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  --accent: #0099ff;
-  --glow-color: rgba(0, 153, 255, 0.15);
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --card-hover-bg: #f3f4f6; /* gray-100 */
+  --accent: #2563eb;
+  --glow-color: rgba(0, 0, 0, 0.04); /* Subtle gray shadow */
+  --border-glow: rgba(37, 99, 235, 0.3); /* Blue accent only */
 
   background-color: var(--bg);
   position: relative;
@@ -15,11 +17,13 @@
 
 /* Dark Mode Overrides */
 :where(.dark) .why-section {
-  --bg: #0a0e27;
-  --card-bg: rgba(15, 20, 45, 0.6);
-  --card-border: rgba(255, 255, 255, 0.1);
-  --card-shadow: 0 30px 60px rgba(0, 153, 255, 0.3);
-  --glow-color: rgba(0, 153, 255, 0.25);
+  --bg: transparent;
+  --card-bg: rgba(17, 24, 39, 0.6);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --card-hover-bg: rgba(55, 65, 81, 0.5);
+  --glow-color: rgba(37, 99, 235, 0.15);
+  --border-glow: rgba(37, 99, 235, 0.5);
 }
 
 .why-background-gradient {
@@ -29,22 +33,22 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    125deg,
-    #00d4ff 0%,
-    #0099ff 25%,
-    #0066ff 50%,
-    #0033ff 75%,
-    #001aff 100%
+    135deg,
+    rgba(37, 99, 235, 0.05) 0%,
+    rgba(59, 130, 246, 0.08) 50%,
+    rgba(96, 165, 250, 0.05) 100%
   );
-  background-size: 400% 400%;
-  animation: whyGradientShift 15s ease infinite;
-  opacity: 0.1; /* Slightly lower for light mode */
   z-index: 0;
   pointer-events: none;
 }
 
 :where(.dark) .why-background-gradient {
-  opacity: 0.15;
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.08) 0%,
+    rgba(59, 130, 246, 0.12) 50%,
+    rgba(96, 165, 250, 0.08) 100%
+  );
 }
 
 @keyframes whyGradientShift {
@@ -71,7 +75,7 @@
   position: absolute;
   width: 3px;
   height: 3px;
-  background: rgba(0, 153, 255, 0.5);
+  background: rgba(37, 99, 235, 0.4);
   border-radius: 50%;
   animation: whyFloatParticle 20s infinite ease-in-out;
 }
@@ -96,13 +100,13 @@
 
 .why-header-line {
   position: absolute;
-  top: -30px;
+  top: -25px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, #0099ff, transparent);
-  animation: whyLineExpand 1.5s ease forwards;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #2563eb, transparent);
+  animation: whyLineExpand 1.2s ease forwards;
 }
 
 @keyframes whyLineExpand {
@@ -110,12 +114,12 @@
     width: 0;
   }
   to {
-    width: 100px;
+    width: 80px;
   }
 }
 
 .why-title-bounce {
-  animat0ion: whyBounce 3s infinite ease-in-out;
+  animation: whyBounce 3s ease-in-out infinite;
 }
 
 @keyframes whyBounce {
@@ -124,28 +128,28 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
 }
 
 .why-card {
   background: var(--card-bg);
   backdrop-filter: blur(20px);
-  border-radius: 2rem;
-  padding: 45px;
+  border-radius: 1.5rem;
+  padding: 2rem;
   height: 100%;
-  min-height: 340px;
+  min-height: 260px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   cursor: pointer;
   border: 1px solid var(--card-border);
   transform-style: preserve-3d;
   will-change: transform;
   transition:
     transform 0.2s cubic-bezier(0.2, 0, 0.4, 1),
-    box-shadow 0.5s ease,
-    border-color 0.5s ease;
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
   opacity: 0;
   animation: whyCardEntrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   overflow: hidden;
@@ -169,7 +173,7 @@
 @keyframes whyCardEntrance {
   from {
     opacity: 0;
-    transform: translateZ(-100px) rotateX(10deg);
+    transform: translateZ(-50px) rotateX(5deg);
   }
   to {
     opacity: 1;
@@ -177,6 +181,7 @@
   }
 }
 
+/* Glowing Border Effect - Subtle in Light Mode */
 .why-card::before {
   content: "";
   position: absolute;
@@ -186,18 +191,27 @@
   bottom: -2px;
   background: linear-gradient(
     45deg,
-    #00d4ff,
-    #0099ff,
-    #0066ff,
-    #0033ff,
-    #001aff
+    var(--border-glow),
+    rgba(59, 130, 246, 0.2),
+    var(--border-glow)
   );
   background-size: 300% 300%;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   z-index: -1;
   opacity: 0;
-  animation: whyBorderGradient 3s ease infinite;
-  transition: opacity 0.5s ease;
+  animation: whyBorderGradient 4s ease infinite;
+  transition: opacity 0.4s ease;
+}
+
+:where(.dark) .why-card::before {
+  background: linear-gradient(
+    45deg,
+    #2563eb,
+    #3b82f6,
+    #60a5fa,
+    #3b82f6,
+    #2563eb
+  );
 }
 
 @keyframes whyBorderGradient {
@@ -210,6 +224,7 @@
   }
 }
 
+/* Glow Effect on Hover */
 .why-card::after {
   content: "";
   position: absolute;
@@ -218,60 +233,69 @@
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 153, 255, 0.4), transparent 70%);
+  background: radial-gradient(circle, var(--border-glow), transparent 70%);
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: all 0.6s ease;
+  transition: all 0.5s ease;
   pointer-events: none;
 }
 
 .why-card:hover::before {
   opacity: 1;
 }
+
 .why-card:hover::after {
-  width: 600px;
-  height: 600px;
-  opacity: 1;
+  width: 400px;
+  height: 400px;
+  opacity: 0.6;
 }
+
 .why-card:hover {
-  border-color: rgba(0, 153, 255, 0.5);
+  background-color: var(--card-hover-bg);
+  border-color: var(--border-glow);
   z-index: 10;
   box-shadow:
-    0 30px 60px var(--glow-color),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 12px 32px var(--glow-color),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 :where(.dark) .why-card:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--card-hover-bg);
+  border-color: var(--border-glow);
   box-shadow:
-    0 30px 60px rgba(0, 153, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 15px 40px rgba(37, 99, 235, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-/* Icons */
+/* Icons with Project Colors */
 .why-icon-ring {
   position: absolute;
   border-radius: 50%;
   border: 2px solid;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 .why-icon-ring-1 {
   width: 100%;
   height: 100%;
-  border-color: #00d4ff;
+  border-color: #2563eb;
   animation: whyRotateRing1 10s linear infinite;
 }
 .why-icon-ring-2 {
   width: 85%;
   height: 85%;
-  border-color: #0099ff;
+  border-color: #3b82f6;
   animation: whyRotateRing2 8s linear infinite reverse;
 }
 .why-icon-ring-3 {
   width: 70%;
   height: 70%;
-  border-color: #0066ff;
+  border-color: #60a5fa;
   animation: whyRotateRing1 6s linear infinite;
+}
+
+/* More subtle icon rings in light mode */
+:where(.dark) .why-icon-ring {
+  opacity: 0.25;
 }
 
 @keyframes whyRotateRing1 {
@@ -292,12 +316,10 @@
 }
 
 .why-icon-wrapper {
-  width: 90px;
-  height: 90px;
   background: linear-gradient(
     135deg,
-    rgba(0, 212, 255, 0.3),
-    rgba(0, 153, 255, 0.3)
+    rgba(37, 99, 235, 0.15),
+    rgba(59, 130, 246, 0.15)
   );
   border-radius: 50%;
   display: flex;
@@ -306,19 +328,25 @@
   position: relative;
   z-index: 2;
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 10px 30px rgba(0, 153, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
 }
 
 .why-card:hover .why-icon-wrapper {
-  transform: scale(1.15) rotate(360deg);
+  transform: scale(1.1) rotate(10deg);
   box-shadow:
-    0 20px 40px rgba(0, 153, 255, 0.5),
-    0 0 60px rgba(0, 102, 255, 0.4);
+    0 8px 24px rgba(37, 99, 235, 0.2),
+    0 0 30px rgba(59, 130, 246, 0.15);
+}
+
+:where(.dark) .why-card:hover .why-icon-wrapper {
+  transform: scale(1.15) rotate(15deg);
+  box-shadow:
+    0 10px 30px rgba(37, 99, 235, 0.35),
+    0 0 40px rgba(59, 130, 246, 0.25);
 }
 
 .why-icon-float {
-  font-size: 3rem;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
   animation: whyIconFloat 3s ease-in-out infinite;
 }
 
@@ -328,19 +356,19 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
 }
 
 .why-card-content {
   position: relative;
   z-index: 3;
-  transform: translateZ(40px);
+  transform: translateZ(30px);
   transition: transform 0.3s ease;
 }
 
 .why-card:hover .why-card-content {
-  transform: translateZ(60px);
+  transform: translateZ(50px);
 }
 
 /* Card Particles */
@@ -348,11 +376,16 @@
   position: absolute;
   width: 4px;
   height: 4px;
-  background: rgba(0, 212, 255, 0.6);
+  background: rgba(37, 99, 235, 0.4);
   border-radius: 50%;
   animation: whyCardParticleFloat 8s ease-in-out infinite;
   opacity: 0;
   z-index: 1;
+}
+
+/* More subtle particles in light mode */
+:where(.dark) .why-card-particle {
+  background: rgba(37, 99, 235, 0.5);
 }
 
 @keyframes whyCardParticleFloat {
@@ -376,7 +409,7 @@
 @keyframes whyFadeInScale {
   from {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.85);
   }
   to {
     opacity: 1;
@@ -385,5 +418,5 @@
 }
 
 .why-fade-in-scale {
-  animation: whyFadeInScale 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: whyFadeInScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
