@@ -1,0 +1,173 @@
+/**
+ * Base CSS - Tailwind imports and base styles
+ * This file sets up the foundation with Tailwind CSS and base element styles
+ */
+
+/* Import Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* Source files for Tailwind to scan */
+@source "../../partials/*.html";
+
+/* Dark mode variant */
+@variant dark (&:where(.dark, .dark *));
+
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+@theme {
+  /* Brand Colors */
+  --color-primary: #2563eb;
+  --color-secondary: #1e3a8a;
+
+  /* Background Colors */
+  --color-background-light: #f8fafc;
+  --color-background-dark: #0f172a;
+
+  /* Surface Colors */
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #1e293b;
+
+  /* Text Colors */
+  --color-text-main: #0f172a;
+  --color-text-inverse: #ffffff;
+
+  /* Social Media Colors */
+  --color-telegram: #0088cc;
+  --color-whatsapp: #25d366;
+  --color-instagram: #e4405f;
+
+  /* Typography */
+  --font-display: "IRANSansX", sans-serif;
+
+  /* Border Radius */
+  --radius: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
+
+  /* Shadows */
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.04);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --shadow-diffuse-sm:
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-diffuse-md:
+    0 8px 24px rgba(0, 0, 0, 0.06),
+    0 4px 8px rgba(0, 0, 0, 0.03);
+  --shadow-diffuse-lg:
+    0 16px 48px rgba(0, 0, 0, 0.08),
+    0 8px 16px rgba(0, 0, 0, 0.04);
+  --shadow-inner-light: inset 0 2px 4px 0 rgba(255, 255, 255, 0.3);
+
+  /* Animations */
+  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
+  --animate-infinite-scroll-reverse: infinite-scroll-reverse 25s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  /* Keyframes */
+  @keyframes infinite-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes infinite-scroll-reverse {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-color: #e5e7eb;
+    }
+    50% {
+      background-color: #d1d5db;
+    }
+    100% {
+      background-color: #e5e7eb;
+    }
+  }
+}
+
+/* ============================================
+   SKELETON LOADING
+   ============================================ */
+.skeleton {
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+}
+
+.dark .skeleton {
+  animation-name: skeleton-loading-dark;
+}
+
+@keyframes skeleton-loading-dark {
+  0% {
+    background-color: #374151;
+  }
+  50% {
+    background-color: #4b5563;
+  }
+  100% {
+    background-color: #374151;
+  }
+}
+
+/* ============================================
+   BASE ELEMENT STYLES
+   ============================================ */
+@layer base {
+  body {
+    @apply bg-background-light dark:bg-background-dark text-text-main dark:text-gray-100 font-display antialiased transition-colors duration-300 min-h-screen flex flex-col selection:bg-primary selection:text-white overflow-x-hidden;
+  }
+
+  a,
+  button {
+    cursor: pointer;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+  }
+}
+
+/* Icon base styles */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: middle;
+  transition: opacity 0.3s ease;
+}

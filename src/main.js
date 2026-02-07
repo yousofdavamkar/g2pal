@@ -6,7 +6,11 @@ import "swiper/css/pagination";
 
 import "./security/trusted-types.js";
 import "./fonts.css";
-import "./style.css";
+import "./css/base.css";
+import "./css/theme.css";
+import "./css/utilities.css";
+import "./css/components.css";
+import "./css/animations.css";
 import "./hero-scroll.css";
 import "./fullpage-snap.css";
 import "./services-slider.css";

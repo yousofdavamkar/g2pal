@@ -1,0 +1,256 @@
+/**
+ * Animations CSS - Complex animations and keyframes
+ * This file contains orbit system, glow effects, and advanced animations
+ */
+
+/* ============================================
+   ORBIT ANIMATION SYSTEM
+   ============================================ */
+.orbit-scene {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.orbit-plane {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transform: rotateX(65deg) rotateZ(-15deg);
+}
+
+.orbit-ring {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+}
+
+@media (min-width: 768px) {
+  .orbit-ring {
+    width: 440px;
+    height: 440px;
+  }
+}
+
+.orbit-center {
+  position: absolute;
+  transform-style: preserve-3d;
+  transform: rotateZ(15deg) rotateX(-65deg);
+}
+
+.orbit-item-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  animation: orbit-spin 20s linear infinite;
+}
+
+.orbit-content {
+  position: absolute;
+  left: 160px;
+  top: 0;
+  width: 112px;
+  height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  animation: orbit-counter-spin 20s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .orbit-content {
+    left: 220px;
+  }
+}
+
+@keyframes orbit-spin {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes orbit-counter-spin {
+  0% {
+    transform: rotateZ(360deg) rotateZ(15deg) rotateX(-65deg);
+  }
+  100% {
+    transform: rotateZ(0deg) rotateZ(15deg) rotateX(-65deg);
+  }
+}
+
+/* ============================================
+   ORBIT CENTER - GLOWING LOGO
+   ============================================ */
+.orbit-logo-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+}
+
+.orbit-logo-img {
+  position: relative;
+  z-index: 10;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 35px rgba(37, 99, 235, 0.4));
+  animation: logo-float 4s ease-in-out infinite;
+}
+
+/* Glowing Aura Layers */
+.orbit-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Layer 1 - Inner Core (Bright & Intense) */
+.orbit-glow-1 {
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.4);
+  filter: blur(30px);
+  animation: glow-breathe 3s ease-in-out infinite;
+}
+
+/* Layer 2 - Main Glow (Blue Body) */
+.orbit-glow-2 {
+  width: 160px;
+  height: 160px;
+  background: rgba(37, 99, 235, 0.6);
+  filter: blur(50px);
+  animation: glow-breathe 3s ease-in-out infinite 0.5s;
+}
+
+/* Layer 3 - Outer Aura (Deep Dark Blue) */
+.orbit-glow-3 {
+  width: 140px;
+  height: 140px;
+  background: transparent;
+  box-shadow: 0 0 90px 40px rgba(30, 58, 138, 0.85);
+  filter: blur(20px);
+  opacity: 0.9;
+  animation: glow-breathe 3s ease-in-out infinite 1s;
+}
+
+/* Breathing Animation */
+@keyframes glow-breathe {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Float Animation for Logo */
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Dark mode adjustments */
+.dark .orbit-glow-1 {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+
+.dark .orbit-glow-2 {
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.6) 0%,
+    rgba(59, 130, 246, 0) 60%
+  );
+}
+
+.dark .orbit-glow-3 {
+  background: radial-gradient(
+    circle,
+    rgba(37, 99, 235, 0.4) 0%,
+    rgba(15, 23, 42, 0) 55%
+  );
+  box-shadow:
+    0 0 50px 15px rgba(59, 130, 246, 0.2),
+    0 0 100px 30px rgba(37, 99, 235, 0.15);
+}
+
+/* ============================================
+   SWIPER PAGINATION OVERRIDES
+   ============================================ */
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  bottom: var(--swiper-pagination-bottom, 8px);
+  top: var(--swiper-pagination-top, auto);
+  left: 50% !important;
+  width: auto !important;
+}
+
+#slider-pagination .swiper-pagination-bullet,
+#blog-pagination .swiper-pagination-bullet {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #9ca3af;
+  transition: all 0.3s;
+  cursor: pointer;
+  opacity: 1;
+  margin: 0;
+  display: block;
+}
+
+.dark #slider-pagination .swiper-pagination-bullet,
+.dark #blog-pagination .swiper-pagination-bullet {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#slider-pagination .swiper-pagination-bullet:hover,
+#blog-pagination .swiper-pagination-bullet:hover {
+  background-color: #2563eb;
+}
+
+.dark #slider-pagination .swiper-pagination-bullet:hover,
+.dark #blog-pagination .swiper-pagination-bullet:hover {
+  background-color: white;
+}
+
+#slider-pagination .swiper-pagination-bullet-active,
+#blog-pagination .swiper-pagination-bullet-active {
+  width: 2rem;
+  background-color: #2563eb;
+}
+
+.dark #slider-pagination .swiper-pagination-bullet-active,
+.dark #blog-pagination .swiper-pagination-bullet-active {
+  background-color: white;
+}
