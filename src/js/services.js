@@ -300,18 +300,9 @@ const initServices = () => {
   }
 };
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
-    if ("requestIdleCallback" in window) {
-      requestIdleCallback(initServices);
-    } else {
-      setTimeout(initServices, 200);
-    }
-  });
-} else {
-  if ("requestIdleCallback" in window) {
-    requestIdleCallback(initServices);
-  } else {
-    setTimeout(initServices, 200);
-  }
+/**
+ * Initialize services page functionality
+ */
+export function initServicesPage() {
+  initServices();
 }

@@ -231,7 +231,7 @@ export function shake(element, intensity = 10, duration = 300) {
       { transform: `translateX(-${intensity}px)` },
       { transform: `translateX(${intensity}px)` },
       { transform: `translateX(-${intensity}px)` },
-      { transform: `translateX(0)' },
+      { transform: 'translateX(0)' },
     ],
     { duration }
   );
@@ -249,7 +249,7 @@ export function pulse(element, scale = 1.05, duration = 300) {
     element,
     [
       { transform: 'scale(1)' },
-      { transform: `scale(${scale})` },
+      { transform: 'scale(' + scale + ')' },
       { transform: 'scale(1)' },
     ],
     { duration }

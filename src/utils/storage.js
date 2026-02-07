@@ -216,6 +216,20 @@ export const session = {
 };
 
 /**
+ * Storage API object for convenience
+ * Provides both named exports and object-style access
+ */
+export const storage = {
+  get,
+  set,
+  remove,
+  clear,
+  keys,
+  has,
+  size,
+};
+
+/**
  * Cookie helper for fallback storage
  */
 export const cookie = {

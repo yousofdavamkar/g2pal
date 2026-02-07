@@ -1,6 +1,5 @@
-@import "tailwindcss";
-@source "../partials/*.html";
-@variant dark (&:where(.dark, .dark *));
+/* Import base.css which includes Tailwind and design tokens */
+@import "./css/base.css";
 
 .icon {
   display: inline-block;
@@ -11,93 +10,8 @@
   transition: opacity 0.3s ease;
 }
 
-@theme {
-  --color-primary: #2563eb;
-  --color-secondary: #1e3a8a;
-  --color-background-light: #f8fafc;
-  --color-background-dark: #0f172a;
-  --color-surface-light: #ffffff;
-  --color-surface-dark: #1e293b;
-  --color-text-main: #0f172a;
-  --color-text-inverse: #ffffff;
-
-  --color-telegram: #0088cc;
-  --color-whatsapp: #25d366;
-  --color-instagram: #e4405f;
-
-  --font-display: "IRANSansX", sans-serif;
-
-  --radius: 1rem;
-  --radius-xl: 1.5rem;
-  --radius-2xl: 2rem;
-  --radius-3xl: 2.5rem;
-
-  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.04);
-  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-  --shadow-diffuse-sm:
-    0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-diffuse-md:
-    0 8px 24px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.03);
-  --shadow-diffuse-lg:
-    0 16px 48px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.04);
-  --shadow-inner-light: inset 0 2px 4px 0 rgba(255, 255, 255, 0.3);
-
-  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
-  --animate-infinite-scroll-reverse: infinite-scroll-reverse 25s linear infinite;
-  --animate-float: float 6s ease-in-out infinite;
-
-  @keyframes infinite-scroll {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  @keyframes skeleton-loading {
-    0% {
-      background-color: #e5e7eb;
-    }
-    50% {
-      background-color: #d1d5db;
-    }
-    100% {
-      background-color: #e5e7eb;
-    }
-  }
-}
-
-.skeleton {
-  animation: skeleton-loading 1.5s infinite ease-in-out;
-}
-
 .dark .skeleton {
   animation-name: skeleton-loading-dark;
-}
-
-@keyframes skeleton-loading-dark {
-  0% {
-    background-color: #374151;
-  }
-  50% {
-    background-color: #4b5563;
-  }
-  100% {
-    background-color: #374151;
-  }
 }
 
 @variant dark (&:where(.dark, .dark *));
@@ -383,12 +297,6 @@
     -webkit-background-clip: text;
     background-clip: text;
   }
-
-  @keyframes aurora {
-    to {
-      background-position: 200% center;
-    }
-  }
 }
 
 /* Fallback for devices that do not support hover */
@@ -587,24 +495,6 @@
   }
 }
 
-@keyframes orbit-spin {
-  0% {
-    transform: rotateZ(0deg);
-  }
-  100% {
-    transform: rotateZ(360deg);
-  }
-}
-
-@keyframes orbit-counter-spin {
-  0% {
-    transform: rotateZ(360deg) rotateZ(15deg) rotateX(-65deg);
-  }
-  100% {
-    transform: rotateZ(0deg) rotateZ(15deg) rotateX(-65deg);
-  }
-}
-
 /* ============================================
    ORBIT CENTER - GLOWING LOGO
    ============================================ */
@@ -667,30 +557,6 @@
   animation: glow-breathe 3s ease-in-out infinite 1s;
 }
 
-/* Breathing Animation */
-@keyframes glow-breathe {
-  0%,
-  100% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-}
-
-/* Float Animation for Logo */
-@keyframes logo-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
 /* Dark mode adjustments */
 .dark .orbit-glow-1 {
   background: radial-gradient(
@@ -739,32 +605,10 @@
   @apply w-8 bg-primary dark:bg-white;
 }
 
-.text-primary-accessible {
-  color: #1d4ed8; /* blue-700 */
-}
-:is(.dark .text-primary-accessible) {
-  color: #60a5fa; /* blue-400 */
-}
-
-.icon {
-  width: 1em;
-  height: 1em;
-  fill: currentColor;
-  display: inline-block;
-  vertical-align: middle;
-}
-
 /* Content Visibility for off-screen content */
 main > section:not(:first-child) {
   content-visibility: auto;
   contain-intrinsic-size: 1px 800px;
-}
-
-.swiper-pagination-bullet {
-  @apply w-2 h-2 rounded-full bg-gray-400 dark:bg-white/50 hover:bg-primary dark:hover:bg-white transition-all cursor-pointer opacity-100;
-}
-.swiper-pagination-bullet-active {
-  @apply w-8 bg-primary dark:bg-white;
 }
 
 @keyframes infinite-scroll-reverse {
