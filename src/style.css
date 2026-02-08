@@ -1299,10 +1299,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Snap is toggled via JS by adding/removing .snap-active class */
-html.snap-active {
-  scroll-snap-type: y mandatory;
-}
+/* Scroll snap now handled by JavaScript in scroll-animations.js */
 
 .sticky-wrapper {
   position: relative;
@@ -1316,9 +1313,7 @@ html.snap-active {
   height: 100vh;
   min-height: 100vh;
   overflow: hidden;
-  /* Snapping */
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+  /* Scroll snap now handled by JavaScript */
 
   /* Flex centering for content */
   display: flex;
