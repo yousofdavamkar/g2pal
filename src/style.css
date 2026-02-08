@@ -55,7 +55,7 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center transition-all duration-300 cursor-pointer bg-secondary text-white hover:bg-secondary/90 shadow-lg shadow-secondary/20 hover:shadow-[0_0_5px_var(--color-secondary),0_0_25px_var(--color-secondary),0_0_50px_var(--color-secondary),0_0_100px_var(--color-secondary)];
+    @apply inline-flex items-center justify-center transition-all duration-300 cursor-pointer bg-secondary text-white hover:bg-secondary/90 shadow-lg shadow-secondary/20;
   }
 
   .btn-outline {
@@ -173,14 +173,17 @@
   .btn-nav {
     @apply w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center justify-center transition-colors text-gray-600 dark:text-gray-300;
   }
+
   .hero-heading {
     @apply text-5xl md:text-7xl font-bold tracking-tight text-gray-900 dark:text-white;
-    line-height: 1.6 !important; /* فاصله خطوط - می‌توانید به 1.5 یا 1.6 تغییر دهید */
+    line-height: 1.6 !important;
+    /* فاصله خطوط - می‌توانید به 1.5 یا 1.6 تغییر دهید */
   }
 
   .hero-description {
     @apply text-xl text-gray-500 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0;
-    line-height: 1.8 !important; /* فاصله خطوط توضیحات */
+    line-height: 1.8 !important;
+    /* فاصله خطوط توضیحات */
   }
 
   .glass-panel {
@@ -191,6 +194,7 @@
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   }
+
   .dark .glass-panel {
     background: rgba(15, 23, 42, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -219,31 +223,27 @@
   }
 
   .mask-gradient {
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 10%,
-      black 90%,
-      transparent
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 10%,
-      black 90%,
-      transparent
-    );
+    mask-image: linear-gradient(to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent);
+    -webkit-mask-image: linear-gradient(to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent);
   }
 
   .flip-rtl {
     transform: scaleX(-1);
   }
 
-  .faq-item > summary {
+  .faq-item>summary {
     list-style: none;
   }
 
-  .faq-item > summary::-webkit-details-marker {
+  .faq-item>summary::-webkit-details-marker {
     display: none;
   }
 
@@ -268,14 +268,12 @@
   }
 
   .aurora-text {
-    background: linear-gradient(
-      90deg,
-      #3777bc 0%,
-      #274185 25%,
-      #3777bc 50%,
-      #274185 75%,
-      #3777bc 100%
-    );
+    background: linear-gradient(90deg,
+        #3777bc 0%,
+        #274185 25%,
+        #3777bc 50%,
+        #274185 75%,
+        #3777bc 100%);
     background-size: 200% auto;
     color: transparent;
     -webkit-background-clip: text;
@@ -284,14 +282,12 @@
   }
 
   .dark .aurora-text {
-    background: linear-gradient(
-      90deg,
-      #60a5fa 0%,
-      #93c5fd 25%,
-      #60a5fa 50%,
-      #93c5fd 75%,
-      #60a5fa 100%
-    );
+    background: linear-gradient(90deg,
+        #60a5fa 0%,
+        #93c5fd 25%,
+        #60a5fa 50%,
+        #93c5fd 75%,
+        #60a5fa 100%);
     background-size: 200% auto;
     color: transparent;
     -webkit-background-clip: text;
@@ -300,8 +296,7 @@
 }
 
 /* Fallback for devices that do not support hover */
-@media (hover: none) {
-}
+@media (hover: none) {}
 
 /* 
   Performance Optimizations 
@@ -315,8 +310,10 @@
 .animate-bounce,
 .animate-pulse {
   will-change: transform, opacity;
-  transform: translateZ(0); /* Hardware acceleration hack */
-  backface-visibility: hidden; /* Prevent flickering */
+  transform: translateZ(0);
+  /* Hardware acceleration hack */
+  backface-visibility: hidden;
+  /* Prevent flickering */
   perspective: 1000px;
 }
 
@@ -339,7 +336,8 @@
   transition:
     opacity 200ms ease,
     visibility 200ms ease;
-  height: 100vh; /* Fallback */
+  height: 100vh;
+  /* Fallback */
   height: 100dvh;
   background: rgba(15, 23, 42, 0.18);
   display: flex;
@@ -369,6 +367,7 @@
   (often correlates with performance concerns or accessibility).
 */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   ::before,
   ::after {
@@ -413,9 +412,11 @@
 .bg-telegram-gradient {
   background: linear-gradient(135deg, #0088cc 0%, #00a2ff 100%);
 }
+
 .bg-whatsapp-gradient {
   background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
 }
+
 .bg-instagram-gradient {
   background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
 }
@@ -423,6 +424,7 @@
 .text-primary-accessible {
   color: #1d4ed8;
 }
+
 :is(.dark .text-primary-accessible) {
   color: #60a5fa;
 }
@@ -478,7 +480,8 @@
 
 .orbit-content {
   position: absolute;
-  left: 160px; /* Adjusted for circular items */
+  left: 160px;
+  /* Adjusted for circular items */
   top: 0;
   width: 112px;
   height: 0;
@@ -491,7 +494,8 @@
 
 @media (min-width: 768px) {
   .orbit-content {
-    left: 220px; /* Adjusted for desktop */
+    left: 220px;
+    /* Adjusted for desktop */
   }
 }
 
@@ -532,7 +536,8 @@
   width: 120px;
   height: 120px;
   background: rgba(255, 255, 255, 0.4);
-  filter: blur(30px); /* بلور زیاد برای حذف لبه‌ها */
+  filter: blur(30px);
+  /* بلور زیاد برای حذف لبه‌ها */
   animation: glow-breathe 3s ease-in-out infinite;
 }
 
@@ -541,13 +546,15 @@
   width: 160px;
   height: 160px;
   background: rgba(37, 99, 235, 0.6);
-  filter: blur(50px); /* ترکیب کامل با لایه زیری */
+  filter: blur(50px);
+  /* ترکیب کامل با لایه زیری */
   animation: glow-breathe 3s ease-in-out infinite 0.5s;
 }
 
 /* Layer 3 - Outer Aura (Deep Dark Blue) */
 .orbit-glow-3 {
-  width: 140px; /* سایز کوچک‌تر از لوگو */
+  width: 140px;
+  /* سایز کوچک‌تر از لوگو */
   height: 140px;
   background: transparent;
   /* سایه بسیار نرم و پخش شده */
@@ -559,33 +566,27 @@
 
 /* Dark mode adjustments */
 .dark .orbit-glow-1 {
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba(255, 255, 255, 0) 70%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(255, 255, 255, 0) 70%);
 }
 
 .dark .orbit-glow-2 {
-  background: radial-gradient(
-    circle,
-    rgba(59, 130, 246, 0.6) 0%,
-    rgba(59, 130, 246, 0) 60%
-  );
+  background: radial-gradient(circle,
+      rgba(59, 130, 246, 0.6) 0%,
+      rgba(59, 130, 246, 0) 60%);
 }
 
 .dark .orbit-glow-3 {
-  background: radial-gradient(
-    circle,
-    rgba(37, 99, 235, 0.4) 0%,
-    rgba(15, 23, 42, 0) 55%
-  );
+  background: radial-gradient(circle,
+      rgba(37, 99, 235, 0.4) 0%,
+      rgba(15, 23, 42, 0) 55%);
   box-shadow:
     0 0 50px 15px rgba(59, 130, 246, 0.2),
     0 0 100px 30px rgba(37, 99, 235, 0.15);
 }
 
-.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-horizontal>.swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
@@ -606,7 +607,7 @@
 }
 
 /* Content Visibility for off-screen content */
-main > section:not(:first-child) {
+main>section:not(:first-child) {
   content-visibility: auto;
   contain-intrinsic-size: 1px 800px;
 }
@@ -623,30 +624,37 @@ main > section:not(:first-child) {
 
 /* Trustpilot Box - Advanced Glow */
 .trustpilot-box-inner {
-  position: relative; /* برای تنظیم لایه‌ها */
+  position: relative;
+  /* برای تنظیم لایه‌ها */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 1.5rem !important; /* گرد کردن قطعی */
-  z-index: 1; /* اولویت نمایش محتوا */
-  background-clip: padding-box; /* جلوگیری از رنگ گرفتن حاشیه */
+  border-radius: 1.5rem !important;
+  /* گرد کردن قطعی */
+  z-index: 1;
+  /* اولویت نمایش محتوا */
+  background-clip: padding-box;
+  /* جلوگیری از رنگ گرفتن حاشیه */
 }
 
 /* لایه نور مخفی در پشت باکس */
 .trustpilot-box-inner::before {
   content: "";
   position: absolute;
-  inset: -15px; /* بیرون زدگی نور از کادر */
-  background: radial-gradient(
-    circle,
-    rgba(0, 182, 122, 0.5) 0%,
-    transparent 70%
-  );
-  border-radius: inherit; /* ارث‌بری گردی */
-  z-index: -1; /* فرستادن به پشت */
-  opacity: 0; /* مخفی در حالت عادی */
+  inset: -15px;
+  /* بیرون زدگی نور از کادر */
+  background: radial-gradient(circle,
+      rgba(0, 182, 122, 0.5) 0%,
+      transparent 70%);
+  border-radius: inherit;
+  /* ارث‌بری گردی */
+  z-index: -1;
+  /* فرستادن به پشت */
+  opacity: 0;
+  /* مخفی در حالت عادی */
   transition:
     opacity 0.4s ease,
     transform 0.4s ease;
-  filter: blur(10px); /* نرم کردن نور */
+  filter: blur(10px);
+  /* نرم کردن نور */
 }
 
 .trustpilot-box-inner:hover {
@@ -655,8 +663,10 @@ main > section:not(:first-child) {
 }
 
 .trustpilot-box-inner:hover::before {
-  opacity: 1; /* نمایش نور هنگام هاور */
-  transform: scale(1.05); /* کمی بزرگتر شدن نور */
+  opacity: 1;
+  /* نمایش نور هنگام هاور */
+  transform: scale(1.05);
+  /* کمی بزرگتر شدن نور */
 }
 
 /* Trustpilot Button with glow */
@@ -674,6 +684,7 @@ main > section:not(:first-child) {
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 182, 122, 0.3);
 }
+
 .trustpilot-btn:hover {
   background: #00a06a;
   transform: translateY(-2px);
@@ -681,6 +692,7 @@ main > section:not(:first-child) {
     0 8px 25px rgba(0, 182, 122, 0.5),
     0 0 20px rgba(0, 182, 122, 0.3);
 }
+
 /*دکمه باتن دانلود تو Navbar*/
 .btn-activation-magic {
   /* Base Styles */
@@ -710,10 +722,12 @@ main > section:not(:first-child) {
 }
 
 @keyframes gradientMove {
+
   0%,
   100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
@@ -728,22 +742,22 @@ main > section:not(:first-child) {
   width: 100%;
   height: 100%;
   border-radius: 9999px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.4) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 70%);
   opacity: 0;
   animation: pulseRing 2s ease-in-out infinite;
   z-index: -1;
 }
 
 @keyframes pulseRing {
+
   0%,
   100% {
     transform: translate(-50%, -50%) scale(0.8);
     opacity: 0;
   }
+
   50% {
     transform: translate(-50%, -50%) scale(1.4);
     opacity: 0.3;
@@ -1232,6 +1246,7 @@ main > section:not(:first-child) {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -1272,4 +1287,78 @@ main > section:not(:first-child) {
     width: 80px;
     height: 80px;
   }
+}
+
+
+/*
+   Sticky Scroll Snap Implementation
+   Based on user request for stacking effect
+*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Snap is toggled via JS by adding/removing .snap-active class */
+html.snap-active {
+  scroll-snap-type: y mandatory;
+}
+
+.sticky-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.sticky-section {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  /* Snapping */
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  /* Flex centering for content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Stacking Order */
+.z-1 {
+  z-index: 1;
+}
+
+.z-2 {
+  z-index: 2;
+}
+
+.z-3 {
+  z-index: 3;
+}
+
+.z-4 {
+  z-index: 4;
+}
+
+.z-5 {
+  z-index: 5;
+}
+
+/* Clean sticky sections without card-like styling */
+.sticky-section:not(:first-child) {
+  /* No rounded corners or shadows for smooth scroll snap */
+}
+
+/* Services section - normal flow after sticky sections */
+.services-slider-section {
+  position: relative;
+  z-index: 10;
+  background: var(--bg-background-light);
+}
+
+.dark .services-slider-section {
+  background: var(--bg-background-dark);
 }

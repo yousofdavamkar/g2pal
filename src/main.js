@@ -37,7 +37,6 @@ import "./utils/polyfills/flex-gap-polyfill.js";
 import "./utils/lazyload.js";
 import "./js/hero-scroll.js";
 import "./js/scroll-animations.js";
-import "./js/fullpage-snap.js";
 import "./js/3d-card.js";
 
 // Import all styles
@@ -47,7 +46,6 @@ import "./css/utilities.css";
 import "./css/components.css";
 import "./css/animations.css";
 import "./css/features/hero-scroll.css";
-import "./css/features/fullpage-snap.css";
 import "./css/features/services-slider.css";
 import "./css/features/why-go2pal.css";
 import "./style.css";
