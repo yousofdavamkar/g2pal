@@ -1,319 +1,155 @@
 /**
- * Sticky Scroll Snap System v3.1
- * Full viewport snap-scroll for hero and sticky sections
- * Pure vanilla JS - no external libraries
- *
- * Fixes:
- * - Proper handling of all 5 sticky sections (Hero + 4 Articles)
- * - Smooth scroll up and down
- * - No CSS scroll-snap bugs
+ * Sticky Scroll Snap System v5.1
+ * 
+ * BEHAVIOR:
+ * - DOWN: Hero → Articles (snap) → Services (free scroll)
+ * - UP: Free scroll → When reaching sticky wrapper → snap back through articles to Hero
  */
 
-class StickyScrollController {
-  constructor() {
-    this.sections = [];
-    this.currentIndex = 0;
-    this.isScrolling = false;
-    this.touchStartY = 0;
-    this.lastScrollTime = 0;
-    this.scrollCooldown = 600; // ms between snaps
-    this.initialized = false;
-    this.stickyWrapper = null;
-    this.isInStickyArea = false;
-  }
+(function () {
+  let sections = [];
+  let stickyWrapper = null;
+  let currentIndex = 0;
+  let isScrolling = false;
+  const SCROLL_DURATION = 300; // Reduced for less lag
+  const SCROLL_COOLDOWN = 50; // Reduced for quicker response
+  let lastWheelTime = 0;
 
-  init() {
-    // Check for reduced motion preference
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      this.enableFreeScroll();
-      return;
-    }
+  function init() {
+    if (window.innerWidth < 768) return;
 
-    // Mobile check - disable on mobile
-    if (window.innerWidth < 768) {
-      this.enableFreeScroll();
-      return;
-    }
+    stickyWrapper = document.querySelector('.sticky-wrapper');
+    sections = Array.from(document.querySelectorAll('.sticky-section'));
 
-    // Get sticky wrapper
-    this.stickyWrapper = document.querySelector('.sticky-wrapper');
-    if (!this.stickyWrapper) {
-      console.log('No sticky wrapper found');
-      return;
-    }
+    if (!stickyWrapper || sections.length === 0) return;
 
-    // Get all sticky sections
-    this.sections = Array.from(document.querySelectorAll('.sticky-section'));
-
-    if (this.sections.length === 0) {
-      console.log('No sticky sections found');
-      return;
-    }
-
-    console.log(`StickyScrollController: Found ${this.sections.length} sticky sections`);
-
-    // Disable CSS scroll-snap entirely - we'll handle it with JS
-    this.disableCSSScrollSnap();
-
-    // Setup event listeners
-    this.setupEventListeners();
-
-    // Preload all images in sections
-    this.preloadImages();
-
-    // Determine initial section based on scroll position
-    this.updateCurrentIndexFromScroll();
-
-    this.initialized = true;
-  }
-
-  disableCSSScrollSnap() {
-    // Remove all CSS scroll-snap properties
-    document.documentElement.classList.remove('snap-active');
-    document.documentElement.style.scrollSnapType = 'none';
-    document.documentElement.style.scrollBehavior = 'auto';
-    document.body.style.scrollSnapType = 'none';
-
-    // Remove scroll-snap from sections
-    this.sections.forEach(section => {
-      section.style.scrollSnapAlign = 'none';
-      section.style.scrollSnapStop = 'auto';
-    });
-  }
-
-  enableFreeScroll() {
-    document.documentElement.style.scrollSnapType = 'none';
-    document.documentElement.style.scrollBehavior = 'smooth';
-  }
-
-  preloadImages() {
-    // Find all images in sticky sections and preload them
-    this.sections.forEach(section => {
-      const images = section.querySelectorAll('img');
-      images.forEach(img => {
-        if (img.loading === 'lazy') {
-          img.loading = 'eager';
-        }
-        // Trigger load if src exists
-        if (img.src && !img.complete) {
-          const preloadImg = new Image();
-          preloadImg.src = img.src;
-        }
+    // Preload images
+    sections.forEach(section => {
+      section.querySelectorAll('img').forEach(img => {
+        img.loading = 'eager';
       });
     });
+
+    document.addEventListener('wheel', handleWheel, { passive: false });
+
+    console.log('Scroll snap v5.1 - sections:', sections.length);
   }
 
-  setupEventListeners() {
-    // Wheel event for mouse scroll
-    this.boundHandleWheel = this.handleWheel.bind(this);
-    window.addEventListener('wheel', this.boundHandleWheel, { passive: false });
-
-    // Touch events for mobile/trackpad
-    this.boundHandleTouchStart = this.handleTouchStart.bind(this);
-    this.boundHandleTouchEnd = this.handleTouchEnd.bind(this);
-    window.addEventListener('touchstart', this.boundHandleTouchStart, { passive: true });
-    window.addEventListener('touchend', this.boundHandleTouchEnd, { passive: false });
-
-    // Keyboard navigation
-    this.boundHandleKeydown = this.handleKeydown.bind(this);
-    window.addEventListener('keydown', this.boundHandleKeydown, { passive: false });
-
-    // Resize handler
-    this.boundHandleResize = this.handleResize.bind(this);
-    window.addEventListener('resize', this.boundHandleResize, { passive: true });
-
-    // Track scroll position
-    this.boundHandleScroll = this.handleScroll.bind(this);
-    window.addEventListener('scroll', this.boundHandleScroll, { passive: true });
+  function getWrapperTop() {
+    return stickyWrapper.offsetTop;
   }
 
-  handleScroll() {
-    if (!this.stickyWrapper) return;
+  function getWrapperScrollHeight() {
+    // Total scroll distance through all sticky sections
+    return sections.length * window.innerHeight;
+  }
 
+  function getWrapperBottom() {
+    return getWrapperTop() + getWrapperScrollHeight();
+  }
+
+  function getSectionScrollY(index) {
+    return getWrapperTop() + (index * window.innerHeight);
+  }
+
+  function getCurrentSectionIndex() {
     const scrollY = window.scrollY;
-    const wrapperTop = this.stickyWrapper.offsetTop;
-    const wrapperHeight = this.stickyWrapper.offsetHeight;
-    const wrapperBottom = wrapperTop + wrapperHeight;
-    const viewportHeight = window.innerHeight;
-
-    // Check if in sticky area (with some tolerance)
-    this.isInStickyArea = scrollY >= wrapperTop - 50 && scrollY < wrapperBottom - viewportHeight + 50;
-
-    // Update current index from scroll position
-    if (!this.isScrolling) {
-      this.updateCurrentIndexFromScroll();
-    }
+    const wrapperTop = getWrapperTop();
+    const vh = window.innerHeight;
+    const relativeScroll = scrollY - wrapperTop;
+    const index = Math.round(relativeScroll / vh);
+    return Math.max(0, Math.min(index, sections.length - 1));
   }
 
-  updateCurrentIndexFromScroll() {
-    const scrollY = window.scrollY;
-    const viewportHeight = window.innerHeight;
-
-    // Find which section is most visible
-    let bestIndex = 0;
-    let bestVisibility = -Infinity;
-
-    this.sections.forEach((section, index) => {
-      const rect = section.getBoundingClientRect();
-      const sectionTop = rect.top;
-
-      // Calculate visibility score (closer to 0 = more visible)
-      const visibility = -Math.abs(sectionTop);
-
-      if (visibility > bestVisibility) {
-        bestVisibility = visibility;
-        bestIndex = index;
-      }
-    });
-
-    this.currentIndex = bestIndex;
-  }
-
-  isWithinStickyArea() {
-    if (!this.stickyWrapper) return false;
-
-    const scrollY = window.scrollY;
-    const wrapperTop = this.stickyWrapper.offsetTop;
-    const wrapperHeight = this.stickyWrapper.offsetHeight;
-    const wrapperBottom = wrapperTop + wrapperHeight;
-    const viewportHeight = window.innerHeight;
-
-    return scrollY >= wrapperTop - 100 && scrollY < wrapperBottom - viewportHeight + 100;
-  }
-
-  handleWheel(e) {
-    if (!this.initialized || !this.stickyWrapper) return;
-
-    // Check if we're in the sticky wrapper area
-    if (!this.isWithinStickyArea()) {
-      return; // Free scroll outside sticky area
-    }
-
-    // Prevent too rapid scrolling
-    const now = Date.now();
-    if (now - this.lastScrollTime < this.scrollCooldown || this.isScrolling) {
+  function handleWheel(e) {
+    if (isScrolling) {
       e.preventDefault();
       return;
     }
 
-    const direction = e.deltaY > 0 ? 1 : -1;
-    const targetIndex = this.currentIndex + direction;
+    const scrollY = window.scrollY;
+    const vh = window.innerHeight;
+    const wrapperTop = getWrapperTop();
+    const wrapperBottom = getWrapperBottom();
+    const isDown = e.deltaY > 0;
+    const direction = isDown ? 1 : -1;
 
-    // Check boundaries
-    if (targetIndex < 0) {
-      // At first section, trying to scroll up - allow free scroll above
-      return;
-    }
+    // Calculate boundaries
+    const lastSectionTop = getSectionScrollY(sections.length - 1);
 
-    if (targetIndex >= this.sections.length) {
-      // At last section, trying to scroll down - exit sticky area
-      e.preventDefault();
-      this.lastScrollTime = now;
-      this.exitStickyArea();
-      return;
-    }
-
-    // Valid snap target - prevent default and snap
-    e.preventDefault();
-    this.lastScrollTime = now;
-    this.scrollToSection(targetIndex, true);
-  }
-
-  handleTouchStart(e) {
-    this.touchStartY = e.touches[0].clientY;
-  }
-
-  handleTouchEnd(e) {
-    if (!this.initialized || !this.isWithinStickyArea()) return;
-
-    const touchEndY = e.changedTouches[0].clientY;
-    const diff = this.touchStartY - touchEndY;
-    const threshold = 50;
-
-    if (Math.abs(diff) > threshold) {
-      const direction = diff > 0 ? 1 : -1;
-      const targetIndex = this.currentIndex + direction;
-
-      if (targetIndex >= 0 && targetIndex < this.sections.length) {
+    // ZONE A: Above the wrapper (free scroll)
+    if (scrollY < wrapperTop - 10) {
+      // Going down and about to hit wrapper
+      if (isDown && scrollY + 50 >= wrapperTop) {
         e.preventDefault();
-        this.scrollToSection(targetIndex, true);
-      } else if (targetIndex >= this.sections.length) {
-        e.preventDefault();
-        this.exitStickyArea();
+        currentIndex = 0;
+        scrollToY(wrapperTop);
+        return;
       }
+      return; // Free scroll
+    }
+
+    // ZONE B: Inside the wrapper (snap scroll)
+    // This is when scrollY is between wrapperTop and lastSectionTop + vh
+    if (scrollY >= wrapperTop - 10 && scrollY < lastSectionTop + vh - 10) {
+      e.preventDefault();
+
+      // Cooldown
+      const now = Date.now();
+      if (now - lastWheelTime < SCROLL_COOLDOWN) return;
+      lastWheelTime = now;
+
+      currentIndex = getCurrentSectionIndex();
+      const targetIndex = currentIndex + direction;
+
+      console.log('SNAP:', currentIndex, '→', targetIndex, isDown ? '↓' : '↑');
+
+      // Exit up
+      if (targetIndex < 0) {
+        scrollToY(wrapperTop - 50);
+        return;
+      }
+
+      // Exit down (to services)
+      if (targetIndex >= sections.length) {
+        scrollToY(wrapperBottom + 10);
+        return;
+      }
+
+      // Snap to section
+      currentIndex = targetIndex;
+      scrollToY(getSectionScrollY(targetIndex));
+      return;
+    }
+
+    // ZONE C: Below the wrapper (services and beyond)
+    // This is when scrollY >= lastSectionTop + vh
+    if (scrollY >= lastSectionTop + vh - 10) {
+      // Going up - check if we should re-enter snap zone
+      if (!isDown) {
+        // If we're close to the wrapper bottom, snap to last section
+        if (scrollY <= wrapperBottom + 100) {
+          e.preventDefault();
+          currentIndex = sections.length - 1;
+          scrollToY(lastSectionTop);
+          return;
+        }
+      }
+      // Free scroll in this zone
+      return;
     }
   }
 
-  handleKeydown(e) {
-    if (!this.initialized || !this.isWithinStickyArea()) return;
+  function scrollToY(targetY) {
+    isScrolling = true;
 
-    // Only handle arrow keys and space/page keys
-    const keys = ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Space'];
-    if (!keys.includes(e.code)) return;
-
-    e.preventDefault();
-
-    let direction = 0;
-    if (['ArrowDown', 'PageDown', 'Space'].includes(e.code)) {
-      direction = 1;
-    } else if (['ArrowUp', 'PageUp'].includes(e.code)) {
-      direction = -1;
-    }
-
-    const targetIndex = this.currentIndex + direction;
-
-    if (targetIndex >= 0 && targetIndex < this.sections.length) {
-      this.scrollToSection(targetIndex, true);
-    } else if (targetIndex >= this.sections.length) {
-      this.exitStickyArea();
-    }
-  }
-
-  handleResize() {
-    // Disable on mobile
-    if (window.innerWidth < 768) {
-      this.enableFreeScroll();
-      this.initialized = false;
-    } else if (!this.initialized) {
-      this.init();
-    }
-  }
-
-  scrollToSection(index, animate = true) {
-    if (index < 0 || index >= this.sections.length) return;
-    if (this.isScrolling) return;
-
-    this.isScrolling = true;
-    this.currentIndex = index;
-
-    const section = this.sections[index];
-    const targetY = section.offsetTop;
-
-    console.log(`Scrolling to section ${index}, targetY: ${targetY}`);
-
-    if (animate) {
-      // Smooth scroll animation
-      this.smoothScrollTo(targetY, () => {
-        this.isScrolling = false;
-      });
-    } else {
-      window.scrollTo(0, targetY);
-      this.isScrolling = false;
-    }
-  }
-
-  smoothScrollTo(targetY, callback) {
     const startY = window.scrollY;
     const distance = targetY - startY;
-    const duration = 600; // ms
-    let startTime = null;
+    const startTime = performance.now();
 
-    const animate = (currentTime) => {
-      if (!startTime) startTime = currentTime;
+    function animate(currentTime) {
       const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      // Easing: ease-out cubic
+      const progress = Math.min(elapsed / SCROLL_DURATION, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
 
       window.scrollTo(0, startY + distance * eased);
@@ -321,58 +157,18 @@ class StickyScrollController {
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
-        if (callback) callback();
+        isScrolling = false;
       }
-    };
+    }
 
     requestAnimationFrame(animate);
   }
 
-  exitStickyArea() {
-    if (!this.stickyWrapper) return;
-
-    this.isScrolling = true;
-
-    // Scroll to just after the sticky wrapper
-    const targetY = this.stickyWrapper.offsetTop + this.stickyWrapper.offsetHeight;
-
-    console.log(`Exiting sticky area, scrolling to: ${targetY}`);
-
-    this.smoothScrollTo(targetY, () => {
-      this.isScrolling = false;
-    });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
+})();
 
-  destroy() {
-    if (this.boundHandleWheel) {
-      window.removeEventListener('wheel', this.boundHandleWheel);
-    }
-    if (this.boundHandleTouchStart) {
-      window.removeEventListener('touchstart', this.boundHandleTouchStart);
-    }
-    if (this.boundHandleTouchEnd) {
-      window.removeEventListener('touchend', this.boundHandleTouchEnd);
-    }
-    if (this.boundHandleKeydown) {
-      window.removeEventListener('keydown', this.boundHandleKeydown);
-    }
-    if (this.boundHandleResize) {
-      window.removeEventListener('resize', this.boundHandleResize);
-    }
-    if (this.boundHandleScroll) {
-      window.removeEventListener('scroll', this.boundHandleScroll);
-    }
-    this.initialized = false;
-  }
-}
-
-// Initialize on DOM ready
-const stickyScrollController = new StickyScrollController();
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => stickyScrollController.init());
-} else {
-  stickyScrollController.init();
-}
-
-export { StickyScrollController };
+export { };
