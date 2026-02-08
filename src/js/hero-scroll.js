@@ -1,19 +1,5 @@
 /* GO2PAL Hero Scroll Controller v2.2 - Only Navbar Visibility Control */
 
-// Preloader
-(function() {
-  let loaded = false;
-  const hide = () => {
-    if (loaded) return;
-    loaded = true;
-    const p = document.getElementById('preloader');
-    if (p) p.classList.add('hidden');
-    setTimeout(() => document.body?.classList.remove('loading'), 100);
-  };
-  window.addEventListener('load', hide);
-  setTimeout(hide, 6000);
-})();
-
 class HeroScrollController {
   constructor(opts = {}) {
     this.cfg = { 

@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@source "../partials/*.html";
-@variant dark (&:where(.dark, .dark *));
+/* Import base.css which includes Tailwind and design tokens */
+@import "./css/base.css";
+@import "./css/animations.css";
 
 .icon {
   display: inline-block;
@@ -11,93 +11,8 @@
   transition: opacity 0.3s ease;
 }
 
-@theme {
-  --color-primary: #2563eb;
-  --color-secondary: #1e3a8a;
-  --color-background-light: #f8fafc;
-  --color-background-dark: #0f172a;
-  --color-surface-light: #ffffff;
-  --color-surface-dark: #1e293b;
-  --color-text-main: #0f172a;
-  --color-text-inverse: #ffffff;
-
-  --color-telegram: #0088cc;
-  --color-whatsapp: #25d366;
-  --color-instagram: #e4405f;
-
-  --font-display: "IRANSansX", sans-serif;
-
-  --radius: 1rem;
-  --radius-xl: 1.5rem;
-  --radius-2xl: 2rem;
-  --radius-3xl: 2.5rem;
-
-  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.04);
-  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-  --shadow-diffuse-sm: 0 2px 8px rgba(0, 0, 0, 0.04),
-    0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-diffuse-md: 0 8px 24px rgba(0, 0, 0, 0.06),
-    0 4px 8px rgba(0, 0, 0, 0.03);
-  --shadow-diffuse-lg: 0 16px 48px rgba(0, 0, 0, 0.08),
-    0 8px 16px rgba(0, 0, 0, 0.04);
-  --shadow-inner-light: inset 0 2px 4px 0 rgba(255, 255, 255, 0.3);
-
-  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
-  --animate-infinite-scroll-reverse: infinite-scroll-reverse 25s linear infinite;
-  --animate-float: float 6s ease-in-out infinite;
-
-  @keyframes infinite-scroll {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  @keyframes skeleton-loading {
-    0% {
-      background-color: #e5e7eb;
-    }
-    50% {
-      background-color: #d1d5db;
-    }
-    100% {
-      background-color: #e5e7eb;
-    }
-  }
-}
-
-.skeleton {
-  animation: skeleton-loading 1.5s infinite ease-in-out;
-}
-
 .dark .skeleton {
   animation-name: skeleton-loading-dark;
-}
-
-@keyframes skeleton-loading-dark {
-  0% {
-    background-color: #374151;
-  }
-  50% {
-    background-color: #4b5563;
-  }
-  100% {
-    background-color: #374151;
-  }
 }
 
 @variant dark (&:where(.dark, .dark *));
@@ -141,7 +56,7 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center transition-all duration-300 cursor-pointer bg-secondary text-white hover:bg-secondary/90 shadow-lg shadow-secondary/20 hover:shadow-[0_0_5px_var(--color-secondary),0_0_25px_var(--color-secondary),0_0_50px_var(--color-secondary),0_0_100px_var(--color-secondary)];
+    @apply inline-flex items-center justify-center transition-all duration-300 cursor-pointer bg-secondary text-white hover:bg-secondary/90 shadow-lg shadow-secondary/20;
   }
 
   .btn-outline {
@@ -185,7 +100,7 @@
   }
 
   .app-install-card {
-    @apply bg-secondary rounded-[3rem] p-8 md:p-16 relative overflow-hidden text-white flex flex-col md:flex-row items-center justify-between gap-12 shadow-2xl shadow-secondary/30;
+    @apply bg-gray-50 dark:bg-secondary rounded-[3rem] p-8 md:p-16 relative overflow-hidden text-gray-900 dark:text-white flex flex-col md:flex-row items-center justify-between gap-12 shadow-2xl shadow-gray-200/50 dark:shadow-secondary/30 border border-gray-200 dark:border-white/5;
   }
 
   .logo-container {
@@ -259,14 +174,17 @@
   .btn-nav {
     @apply w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center justify-center transition-colors text-gray-600 dark:text-gray-300;
   }
+
   .hero-heading {
     @apply text-5xl md:text-7xl font-bold tracking-tight text-gray-900 dark:text-white;
-    line-height: 1.6 !important; /* فاصله خطوط - می‌توانید به 1.5 یا 1.6 تغییر دهید */
+    line-height: 1.6 !important;
+    /* فاصله خطوط - می‌توانید به 1.5 یا 1.6 تغییر دهید */
   }
 
   .hero-description {
     @apply text-xl text-gray-500 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0;
-    line-height: 1.8 !important; /* فاصله خطوط توضیحات */
+    line-height: 1.8 !important;
+    /* فاصله خطوط توضیحات */
   }
 
   .glass-panel {
@@ -277,6 +195,7 @@
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   }
+
   .dark .glass-panel {
     background: rgba(15, 23, 42, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -305,41 +224,41 @@
   }
 
   .mask-gradient {
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 10%,
-      black 90%,
-      transparent
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 10%,
-      black 90%,
-      transparent
-    );
+    mask-image: linear-gradient(to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent);
+    -webkit-mask-image: linear-gradient(to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent);
   }
 
   .flip-rtl {
     transform: scaleX(-1);
   }
 
-  .faq-item > summary {
+  .faq-item>summary {
     list-style: none;
   }
 
-  .faq-item > summary::-webkit-details-marker {
+  .faq-item>summary::-webkit-details-marker {
     display: none;
   }
 
   .bg-grid-pattern {
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.03) 1px,
-        transparent 1px
-      ),
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-grid-pattern-white {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
@@ -357,14 +276,12 @@
   }
 
   .aurora-text {
-    background: linear-gradient(
-      90deg,
-      #3777bc 0%,
-      #274185 25%,
-      #3777bc 50%,
-      #274185 75%,
-      #3777bc 100%
-    );
+    background: linear-gradient(90deg,
+        #3777bc 0%,
+        #274185 25%,
+        #3777bc 50%,
+        #274185 75%,
+        #3777bc 100%);
     background-size: 200% auto;
     color: transparent;
     -webkit-background-clip: text;
@@ -373,34 +290,21 @@
   }
 
   .dark .aurora-text {
-    background: linear-gradient(
-      90deg,
-      #60a5fa 0%,
-      #93c5fd 25%,
-      #60a5fa 50%,
-      #93c5fd 75%,
-      #60a5fa 100%
-    );
+    background: linear-gradient(90deg,
+        #60a5fa 0%,
+        #93c5fd 25%,
+        #60a5fa 50%,
+        #93c5fd 75%,
+        #60a5fa 100%);
     background-size: 200% auto;
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
   }
-
-  @keyframes aurora {
-    to {
-      background-position: 200% center;
-    }
-  }
 }
 
 /* Fallback for devices that do not support hover */
-@media (hover: none) {
-  #slider-next,
-  #slider-prev {
-    opacity: 1 !important;
-  }
-}
+@media (hover: none) {}
 
 /* 
   Performance Optimizations 
@@ -414,8 +318,10 @@
 .animate-bounce,
 .animate-pulse {
   will-change: transform, opacity;
-  transform: translateZ(0); /* Hardware acceleration hack */
-  backface-visibility: hidden; /* Prevent flickering */
+  transform: translateZ(0);
+  /* Hardware acceleration hack */
+  backface-visibility: hidden;
+  /* Prevent flickering */
   perspective: 1000px;
 }
 
@@ -435,9 +341,16 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 200ms ease, visibility 200ms ease;
-  height: 100vh; /* Fallback */
+  transition:
+    opacity 200ms ease,
+    visibility 200ms ease;
+  height: 100vh;
+  /* Fallback */
   height: 100dvh;
+  background: rgba(15, 23, 42, 0.18);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
 }
 
 #mobile-menu.is-open {
@@ -452,12 +365,17 @@
   pointer-events: none;
 }
 
+.dark #mobile-menu {
+  background: rgba(2, 6, 23, 0.65);
+}
+
 /* 
   Respect user's motion preferences.
   This acts as a fallback for users who prefer less motion 
   (often correlates with performance concerns or accessibility).
 */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   ::before,
   ::after {
@@ -502,9 +420,11 @@
 .bg-telegram-gradient {
   background: linear-gradient(135deg, #0088cc 0%, #00a2ff 100%);
 }
+
 .bg-whatsapp-gradient {
   background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
 }
+
 .bg-instagram-gradient {
   background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
 }
@@ -512,6 +432,7 @@
 .text-primary-accessible {
   color: #1d4ed8;
 }
+
 :is(.dark .text-primary-accessible) {
   color: #60a5fa;
 }
@@ -567,7 +488,8 @@
 
 .orbit-content {
   position: absolute;
-  left: 160px; /* Adjusted for circular items */
+  left: 160px;
+  /* Adjusted for circular items */
   top: 0;
   width: 112px;
   height: 0;
@@ -580,25 +502,8 @@
 
 @media (min-width: 768px) {
   .orbit-content {
-    left: 220px; /* Adjusted for desktop */
-  }
-}
-
-@keyframes orbit-spin {
-  0% {
-    transform: rotateZ(0deg);
-  }
-  100% {
-    transform: rotateZ(360deg);
-  }
-}
-
-@keyframes orbit-counter-spin {
-  0% {
-    transform: rotateZ(360deg) rotateZ(15deg) rotateX(-65deg);
-  }
-  100% {
-    transform: rotateZ(0deg) rotateZ(15deg) rotateX(-65deg);
+    left: 220px;
+    /* Adjusted for desktop */
   }
 }
 
@@ -639,7 +544,8 @@
   width: 120px;
   height: 120px;
   background: rgba(255, 255, 255, 0.4);
-  filter: blur(30px); /* بلور زیاد برای حذف لبه‌ها */
+  filter: blur(30px);
+  /* بلور زیاد برای حذف لبه‌ها */
   animation: glow-breathe 3s ease-in-out infinite;
 }
 
@@ -648,13 +554,15 @@
   width: 160px;
   height: 160px;
   background: rgba(37, 99, 235, 0.6);
-  filter: blur(50px); /* ترکیب کامل با لایه زیری */
+  filter: blur(50px);
+  /* ترکیب کامل با لایه زیری */
   animation: glow-breathe 3s ease-in-out infinite 0.5s;
 }
 
 /* Layer 3 - Outer Aura (Deep Dark Blue) */
 .orbit-glow-3 {
-  width: 140px; /* سایز کوچک‌تر از لوگو */
+  width: 140px;
+  /* سایز کوچک‌تر از لوگو */
   height: 140px;
   background: transparent;
   /* سایه بسیار نرم و پخش شده */
@@ -664,58 +572,29 @@
   animation: glow-breathe 3s ease-in-out infinite 1s;
 }
 
-/* Breathing Animation */
-@keyframes glow-breathe {
-  0%,
-  100% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-}
-
-/* Float Animation for Logo */
-@keyframes logo-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
 /* Dark mode adjustments */
 .dark .orbit-glow-1 {
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba(255, 255, 255, 0) 70%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(255, 255, 255, 0) 70%);
 }
 
 .dark .orbit-glow-2 {
-  background: radial-gradient(
-    circle,
-    rgba(59, 130, 246, 0.6) 0%,
-    rgba(59, 130, 246, 0) 60%
-  );
+  background: radial-gradient(circle,
+      rgba(59, 130, 246, 0.6) 0%,
+      rgba(59, 130, 246, 0) 60%);
 }
 
 .dark .orbit-glow-3 {
-  background: radial-gradient(
-    circle,
-    rgba(37, 99, 235, 0.4) 0%,
-    rgba(15, 23, 42, 0) 55%
-  );
-  box-shadow: 0 0 50px 15px rgba(59, 130, 246, 0.2),
+  background: radial-gradient(circle,
+      rgba(37, 99, 235, 0.4) 0%,
+      rgba(15, 23, 42, 0) 55%);
+  box-shadow:
+    0 0 50px 15px rgba(59, 130, 246, 0.2),
     0 0 100px 30px rgba(37, 99, 235, 0.15);
 }
 
-.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-horizontal>.swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
@@ -735,32 +614,10 @@
   @apply w-8 bg-primary dark:bg-white;
 }
 
-.text-primary-accessible {
-  color: #1d4ed8; /* blue-700 */
-}
-:is(.dark .text-primary-accessible) {
-  color: #60a5fa; /* blue-400 */
-}
-
-.icon {
-  width: 1em;
-  height: 1em;
-  fill: currentColor;
-  display: inline-block;
-  vertical-align: middle;
-}
-
 /* Content Visibility for off-screen content */
-main > section:not(:first-child) {
+main>section:not(:first-child) {
   content-visibility: auto;
   contain-intrinsic-size: 1px 800px;
-}
-
-.swiper-pagination-bullet {
-  @apply w-2 h-2 rounded-full bg-gray-400 dark:bg-white/50 hover:bg-primary dark:hover:bg-white transition-all cursor-pointer opacity-100;
-}
-.swiper-pagination-bullet-active {
-  @apply w-8 bg-primary dark:bg-white;
 }
 
 @keyframes infinite-scroll-reverse {
@@ -775,28 +632,37 @@ main > section:not(:first-child) {
 
 /* Trustpilot Box - Advanced Glow */
 .trustpilot-box-inner {
-  position: relative; /* برای تنظیم لایه‌ها */
+  position: relative;
+  /* برای تنظیم لایه‌ها */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 1.5rem !important; /* گرد کردن قطعی */
-  z-index: 1; /* اولویت نمایش محتوا */
-  background-clip: padding-box; /* جلوگیری از رنگ گرفتن حاشیه */
+  border-radius: 1.5rem !important;
+  /* گرد کردن قطعی */
+  z-index: 1;
+  /* اولویت نمایش محتوا */
+  background-clip: padding-box;
+  /* جلوگیری از رنگ گرفتن حاشیه */
 }
 
 /* لایه نور مخفی در پشت باکس */
 .trustpilot-box-inner::before {
   content: "";
   position: absolute;
-  inset: -15px; /* بیرون زدگی نور از کادر */
-  background: radial-gradient(
-    circle,
-    rgba(0, 182, 122, 0.5) 0%,
-    transparent 70%
-  );
-  border-radius: inherit; /* ارث‌بری گردی */
-  z-index: -1; /* فرستادن به پشت */
-  opacity: 0; /* مخفی در حالت عادی */
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  filter: blur(10px); /* نرم کردن نور */
+  inset: -15px;
+  /* بیرون زدگی نور از کادر */
+  background: radial-gradient(circle,
+      rgba(0, 182, 122, 0.5) 0%,
+      transparent 70%);
+  border-radius: inherit;
+  /* ارث‌بری گردی */
+  z-index: -1;
+  /* فرستادن به پشت */
+  opacity: 0;
+  /* مخفی در حالت عادی */
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  filter: blur(10px);
+  /* نرم کردن نور */
 }
 
 .trustpilot-box-inner:hover {
@@ -805,8 +671,10 @@ main > section:not(:first-child) {
 }
 
 .trustpilot-box-inner:hover::before {
-  opacity: 1; /* نمایش نور هنگام هاور */
-  transform: scale(1.05); /* کمی بزرگتر شدن نور */
+  opacity: 1;
+  /* نمایش نور هنگام هاور */
+  transform: scale(1.05);
+  /* کمی بزرگتر شدن نور */
 }
 
 /* Trustpilot Button with glow */
@@ -824,11 +692,15 @@ main > section:not(:first-child) {
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 182, 122, 0.3);
 }
+
 .trustpilot-btn:hover {
   background: #00a06a;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 182, 122, 0.5), 0 0 20px rgba(0, 182, 122, 0.3);
+  box-shadow:
+    0 8px 25px rgba(0, 182, 122, 0.5),
+    0 0 20px rgba(0, 182, 122, 0.3);
 }
+
 /*دکمه باتن دانلود تو Navbar*/
 .btn-activation-magic {
   /* Base Styles */
@@ -847,8 +719,10 @@ main > section:not(:first-child) {
   animation: gradientMove 3s ease infinite;
 
   /* سایه‌های آبی و فیروزه‌ای */
-  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.4),
-    0 8px 16px rgba(6, 182, 212, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2),
+  box-shadow:
+    0 12px 24px rgba(37, 99, 235, 0.4),
+    0 8px 16px rgba(6, 182, 212, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
     inset 0 -3px 10px rgba(0, 0, 0, 0.2);
 
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -856,10 +730,12 @@ main > section:not(:first-child) {
 }
 
 @keyframes gradientMove {
+
   0%,
   100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
@@ -874,22 +750,22 @@ main > section:not(:first-child) {
   width: 100%;
   height: 100%;
   border-radius: 9999px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.4) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 70%);
   opacity: 0;
   animation: pulseRing 2s ease-in-out infinite;
   z-index: -1;
 }
 
 @keyframes pulseRing {
+
   0%,
   100% {
     transform: translate(-50%, -50%) scale(0.8);
     opacity: 0;
   }
+
   50% {
     transform: translate(-50%, -50%) scale(1.4);
     opacity: 0.3;
@@ -905,9 +781,466 @@ main > section:not(:first-child) {
 /* حالت هاور */
 .btn-activation-magic:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(37, 99, 235, 0.6), 0 0 20px rgba(6, 182, 212, 0.5),
-    0 0 10px rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.1),
+  box-shadow:
+    0 0 30px rgba(37, 99, 235, 0.6),
+    0 0 20px rgba(6, 182, 212, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.1),
     inset 0 0 30px rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================
+   Stripe-inspired Navbar
+   ============================================ */
+.stripe-header {
+  width: 100%;
+}
+
+.stripe-nav-shell {
+  background: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 18px;
+  height: 64px;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+}
+
+.dark .stripe-nav-shell {
+  background: #0b1324;
+  border-color: rgba(148, 163, 184, 0.25);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+.stripe-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.dark .stripe-logo {
+  color: #e2e8f0;
+}
+
+.stripe-logo-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(37, 99, 235, 0.08);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.18);
+}
+
+.stripe-logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.stripe-logo-text {
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+}
+
+.stripe-nav-links {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.stripe-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stripe-nav-link,
+.stripe-nav-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
+  color: #0f172a;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  font-weight: 600;
+}
+
+.dark .stripe-nav-link,
+.dark .stripe-nav-trigger {
+  color: #e2e8f0;
+}
+
+.stripe-nav-link:hover,
+.stripe-nav-trigger:hover,
+.stripe-nav-item.is-open .stripe-nav-trigger {
+  background: rgba(37, 99, 235, 0.08);
+  color: #1d4ed8;
+}
+
+.dark .stripe-nav-link:hover,
+.dark .stripe-nav-trigger:hover,
+.dark .stripe-nav-item.is-open .stripe-nav-trigger {
+  background: rgba(59, 130, 246, 0.18);
+  color: #bfdbfe;
+}
+
+.stripe-nav-icon {
+  width: 18px;
+  height: 18px;
+  color: inherit;
+  opacity: 0.9;
+}
+
+.stripe-chevron {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.stripe-nav-item.is-open .stripe-chevron {
+  transform: rotate(180deg);
+}
+
+.stripe-nav-item {
+  position: relative;
+}
+
+.stripe-dropdown {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 220;
+}
+
+.stripe-nav-item.is-open .stripe-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.stripe-dropdown-panel {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+  min-width: min(880px, 90vw);
+}
+
+.dark .stripe-dropdown-panel {
+  background: #0f172a;
+  border-color: rgba(148, 163, 184, 0.25);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.stripe-dropdown-compact {
+  min-width: min(320px, 80vw);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.stripe-mega {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.stripe-mega-col {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.stripe-mega-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  margin-bottom: 0.3rem;
+}
+
+.dark .stripe-mega-title {
+  color: #94a3b8;
+}
+
+.stripe-mega-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.dark .stripe-mega-link {
+  color: #e2e8f0;
+}
+
+.stripe-mega-link:hover {
+  background: rgba(37, 99, 235, 0.08);
+  color: #1d4ed8;
+}
+
+.dark .stripe-mega-link:hover {
+  background: rgba(59, 130, 246, 0.18);
+  color: #93c5fd;
+}
+
+.stripe-mega-desc {
+  font-size: 0.78rem;
+  color: #64748b;
+  padding: 0 0.5rem 0.5rem;
+}
+
+.dark .stripe-mega-desc {
+  color: #94a3b8;
+}
+
+.stripe-mega-highlight {
+  margin-top: 1.25rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.stripe-highlight-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.dark .stripe-highlight-title {
+  color: #e2e8f0;
+}
+
+.stripe-highlight-text {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.dark .stripe-highlight-text {
+  color: #94a3b8;
+}
+
+.stripe-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.stripe-cta-primary {
+  background: #22c55e;
+  color: #0b1324;
+  box-shadow: 0 10px 22px rgba(34, 197, 94, 0.25);
+  display: none;
+}
+
+.stripe-cta-inline {
+  display: inline-flex;
+  font-size: 0.8rem;
+  padding: 0.45rem 0.9rem;
+}
+
+.stripe-cta-primary:hover {
+  background: #16a34a;
+  transform: translateY(-1px);
+}
+
+.mobile-menu-glass {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: 0 0 80px rgba(15, 23, 42, 0.18);
+}
+
+.dark .mobile-menu-glass {
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.45);
+}
+
+.mobile-menu-panel {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 22px;
+  margin: 0.75rem 1rem 1rem;
+  padding-bottom: 1.25rem;
+  transform: translateY(-16px);
+  opacity: 0;
+  transition:
+    transform 240ms ease,
+    opacity 240ms ease;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
+}
+
+.dark .mobile-menu-panel {
+  background: #0b1324;
+  border-color: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+#mobile-menu.is-open .mobile-menu-panel {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem 0.75rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.mobile-menu-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.mobile-menu-close:hover {
+  background: rgba(148, 163, 184, 0.15);
+  color: #2563eb;
+}
+
+.mobile-menu-body {
+  padding: 0.75rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.mobile-accordion {
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.dark .mobile-accordion {
+  background: rgba(15, 23, 42, 0.65);
+  border-color: rgba(148, 163, 184, 0.25);
+}
+
+.mobile-accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-accordion-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dark .mobile-accordion summary {
+  color: #e2e8f0;
+}
+
+.mobile-accordion summary::after {
+  content: "⌄";
+  font-size: 0.9rem;
+  color: #64748b;
+  transition: transform 0.2s ease;
+}
+
+.mobile-accordion[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.mobile-accordion-links {
+  padding: 0.25rem 0.75rem 0.75rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.mobile-menu-body .mobile-nav-link {
+  font-size: 0.98rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+}
+
+.mobile-nav-icon {
+  width: 18px;
+  height: 18px;
+  color: inherit;
+}
+
+.stripe-cta-mobile {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.stripe-logo-mobile .stripe-logo-text {
+  font-size: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .stripe-nav-links {
+    display: flex;
+  }
+
+  .stripe-cta-primary {
+    display: inline-flex;
+  }
+
+  .stripe-cta-inline {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .stripe-nav-shell {
+    height: 60px;
+    border-radius: 16px;
+  }
+
+  .stripe-nav-actions {
+    gap: 0.5rem;
+  }
 }
 
 /* ============================================
@@ -921,6 +1254,7 @@ main > section:not(:first-child) {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -961,4 +1295,73 @@ main > section:not(:first-child) {
     width: 80px;
     height: 80px;
   }
+}
+
+
+/*
+   Sticky Scroll Snap Implementation
+   Based on user request for stacking effect
+*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll snap now handled by JavaScript in scroll-animations.js */
+
+.sticky-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.sticky-section {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  /* Scroll snap now handled by JavaScript */
+
+  /* Flex centering for content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Stacking Order */
+.z-1 {
+  z-index: 1;
+}
+
+.z-2 {
+  z-index: 2;
+}
+
+.z-3 {
+  z-index: 3;
+}
+
+.z-4 {
+  z-index: 4;
+}
+
+.z-5 {
+  z-index: 5;
+}
+
+/* Clean sticky sections without card-like styling */
+.sticky-section:not(:first-child) {
+  /* No rounded corners or shadows for smooth scroll snap */
+}
+
+/* Services section - normal flow after sticky sections */
+.services-slider-section {
+  position: relative;
+  z-index: 10;
+  background: var(--bg-background-light);
+}
+
+.dark .services-slider-section {
+  background: var(--bg-background-dark);
 }

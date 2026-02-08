@@ -1,0 +1,376 @@
+/* Services Slider Section - Go2Pal */
+/* Modern Swiper Implementation */
+/* ========================================= */
+
+.services-slider-section {
+  /* Light Mode Defaults */
+  --ss-card-bg: var(--color-surface-light, #ffffff);
+  --ss-card-border: #e2e8f0;
+  --ss-card-text: var(--color-text-main, #0f172a);
+  --ss-card-shadow: var(--shadow-soft, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+  --ss-btn-bg: var(--color-primary, #2563eb);
+  --ss-btn-text: #ffffff;
+  --ss-btn-border: transparent;
+  --ss-btn-hover-bg: var(--color-secondary, #1d4ed8);
+  --ss-divider: #e2e8f0;
+
+  --ss-transition-duration: 500ms;
+  --ss-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:where(.dark) .services-slider-section {
+  --ss-card-bg: var(--color-surface-dark, #1e293b);
+  --ss-card-border: rgba(255, 255, 255, 0.1);
+  --ss-card-text: var(--color-text-inverse, #ffffff);
+  --ss-card-shadow: rgba(0, 0, 0, 0.25);
+  --ss-btn-bg: rgba(255, 255, 255, 0.1);
+  --ss-btn-text: #ffffff;
+  --ss-btn-border: rgba(255, 255, 255, 0.2);
+  --ss-btn-hover-bg: rgba(255, 255, 255, 0.2);
+  --ss-divider: rgba(255, 255, 255, 0.1);
+}
+
+/* Navigation Buttons */
+.services-nav-btn {
+  position: relative;
+  z-index: 50;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-background-light, #e5e7eb);
+  border: 1px solid var(--ss-card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #6b7280;
+}
+
+:where(.dark) .services-nav-btn {
+  background: var(--color-surface-dark, #374151);
+  color: #9ca3af;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.services-nav-btn:hover:not(:disabled) {
+  background: #d1d5db;
+}
+
+.services-nav-btn--active {
+  background: #9fe870;
+  color: #1a1a1a;
+}
+
+.services-nav-btn--active:hover:not(:disabled) {
+  background: #8cd960;
+  transform: scale(1.05);
+}
+
+.services-nav-btn:disabled,
+.services-nav-btn.swiper-button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+:where(.dark) .services-nav-btn:hover:not(:disabled) {
+  background: #4b5563;
+}
+
+:where(.dark) .services-nav-btn--active {
+  background: #9fe870;
+  color: #1a1a1a;
+}
+
+/* Cards Container */
+.services-cards-container {
+  position: relative;
+  padding: 20px 0;
+  overflow: visible;
+}
+
+/* Swiper Configuration */
+.services-swiper {
+  overflow: visible !important;
+  padding: 20px;
+  padding-right: 0;
+}
+
+.services-swiper .swiper-wrapper {
+  align-items: stretch;
+  transition-timing-function: var(--ss-transition-timing) !important;
+}
+
+.services-swiper .swiper-slide {
+  width: 340px !important;
+  height: auto;
+  transition:
+    transform var(--ss-transition-duration) var(--ss-transition-timing),
+    opacity var(--ss-transition-duration) var(--ss-transition-timing),
+    visibility var(--ss-transition-duration) var(--ss-transition-timing);
+  will-change: transform, opacity;
+}
+
+/* Stacked card effect - JS controlled via data-slide-state attribute */
+.services-swiper .swiper-slide {
+  /* Default state */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Passed slides (scrolled out in RTL) */
+.services-swiper .swiper-slide[data-slide-state="passed"] {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Active slide */
+.services-swiper .swiper-slide[data-slide-state="active"] {
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Visible upcoming slides with decreasing z-index */
+.services-swiper .swiper-slide[data-slide-state="visible-1"] {
+  z-index: 8;
+  opacity: 1;
+  visibility: visible;
+}
+
+.services-swiper .swiper-slide[data-slide-state="visible-2"] {
+  z-index: 6;
+  opacity: 1;
+  visibility: visible;
+}
+
+.services-swiper .swiper-slide[data-slide-state="visible-3"] {
+  z-index: 4;
+  opacity: 1;
+  visibility: visible;
+}
+
+.services-swiper .swiper-slide[data-slide-state="visible-4"] {
+  z-index: 2;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Fallback for CSS-only (swiper-slide-prev class) */
+.services-swiper .swiper-slide-prev:not([data-slide-state]) {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Service Card */
+.service-card {
+  background: var(--ss-card-bg);
+  border-radius: 28px;
+  padding: 28px;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid var(--ss-card-border);
+  box-shadow: var(--ss-card-shadow);
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-diffuse-lg, 0 20px 25px -5px rgba(0, 0, 0, 0.1));
+}
+
+/* Card Color Variants - Deprecated in favor of theme variables */
+.service-card--green,
+.service-card--blue,
+.service-card--purple {
+  /* Inherit from parent/theme instead of forcing fixed colors */
+}
+
+/* Flag/Logo Container */
+.service-card__flag {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-background-light, #f3f4f6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--ss-card-border);
+}
+
+:where(.dark) .service-card__flag {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.service-card__flag img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+/* Card Title */
+.service-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ss-card-text);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+/* Card Description */
+.service-card__description {
+  font-size: 0.95rem;
+  color: var(--ss-card-text);
+  opacity: 0.7;
+  line-height: 1.7;
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+
+/* Card Button */
+.service-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background: var(--ss-btn-bg);
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ss-btn-text);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: fit-content;
+  border: 1px solid var(--ss-btn-border);
+}
+
+.service-card__btn:hover {
+  background: var(--ss-btn-hover-bg);
+  transform: translateX(-4px);
+}
+
+/* Card Author/Source */
+.service-card__author {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ss-divider);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ss-card-text);
+  opacity: 0.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .services-swiper .swiper-slide {
+    width: 300px !important;
+  }
+
+  .service-card {
+    min-height: 360px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-slider-section {
+    padding: 40px 0;
+  }
+
+  .services-swiper {
+    overflow: visible !important;
+  }
+
+  .services-swiper .swiper-slide {
+    width: 300px !important;
+  }
+
+  /* On mobile, show all visible cards without stacking hide effect */
+  .services-swiper .swiper-slide-prev {
+    opacity: 0.3;
+    visibility: visible;
+  }
+
+  .service-card {
+    min-height: 340px;
+  }
+
+  .service-card__title {
+    font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-swiper .swiper-slide {
+    width: 280px !important;
+  }
+
+  .service-card {
+    padding: 20px;
+    min-height: 300px;
+  }
+
+  .service-card__flag {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+
+  .service-card__flag img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .service-card__title {
+    font-size: 1.25rem;
+  }
+
+  .service-card__description {
+    font-size: 0.9rem;
+  }
+}
+
+/* RTL adjustments */
+[dir="rtl"] .service-card__btn:hover {
+  transform: translateX(4px);
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .service-card:hover {
+    transform: none;
+  }
+
+  .services-nav-btn:hover {
+    transform: none;
+  }
+}

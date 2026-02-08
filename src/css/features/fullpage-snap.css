@@ -1,0 +1,233 @@
+/* GO2PAL Full-Page Snap Scroll Styles
+ * Each section takes full viewport height and snaps on scroll
+ */
+
+/* ============================================
+   SNAP SECTIONS BASE STYLES
+   ============================================ */
+.snap-section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Active state - when snap is enabled */
+.snap-section-active {
+  scroll-snap-stop: always;
+}
+
+/* Current section indicator */
+.snap-section-current {
+  z-index: 10;
+}
+
+/* ============================================
+   SCROLL SNAP CONTAINER
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desktop/Tablet: Enable scroll snap */
+@media (min-width: 768px) {
+  html {
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* Prevent overscroll behavior */
+    overscroll-behavior-y: none;
+  }
+
+  /* Only snap sections with .snap-section class */
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  /* All other sections do NOT snap - this allows normal scroll after intro */
+  main > section:not(.snap-section) {
+    scroll-snap-align: none;
+  }
+}
+
+/* Mobile: Normal scroll */
+@media (max-width: 767px) {
+  html {
+    scroll-snap-type: none;
+  }
+
+  .snap-section {
+    min-height: auto;
+    height: auto;
+    display: block;
+  }
+}
+
+/* ============================================
+   SECTION SPECIFIC STYLES
+   ============================================ */
+
+/* ============================================
+   ARTICLE ANIMATIONS - REVEAL ON SCROLL
+   ============================================ */
+
+/* Initial state - articles are hidden */
+.snap-section article {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Animate article when section becomes current */
+.snap-section-current article {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger content animations */
+.snap-section article h2,
+.snap-section article p {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s ease-out 0.1s, transform 0.6s ease-out 0.1s;
+}
+
+.snap-section-current article h2,
+.snap-section-current article p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Buttons */
+.snap-section article .mt-5 {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+}
+
+.snap-section-current article .mt-5 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   MOBILE OVERRIDES
+   ============================================ */
+@media (max-width: 767px) {
+  .snap-section {
+    min-height: auto;
+    height: auto;
+    display: block;
+  }
+
+  .snap-section article {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .snap-section article h2,
+  .snap-section article p,
+  .snap-section article .mt-5,
+  .snap-section article img {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ============================================
+   SMOOTH SCROLL ENHANCEMENTS
+   ============================================ */
+@media (min-width: 768px) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Add subtle parallax effect to images */
+  .snap-section article img {
+    will-change: transform;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .snap-section {
+    transition: none;
+  }
+
+  .snap-section article {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================
+   NAVBAR VISIBILITY BASED ON SECTION
+   ============================================ */
+/* First section (hero): navbar hidden */
+.snap-section:first-child .navbar-container,
+html:not([data-snap-section]) .navbar-container {
+  /* Handled by JS */
+}
+
+/* Other sections: navbar visible */
+.snap-section:not(:first-child) ~ .navbar-container {
+  /* Handled by JS */
+}
+
+/* ============================================
+   SCROLL INDICATOR (Optional)
+   ============================================ */
+.snap-scroll-indicator {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.snap-scroll-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.5);
+  transition: all 0.3s ease;
+}
+
+.snap-scroll-dot.active {
+  background: #3b82f6;
+  transform: scale(1.5);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.dark .snap-scroll-dot {
+  background: rgba(71, 85, 105, 0.5);
+}
+
+.dark .snap-scroll-dot.active {
+  background: #60a5fa;
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
+
+/* Hide indicator on mobile */
+@media (max-width: 767px) {
+  .snap-scroll-indicator {
+    display: none;
+  }
+}

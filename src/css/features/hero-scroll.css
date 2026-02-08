@@ -1230,6 +1230,125 @@ main#main-content {
 }
 
 /* ============================================
+   SCROLL SNAP SECTIONS
+   ============================================ */
+
+/* Snap section container */
+.snap-sections-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual snap sections */
+.snap-section-item {
+  width: 100%;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Ensure article grids are centered within full viewport */
+.snap-section-item > .grid {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+/* Reset article padding for snap sections */
+.snap-section-item .p-6,
+.snap-section-item .p-10 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Mobile adjustments for snap sections */
+@media (max-width: 768px) {
+  .snap-section-item {
+    min-height: 100vh !important;
+    height: auto !important;
+    padding: 1rem 0 !important;
+  }
+
+  .snap-section-item .grid {
+    gap: 1rem;
+  }
+
+  .snap-section-item img {
+    max-height: 40vh;
+    object-fit: contain;
+  }
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+/* Enable hardware acceleration for animated elements */
+.scroll-hero-content,
+.scroll-article-item,
+.hero-content,
+.hero-text,
+.hero-subject,
+.hero-subject-img,
+.hero-subject-bg {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Article scroll animation items */
+.scroll-article-item {
+  transform-origin: center center;
+}
+
+/* Smooth parallax on hero content */
+.hero-content {
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+.hero-text {
+  transition: transform 0.1s linear;
+}
+
+.hero-subject {
+  transition: transform 0.1s linear;
+}
+
+.hero-subject-img {
+  transition: transform 0.1s linear;
+  transform-origin: center center;
+}
+
+.hero-subject-bg {
+  transition: opacity 0.1s linear, transform 0.1s linear;
+}
+
+/* Article hover effect enhancement (only when not in snap mode) */
+body:not(.snap-mode) .scroll-article-item:hover {
+  transform: translateY(-5px) scale(1.01);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease;
+}
+
+/* CSS Variable for scroll progress */
+:root {
+  --hero-scroll-progress: 0;
+}
+
+/* Smooth scroll snap behavior */
+.snap-section-start,
+.snap-section-item {
+  scroll-margin-top: 0;
+}
+
+/* ============================================
    REDUCED MOTION
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
@@ -1256,5 +1375,27 @@ main#main-content {
   .hero-subject-img {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+
+  /* Disable scroll animations for reduced motion */
+  .scroll-article-item,
+  .snap-section-item,
+  .hero-content,
+  .hero-text,
+  .hero-subject,
+  .hero-subject-img,
+  .hero-subject-bg {
+    will-change: auto !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  /* Disable snap behavior for reduced motion */
+  .snap-sections-container,
+  .snap-section-start,
+  .snap-section-item {
+    scroll-snap-type: none !important;
+    scroll-snap-align: none !important;
+    scroll-snap-stop: auto !important;
   }
 }
