@@ -16,7 +16,8 @@
   let lastWheelTime = 0;
 
   function init() {
-    if (window.innerWidth < 768) return;
+    // Desktop only (1024px+) - disable on mobile/tablet
+    if (window.innerWidth < 1024) return;
 
     stickyWrapper = document.querySelector('.sticky-wrapper');
     sections = Array.from(document.querySelectorAll('.sticky-section'));

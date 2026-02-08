@@ -1,5 +1,6 @@
 /* Import base.css which includes Tailwind and design tokens */
 @import "./css/base.css";
+@import "./css/animations.css";
 
 .icon {
   display: inline-block;
@@ -99,7 +100,7 @@
   }
 
   .app-install-card {
-    @apply bg-secondary rounded-[3rem] p-8 md:p-16 relative overflow-hidden text-white flex flex-col md:flex-row items-center justify-between gap-12 shadow-2xl shadow-secondary/30;
+    @apply bg-gray-50 dark:bg-secondary rounded-[3rem] p-8 md:p-16 relative overflow-hidden text-gray-900 dark:text-white flex flex-col md:flex-row items-center justify-between gap-12 shadow-2xl shadow-gray-200/50 dark:shadow-secondary/30 border border-gray-200 dark:border-white/5;
   }
 
   .logo-container {
@@ -251,6 +252,13 @@
     background-image:
       linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-grid-pattern-white {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 

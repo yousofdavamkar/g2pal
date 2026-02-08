@@ -1035,83 +1035,112 @@
     </section>
 
     <!-- Download CTA Section -->
-    <section class="relative py-20 md:py-28 overflow-hidden">
-      <!-- Animated gradient background -->
-      <div
-        class="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/80 dark:from-gray-900/90 dark:via-gray-800 dark:to-gray-900/90">
-      </div>
+    <section class="max-w-7xl mx-auto px-6 py-20 md:py-28 overflow-hidden">
+      <div class="app-install-card relative">
+        <!-- Background Effects -->
+        <div
+          class="absolute inset-0 bg-grid-pattern dark:bg-grid-pattern-white opacity-[0.03] dark:opacity-10 pointer-events-none">
+        </div>
+        <div
+          class="absolute -top-24 -right-24 w-96 h-96 bg-blue-100/50 dark:bg-primary/30 rounded-full blur-3xl opacity-50 pointer-events-none">
+        </div>
+        <div
+          class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-100/50 dark:bg-secondary/30 rounded-full blur-3xl opacity-50 pointer-events-none">
+        </div>
 
-      <!-- Floating decorative elements -->
-      <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
-      <div class="absolute bottom-20 right-10 w-96 h-96 bg-indigo-400/10 rounded-full blur-3xl animate-pulse"
-        style="animation-delay: 1s"></div>
-
-      <!-- Dot pattern overlay -->
-      <div class="absolute inset-0 opacity-[0.03]" style="
-            background-image: radial-gradient(
-              circle at center,
-              #3b82f6 2px,
-              transparent 2.5px
-            );
-            background-size: 32px 32px;
-          "></div>
-
-      <!-- Main content with RTL-aware grid layout -->
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-          <!-- Text Content (RIGHT in RTL, first column = right) -->
-          <div class="text-right order-2 md:order-1">
-            <!-- Badge -->
+        <!-- Content Grid -->
+        <div class="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <!-- Right Side: Text (RTL) -->
+          <div class="text-right order-2 md:order-1 flex flex-col items-start">
             <div
-              class="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full mb-6 md:mb-8 border border-blue-200 dark:border-blue-800">
+              class="badge mb-6 backdrop-blur-md bg-blue-50/50 dark:bg-white/10 border-blue-100 dark:border-white/20 text-blue-700 dark:text-white">
               <span class="relative flex h-2.5 w-2.5">
                 <span
-                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 dark:bg-white opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500 dark:bg-white"></span>
               </span>
-              <span class="text-sm font-bold text-blue-700 dark:text-blue-300">همین الان</span>
+              <span>همین الان دانلود کنید</span>
             </div>
 
-            <!-- Heading -->
-            <h2
-              class="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 md:mb-8 leading-tight tracking-tight">
-              همین حالا به جمع کاربران گوتوپل بپیوند
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
+              اپلیکیشن <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-200 dark:to-white">گوتوپل</span>
             </h2>
 
-            <!-- Description -->
-            <p
-              class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 md:mb-10 leading-relaxed max-w-xl font-light">
-              اپلیکیشن گوتوپل رو نصب کن و یه تجربه منحصر به فرد داشته باش
+            <p class="text-lg md:text-xl text-gray-600 dark:text-blue-100 mb-8 font-light leading-relaxed max-w-lg">
+              با اپلیکیشن گوتوپل، دنیای خدمات ارزی در دستان شماست.
+              سریع، امن و همیشه در دسترس. همین حالا نصب کنید!
             </p>
 
-            <!-- CTA Button -->
-            <a href="/download" class="hero-btn-primary inline-flex items-center justify-center gap-3 group">
-              <span>صفحه دانلود</span>
-              <svg class="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1 rotate-180" fill="none"
-                stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6l6 6-6 6" />
-              </svg>
-            </a>
-          </div>
+            <!-- Store Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <a href="#" class="btn-store group">
+                <div class="bg-gray-100 rounded-full p-1 group-hover:bg-white transition-colors">
+                  <img src="/images/logos/google-play.svg" alt="Google Play" class="w-6 h-6" loading="lazy"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                  <svg class="w-6 h-6 text-gray-800 hidden" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                  </svg>
+                </div>
+                <div class="flex flex-col items-start">
+                  <span class="text-xs font-medium opacity-80">دریافت از</span>
+                  <span class="text-lg font-bold">Google Play</span>
+                </div>
+              </a>
 
-          <!-- Image (LEFT in RTL, second column = left) - Freestanding with glow effect -->
-          <div class="relative flex items-center justify-center order-1 md:order-2">
-            <!-- Background glow behind image -->
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-blue-500/20 via-indigo-500/20 to-purple-500/20 rounded-full blur-3xl transform scale-75">
+              <a href="#" class="btn-store-outline group">
+                <div class="bg-white/20 rounded-full p-1 group-hover:bg-white/30 transition-colors">
+                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.37 12.36,4.26 13,3.5Z" />
+                  </svg>
+                </div>
+                <div class="flex flex-col items-start">
+                  <span class="text-xs font-medium opacity-80">دریافت از</span>
+                  <span class="text-lg font-bold">App Store</span>
+                </div>
+              </a>
             </div>
 
-            <!-- Floating animation wrapper -->
-            <div class="relative animate-float" style="animation: float 6s ease-in-out infinite">
-              <!-- Decorative gradient ring -->
-              <div
-                class="absolute inset-0 bg-gradient-to-tr from-blue-400 to-indigo-600 rounded-[3rem] blur-xl opacity-30 transform rotate-12 scale-110">
+            <div class="mt-8 flex items-center gap-4 text-gray-500 dark:text-blue-100 text-sm">
+              <div class="flex items-center gap-1">
+                <svg class="w-5 h-5 text-green-500 dark:text-green-400" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>نصب رایگان</span>
               </div>
+              <div class="w-1 h-1 bg-gray-300 dark:bg-white/30 rounded-full"></div>
+              <div class="flex items-center gap-1">
+                <svg class="w-5 h-5 text-green-500 dark:text-green-400" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span>امنیت تضمین شده</span>
+              </div>
+            </div>
+          </div>
 
-              <!-- Main image without container box -->
-              <img src="/images/download.webp" alt="دانلود اپلیکیشن گوتوپل"
-                class="relative w-72 h-72 md:w-96 md:h-96 object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
-                loading="lazy" />
+          <!-- Left Side: Image (With Orbit Animation) -->
+          <div class="relative flex items-center justify-center order-1 md:order-2">
+            <!-- Glow Effect -->
+            <div class="absolute inset-0 bg-white/20 blur-[100px] rounded-full transform scale-75"></div>
+
+            <!-- Floating Image Container -->
+            <div class="relative animate-float">
+              <div class="orbit-logo-container mx-auto transform scale-125 md:scale-150 lg:scale-[3]">
+                <!-- Glow Layers -->
+                <div class="orbit-glow orbit-glow-1"></div>
+                <div class="orbit-glow orbit-glow-2"></div>
+
+                <!-- Main Image -->
+                <img src="/images/download.webp" alt="اپلیکیشن گوتوپل"
+                  class="relative z-10 w-full max-w-[280px] md:max-w-[320px] object-contain drop-shadow-2xl"
+                  loading="lazy" />
+              </div>
             </div>
           </div>
         </div>
@@ -1139,24 +1168,28 @@
   </main>
   <div id="footer-container"></div>
   <script>
-    // Toggle scroll snap: ON for Hero+Articles, OFF after Services
+    // Toggle scroll snap: Desktop only (1024px+), OFF for mobile/tablet
     (function () {
       const stickyWrapper = document.querySelector('.sticky-wrapper');
       const html = document.documentElement;
 
       if (!stickyWrapper) return;
 
-      // Enable snap initially
-      html.classList.add('snap-active');
+      // Desktop only - disable on mobile/tablet
+      const isDesktop = () => window.innerWidth >= 1024;
 
       function updateSnapState() {
+        // Disable snap entirely on mobile/tablet
+        if (!isDesktop()) {
+          html.classList.remove('snap-active');
+          return;
+        }
+
         const wrapperBottom = stickyWrapper.offsetTop + stickyWrapper.offsetHeight;
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
 
         // If we've scrolled past the sticky wrapper area, disable snap
-        // The "area" ends when the last sticky section would unstick
-        // This happens when scrollY > wrapperBottom - windowHeight
         if (scrollY >= wrapperBottom - windowHeight - 50) {
           html.classList.remove('snap-active');
         } else {
@@ -1165,6 +1198,7 @@
       }
 
       window.addEventListener('scroll', updateSnapState, { passive: true });
+      window.addEventListener('resize', updateSnapState, { passive: true });
       updateSnapState();
     })();
   </script>
